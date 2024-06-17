@@ -1,0 +1,432 @@
+/* header{
+
+    position: fixed;
+    width: 95%;
+    display: flex;
+    padding: 10px 30px;
+    align-items: center;
+    justify-content:space-between;
+    border-bottom: 2px solid rgb(238, 187, 187);
+    background-color: white;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+  .logo{
+    color: rgb(187, 157, 157);
+    text-decoration: none;
+    font-size: 1.8em;
+    font-weight: 700;
+      
+      
+  
+  }
+  .navigation a{
+    color: rgb(208, 177, 177);
+    text-decoration: none;
+    font-size: 1.3em;
+    padding-left: 40px;
+    padding-right: 30;
+    font-weight: 700;
+    
+  
+  }
+  .navigation a:hover{
+    color: rgba(146, 77, 89, 0.964);
+  } */
+
+  .navigation {
+    display: flex;
+    align-items: center;
+}
+
+.dropdownbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  .dropdown-menu {
+    position: relative;
+    display: inline-block;
+  }
+.dropdown-contents {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px); 
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-menu:hover .dropdown-contents {
+    display: block;
+}
+
+.dropdown-contents a {
+    color:  rgba(146, 77, 89, 0.964);
+    padding: 11px 15px;
+    display: block;
+    font-size: 15px;
+}
+
+.dropdown-contents a:hover {
+    background-color: #f1f1f1;
+}
+.dropdown-contents a img {
+    width: 30px; 
+    height: 30px; 
+    margin-right: 5px; 
+}
+body {
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+
+.account-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.tab {
+    overflow: hidden;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.tab button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 20px;
+    transition: 0.3s;
+    font-size: 20px;
+    color: #555;
+    border-bottom: 2px solid transparent;
+}
+
+.tab button:hover {
+    color: #333;
+}
+
+.tab button.active {
+    color: #B76E79;
+    border-bottom: 2px solid #B76E79;
+}
+
+.tabcontent {
+    display: none;
+    padding: 20px;
+}
+
+.tabcontent h3 {
+    color: #B76E79;
+}
+
+#Profile {
+    display: block;
+    text-align: left;
+}
+
+#Profile form {
+    margin-bottom: 20px;
+}
+
+#Profile label {
+    text-align: left;
+    font-size: 18px;
+    display: block;
+}
+
+#Profile input[type="text"],
+#Profile input[type="tel"],
+#Profile input[type="email"],
+#Profile textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.order-table th, .order-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.order-table th {
+    background-color: rgb(210, 167, 167);
+    color: #fff;
+}
+
+.order-table tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+.account-container h1 {
+    margin-bottom: 10px;
+}
+
+.profile-title {
+    text-align: left;
+    color: rgb(210, 167, 167);
+}
+
+button {
+    background-color: rgb(210, 167, 167);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: rgb(255, 182, 193);
+}
+
+button + button {
+    margin-left: 10px;
+}
+
+#password-form input[type="password"] {
+    margin-bottom: 20px;
+}
+.CART {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 600px; 
+    height: 650px;
+    overflow: auto;
+  }
+  
+  .pcart {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+  }
+  .WISHLIST {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 600px; 
+    height: 650px;
+    overflow: auto;
+  }
+  
+  
+  .popupp {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .imgg {
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .imggg {
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .imgggg {
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .imgg1 {
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .imgggg2 {
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .checkout {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .checkout button {
+    background-color: rgb(255, 105, 180); 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkout button:hover {
+    background-color: rgb(255, 182, 193);
+  }
+  .product-display {
+    display: flex;
+    gap: 20px;
+  }
+  .product1 {
+    margin-top: 30px;
+    text-align: left;
+  }
+  .remove, .add {
+    background-color:rgb(196, 194, 194); 
+    border: none;
+    padding: 5px 10px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+   padding-left: 50px;
+   padding-right: 50px;
+  
+  }
+  
+  .remove:hover, .add:hover {
+    background-color: rgb(108, 117, 125);
+  }
+  
+  .product-display h3{
+    color: rgb(108, 117, 125);
+  }
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  .ADD {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .ADD button {
+    background-color: rgb(255, 105, 180); 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ADD button:hover {
+    background-color: rgb(255, 182, 193);
+  }
+  .re, .ad {
+    background-color:rgb(196, 194, 194); 
+    border: none;
+    padding: 5px 10px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+   padding-left: 20px;
+   padding-right: 20px;
+  
+  }
+  
+  .re:hover, .ad:hover {
+    background-color: rgb(108, 117, 125);
+  }
+  .search {
+    display: flex;
+    align-items: center;
+    background-color: rgb(248, 249, 250);
+    border-radius: 20px;
+    padding: 5px;
+    width: 200px;
+    }
+    
+    .search input[type="text"] {
+    border: none;
+    background-color: transparent;
+    flex-grow: 1;
+    padding: 5px;
+    border-radius: 15px;
+    }
+    
+    .search i {
+    margin-left: 5px;
+    }
+  .search {
+    display: flex;
+    align-items: center;
+    background-color: rgb(248, 249, 250);
+    border-radius: 20px;
+    padding: 5px;
+    width: 200px;
+    }
+    
+    .search input[type="text"] {
+    border: none;
+    background-color: transparent;
+    flex-grow: 1;
+    padding: 5px;
+    border-radius: 15px;
+    }
+    
+    .search i {
+    margin-left: 5px;
+    }
+
+
+
+
+

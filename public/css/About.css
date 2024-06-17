@@ -1,0 +1,103 @@
+body {
+    background-color: white; 
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center; 
+}
+.about-title {
+
+    font-size: 36px;
+   text-decoration: underline;
+}
+h1.about-title,
+h2 {
+    color: rgb(210, 167, 167); 
+    padding: 20px;
+}
+
+a {
+    color: rgb(208, 177, 177); 
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgba(146, 77, 89, 0.964); 
+}
+
+.follow-text {
+    font-size: 24px;
+    color: rgb(208, 177, 177);
+    margin-bottom: 5px; /* Reduce margin bottom */
+    margin-top: 10px; /* Keep margin top */
+    border-top: 2px solid #B76E79; /* Add border top */
+    padding-top: 10px; /* Add padding top */
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 0; 
+}
+
+.social-icons li:last-child {
+    margin-right: 0;
+}
+
+.social-icons li i {
+    color: #B76E79;
+    font-size: 2em;
+}
+
+.contact-info {
+    margin: 0;
+    padding: 0;
+    padding-top: 5px; /* Reduce padding top */
+    margin-top: 10px; /* Keep margin top */
+}
+
+.contact-info p {
+    margin: 2px 0; /* Adjust margin for paragraphs */
+}
+
+.contact-info p:last-child {
+    margin-bottom: 0; 
+}
+
+.contact-info p:last-child::after {
+    content: none; 
+}
+
+.contact-info p:first-child::after {
+    content: none; 
+}
+
+@media (max-width: 600px) {
+    .social-icons li {
+        display: block;
+        margin: 10px auto;
+    }
+
+    .contact-info {
+        font-size: 14px;
+    }
+}
+
+.navvv {
+    padding: 100px 50px; 
+    margin: -15px;
+}
+
+p {
+    color: rgb(208, 177, 177); 
+}
+
