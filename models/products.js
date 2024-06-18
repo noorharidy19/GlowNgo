@@ -22,10 +22,10 @@ const productsSchema = new Schema({
         type: String,
         required:true
     },
-    // Shade:{
-    //     type: String,
-    //     required:true
-    // }
+    Shade:{
+        type: String,
+        required:true
+    }
 
 }, { timestamps: true });
 const Products = mongoose.model('Products', productsSchema);

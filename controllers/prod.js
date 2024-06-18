@@ -1,24 +1,28 @@
-
 const path = require('path');
-const Products = require('../models/products'); // assuming products.js is in the same directory
+const Products = require('../models/products');
 const upload = require('../mildware/multer');
 
 const Addproducts = (req, res) => {
     // Handle file upload with multer middleware
-    upload(req, res, (err) => {
+    upload.fields([
+        { name: 'productImage', maxCount: 1 },
+        { name: 'productShades', maxCount: 1 }
+    ])(req, res, (err) => {
         if (err) {
             console.error('Multer error:', err);
-            res.status(400).send('Error uploading file');
+            res.status(400).send('Error uploading files');
         } else {
-            // File uploaded successfully, now save product
-            const imagePath = `/${req.file.filename}`; // Path to saved image
+            // Files uploaded successfully, now save product
+            const productImage = req.files['productImage'][0]; // Assuming single file upload
+            const shadeImage = req.files['productShades'][0]; // Assuming single file upload
 
             const newProduct = new Products({
                 name: req.body.productName,
                 price: req.body.productPrice,
                 category: req.body.productCategory,
                 quantity: req.body.productQuantity,
-                Image: imagePath
+                Image: `/${productImage.filename}`, // Path to saved product image
+                Shade: `/${shadeImage.filename}` // Path to saved shade image
             });
 
             newProduct.save()
