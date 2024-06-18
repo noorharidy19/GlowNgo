@@ -17,7 +17,16 @@ const productsSchema = new Schema({
     quantity: {
         type:Number,
         required: true
-    }
+    },
+    Image:{
+        type: String,
+        required:true
+    },
+    // Shade:{
+    //     type: String,
+    //     required:true
+    // }
+
 }, { timestamps: true });
 const Products = mongoose.model('Products', productsSchema);
 module.exports = Products;

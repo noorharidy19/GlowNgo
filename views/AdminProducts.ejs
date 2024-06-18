@@ -478,12 +478,12 @@
         <div class="add-content">
             <span class="close" onclick="closeModal(['Add-container'])">&times;</span>
             <h2 style="color:rgb(211, 170, 170)" class="adduser">Add Product </h2>
-            <form action="/addProduct" method="post" onsubmit="return validationForm();" id="n1">
-    <!-- <div class="formprod">
+            <form action="/addProduct" method="post" onsubmit="return validationForm();" id="n1"  enctype="multipart/form-data">
+    <div class="formprod">
         <label class="label-field2">Product Image:</label>
         <input type="file" name="productImage" class="input-field2" id="productImage">
         <div class="error" id="imageError"></div>
-    </div> -->
+    </div> 
     <div class="formprod">
         <label class="label-field2">Product Name:</label>
         <input type="text" name="productName" placeholder="Enter Product Name" class="input-field2" id="productName">
