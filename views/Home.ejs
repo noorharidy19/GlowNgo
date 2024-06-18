@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Home.css">
+    <link rel="stylesheet" href="css/nav.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Home</title>
+</head>
+
+<body class="bodyy">
+    <%- include('partials/nav') %>
+    <!-- <header class="myElement">
+        <a href="#" class="logo" ><img src="images/logo.jpeg" width="180" height="80"></a>
+        <span class="search">
+            <input type="text" placeholder="Search">
+            <i class="fa-solid fa-search"></i>
+        </span>
+        <nav class="navigation">
+            <label class="switch">
+                <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode();">
+                <span class="slider round"></span>
+                <i class="fa-regular fa-moon"></i>
+              </label>
+            <a href="Home.html" class="nav1">Home</a>
+            <div class="dropdown-menu">
+                <a href="Products.html" class="dropdownbtn">Products</a>
+                <div class="dropdown-contents">
+                    <a href="face.html"  class="n">
+                        <img src="images/face.jpg"> <br>Face
+                    </a>
+                    <a href="brow.html" class="n"> <img src="images/brows.jpg" > <br>Brows</a>
+                    <a href="lip.html"  class="n"><img src="images/lips.jpg" ><br>Lips</a>
+                    <a href="tools.html"  class="n"><img src="images/tools1.jpg"><br>Tools</a>
+                    <a href="eyes.html"  class="n"><img src="images/eye.jpg" ><br>Eyes</a>
+                </div>
+            </div>
+            <a href="About.html" class="nav1">About</a>
+           <div id="overlay" style="display: none;"></div> -->
+        <a href="#" class="nav1" id="signInIcon" onclick="showPopupSignin('popupContainerSignIn')"><i id="signInIconImage" class="fa-solid fa-user"></i></a>
+        <!-- <a href="#" class="nav1" title="shopping cart" onclick="showPopup(['CART'])"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="#"  class="nav1"title="Wishlist" onclick="showPopup(['WISHLIST'])"><i class="fa-solid fa-heart"></i></i></a> -->
+        </nav>
+    </header> 
+ <section class="Home">
+    <div id="slideshow">
+        <div class="slide-wrapper">
+            <div class="slide" style="background-image: url('images/slide11.png');"></div>
+            <div class="slide" style="background-image: url('images/bran1.png');"></div>
+            <div class="slide" style="background-image: url('images/slide3.png');"></div> 
+            <a class="prev" onclick="plusSlides(1)">&#10092;</a>
+            <a class="next" onclick="plusSlides(0)">&#10093;</a>
+        </div>
+    </div> 
+
+    <div class="dash-container">
+        <div class="dashes">
+            <span class="dash" onclick="currentSlide(1)"></span>
+            <span class="dash" onclick="currentSlide(2)"></span>
+            <span class="dash" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+</section>
+
+        <br>
+
+        <div>
+            <br>
+            <h2 class="q1">Our Products</h2>
+            <p><a href="allproducts.html" class="viewmore">view more</a></p>
+            <div id="Products">
+                <div class="shop-wrapper">
+                    <div class="shop">
+                        <a href="face.html"><img src="images/fentycon.jpg" alt=""></a>
+                        <div class="des">
+                            <h5>Fenty Beauty Concelar</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>30.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>
+                    </div>  
+                    <div class="shop">
+                        <a href="Eyes.html"><img src="images/kikolinear.jpeg" alt=""></a>
+                        <div class="des">
+                            <h5>Kiko Long Lasting Duo Eyeliner</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>30.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>
+                    </div>
+                    <div class="shop">
+                        <a href="lip.html"><img src="images/benetint.jpg" alt=""></a>
+                        <div class="des">
+                            <h5>Benetint</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>24.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>  
+                    </div>
+                    <div class="shop">
+                        <a href="lip.html"><img src="images/rarestickjpg.jpg" alt=""></a>
+                        <div class="des">
+                            <h5>Rare Beauty Lip stick</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>20.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>  
+                    </div>
+                    <div class="shop">
+                        <a href="brow.html"><img src="images/rarebrow.jpg" alt=""></a>
+                        <div class="des">
+                            <h5>Rare Beauty Brow Harmony Precision Pencil</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>19.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>  
+                    </div>   
+                    <div class="shop">
+                        <a href="Eyes.html"><img src="images/rareprimer.jpeg" alt=""></a>
+                        <div class="des">
+                            <h5>Rare Beauty Weightless Eye Primer</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>21.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a> 
+                    </div>
+                    <div class="shop">
+                        <a href="tools.html"><img src="images/spongefanty.jpg" alt=""></a>
+                        <div class="des">
+                            <h5>Fenty Beauty Blender</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>24.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>
+                    </div>
+                    <div class="shop">
+                        <a href="face.html"><img src="images/kikohighlighter.jpg" alt=""></a>
+                        <div class="des">
+                            <h5>Kiko Highlighter</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>17.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a> 
+                    </div>
+                    <div class="shop">
+                        <a href="face.html"><img src="images/kikopowder.jpg" alt=""></a>
+                        <div class="des">
+                            <h5>Kiko Powder</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>25.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a> 
+                    </div>
+                    <div class="shop">
+                        <a href="lip.html"><img src="images/plump1.jpg" alt=""></a>
+                        <div class="des">
+                            <h5>Dior Plumping Gloss</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>40.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>  
+                    </div>
+                <a class="prev" onclick="plusProd(-1)"> &#10092; </a>
+                <a class="next" onclick="plusProd(1)"> &#10093; </a>
+            </div>
+            </div> 
+        </div>
+        <div>
+            <br>
+            <h2 class="q1">New Collection</h2>
+            <p><a href="allproducts.html" class="viewmore">view more</a></p>
+            <div id="Products">
+                <div class="shop-wrapper1">
+                    <div class="shop">
+                        <img src="images/balmm.jpg" alt="">
+                        <div class="des">
+                            <h5>Summer Fridays Lip Balm</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>24.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>
+                    </div>  
+                    <div class="shop">
+                        <img src="images/liqkiko.jpg" alt="">
+                        <div class="des">
+                            <h5>Kiko Unlimited Double Touch</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>17.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>
+                    </div>
+                    <div class="shop">
+                        <img src="images/cont.jpg" alt="">
+                        <div class="des">
+                            <h5>Charlotte Tilbury Contouer wand</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>42.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>  
+                    </div>
+                    <div class="shop">
+                        <img src="images/rarelush.jpg" alt="">
+                        <div class="des">
+                            <h5>Rare Beauty Liquid Blush</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>23.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>  
+                    </div>
+                    <div class="shop">
+                        <img src="images/diorcurler.jpg" alt="">
+                        <div class="des">
+                            <h5>Dior EyeLash Curler</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>30.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>  
+                    </div>   
+                    <div class="shop">
+                        <img src="images/oil.jpg" alt="">
+                        <div class="des">
+                            <h5>Dior Lip Oil</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>40.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a> 
+                    </div>
+                    <div class="shop">
+                        <img src="images/kikogel.jpg" alt="">
+                        <div class="des">
+                            <h5>Kiko Eyebrow Designer Gel Mascara</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>15.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>
+                    </div>
+                    <div class="shop">
+                        <img src="images/mascararare.jpeg" alt="">
+                        <div class="des">
+                            <h5>Rare Beauty Universal Volumizing Mascara</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>11.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a> 
+                    </div>
+                    <div class="shop">
+                        <img src="images/fentyFounjpg.jpg" alt="">
+                        <div class="des">
+                            <h5>Fenty Beauty Founadtion</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>40.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a> 
+                    </div>
+                    <div class="shop">
+                        <img src="images/kikohighlighter.jpg" alt="">
+                        <div class="des">
+                            <h5>Kiko Highlighter</h5>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>17.00$</h4>
+                        </div>
+                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>  
+                    </div>
+                <a class="prev" onclick="plusProd1(-1)"> &#10092; </a>
+                <a class="next" onclick="plusProd1(1)"> &#10093; </a>
+            </div>
+            </div> 
+        </div>
+
+    <div class="popup-container" id="popupContainerSignIn">
+ 
+        <div class="popup">
+            <span class="close-btn" onclick="hidePopupsignin('popupContainerSignIn')">&times;</span>
+            <h2>Log in</h2>
+<form onsubmit="return validateForm2()">
+    <input type="text" id="username" placeholder="Username" class="textt">
+    <span id="usernameErr" style="color: red;"></span>
+    <input type="password" id="password" placeholder="Password" class="textt">
+    <span id="passwordErr" style="color: red;"></span>
+    <!-- <i class="fa-solid fa-eye fa-fade fa-sm" onclick="Show()"></i> -->
+    <button type="button" onclick="validateForm2()">Login</button>
+    <br>    
+    <div class="forget"> <a href="#" onclick="hidePopupsignin('popupContainerSignIn'); showPopupSignin('popupContainerForget')">Forgot Password</a></div>
+    <br>
+    <a href="gmail.html"><i class="fa-solid fa-envelope fa-2xl"style="color: #3601f4;"></i></a>
+    <a href="facebook.html"><i class="fa-brands fa-facebook fa-2xl" style="color: #3601f4;"></i></a>
+</form>
+
+            <br>
+            
+            <div class="create-account">
+                Don't have an account? <a href="#" onclick="hidePopupsignin('popupContainerSignIn'); showPopupSignin('popupContainerSignUp')">Create an account</a>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="popup-container" id="popupContainerSignUp">
+        <div class="popup">
+            <span class="close-btn" onclick="hidePopupsignin('popupContainerSignUp')">&times;</span>
+            <h2>Sign Up</h2>
+            <form onsubmit="return SignupValidation()">
+                <input type="text" id="name" placeholder="Name" class="textt">
+                <span id="nameErr" style="color: red;"></span>
+                <input type="email" id="email" placeholder="Email" class="textt">
+                <span id="emailErr" style="color: red;"></span>
+                <input type="password" id="pass" placeholder="Password" class="textt">
+                <span id="passwordErr" style="color: red;"></span>
+                <input type="password" id="confirm_pass" placeholder="Confirm Password" class="textt">
+                <span id="confirm_passwordErr" style="color: red;"></span>
+                <input type="text" id="country" placeholder="Address" class="textt">
+                <span id="countryErr" style="color: red;"></span>
+                <input type="tel" id="phone" placeholder="Phone Number" class="textt">
+                <span id="phoneErr" style="color: red;"></span>
+                <br>
+                <input type="checkbox" id="terms">
+                <label for="terms">I accept the terms and conditions </label>
+                <br>
+                <span id="termsErr" style="color: red;"></span>
+                <button type="submit">Sign Up</button>
+                <div id="successMessage" style="display: none; color: green;">Account created successfully!</div>
+                <br>
+                <a href="gmail.html"><i class="fa-solid fa-envelope fa-2xl" style="color: #3601f4;"></i></a>
+                <a href="facebook.html"><i class="fa-brands fa-facebook fa-2xl" style="color: #3601f4;"></i></a>
+            </form>
+            <br>
+            <div>or sign up with a social media account</div>
+            
+            <div class="signin">
+                Already Have an account <a href="#" onclick="hidePopupsignin('popupContainerSignUp'); showPopupSignin('popupContainerSignIn')">Log in</a>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    <div class="popup-container" id="popupContainerForget">
+    <div class="popup">
+        <span class="close-btn" onclick="hidePopupsignin('popupContainerForget')">&times;</span>
+        <h2>Reset Password</h2>
+        <form onsubmit="return sendResetPasswordEmail()">
+            <input type="email" id="resetEmail" placeholder="Enter your email" required>
+            <button type="submit">Send Email</button>
+            <div id="messageContainer" >To reset your password, enter your email address below. We will then send an email containing a link to reset your password.</div>
+        </form>
+
+    </div>
+</div>
+    <!-- --------------------------------CART------------------------------------ -->
+    <div class="CART " id="CART">
+        <h2 class="pcart"> Your Cart&nbsp; <i class="fa-solid fa-bag-shopping"></i></i>  </h2>
+       
+        <div class="popupp">
+            <span class="close-btn" onclick="hidePopup(['CART'])">&times;</span>
+            <div class="product-display">
+              <img src="images/fentycon.jpg" alt="Concelar img" width="218" height="200" class="imgg" id="c">
+              <img src="images/con2.jpg" alt="Concelar img" width="218" height="200" class="imgg" id="c1">
+              <div class="product1">
+                <h3>Fenty Beauty Concealer</h3>
+                <h3>Price: <span id="price1">30.00</span>$   Quantity: <span id="quantity1">1</span></h3>
+                <div class="circle-container">
+                  <img class="circle-image" src="images/fentycon.jpg" alt="Description of image" onclick="showShade(['c'],['imgg'])">
+                  <img class="circle-image" src="images/con2.jpg" alt="Description of image" onclick="showShade(['c1'],['imgg'])">
+                </div>
+                <button type="button" class="remove" onclick="changeQuantity(-1, 'quantity1', 'price1')">-</button>
+                <button type="button" class="add" onclick="changeQuantity(1, 'quantity1', 'price1')">+</button>
+                
+              </div>
+            </div>
+            <div class="product-display">
+              <img src="images/bronzerkiko.jpg" alt="Bronzer img" width="218" height="200" class="imggg" id="br1">
+              <img src="images/bronz1.jpg" alt="Bronzer img" width="218" height="200" class="imggg" id="b">
+              <div class="product1">
+                <h3>Kiko Bronzer</h3>
+                <h3>Price: <span id="price2">20.00</span>$   Quantity: <span id="quantity2">1</span></h3>
+                <div class="circle-container">
+                    <img class="circle-image" src="images/bronzerkiko.jpg" alt="Description of image" onclick=" showShade(['br1'],['imggg'])">
+                    <img class="circle-image" src="images/bronz1.jpg" alt="Description of image" onclick=" showShade(['b'],['imggg']) ">
+                    </div>
+                    <button type="button" class="remove" onclick="changeQuantity(-1, 'quantity2', 'price2')">-</button>
+                    <button type="button" class="add" onclick="changeQuantity(1, 'quantity2', 'price2')">+</button>
+                    
+              </div>
+            </div>
+            <div class="product-display">
+              <img src="images/benetint.jpg" alt="Lipstick img" width="218" height="200" class="imgggg" id="r1">
+              <img src="images/tintshade.jpg" alt="Lipstick img" width="218" height="200" class="imgggg" id="r2">
+              <div class="product1">
+                <h3>Benetint</h3>
+                <h3>Price: <span id="price3">24.00</span>$   Quantity: <span id="quantity3">1</span></h3>
+                <div class="circle-container">
+                    <img class="circle-image" src="images/benetint.jpg" alt="Description of image" onclick=" showShade(['r1'],['imgggg']) ">
+                    <img class="circle-image" src="images/tintshade.jpg" alt="Description of image" onclick=" showShade(['r2'],['imgggg']) ">
+                    </div>
+                    <button type="button" class="remove" onclick="changeQuantity(-1, 'quantity3', 'price3')">-</button>
+                    <button type="button" class="add" onclick="changeQuantity(1, 'quantity3', 'price3')">+</button>
+              </div>
+            </div>
+            <div class="total">
+                <h3>Total: <span id="total"></span>$</h3>
+            </div>
+            <div class="checkout">
+                <button type="button" onclick=" window.location.href = 'checkout.html'" class="sub">Procced to Check Out</button>
+              </div>
+          
+
+        </div>
+    </div> -->
+ <!-- --------------------------------WISHLIST------------------------------------ -->
+ <div class="WISHLIST " id="WISHLIST">
+    <h2 class="pcart"> Your Wishlist&nbsp; <i class="fa-regular fa-heart"></i>  </h2>
+    <div class="popupp">
+        <span class="close-btn" onclick="hidePopup(['WISHLIST'])">&times;</span>
+        <div class="product-display">
+          <img src="images/rareprimer.jpeg" alt="Concelar img" width="218" height="200" class="imgg1" id="c2">
+          <img src="images/rareshadeprimer.jpg" alt="Concelar img" width="218" height="200" class="imgg1" id="c12">
+          <div class="product1">
+            <h3>Rare Beauty Primer</h3>
+            <h3>Price: <span id="price1">21.00</span>$</h3>
+            <div class="circle-container">
+              <img class="circle-image" src="images/rareprimer.jpeg" alt="Description of image" onclick="showShade(['c2'],['imgg1'])">
+              <img class="circle-image" src="images/rareshadeprimer.jpg" alt="Description of image" onclick="showShade(['c12'],['imgg1'])">
+            </div>
+            <button type="button" class="re">Remove</button>
+            <button type="button" class="ad">Add to Cart</button>
+            
+          </div>
+        </div>
+        <div class="product-display">
+          <img src="images/spongefanty.jpg" alt="Bronzer img" width="218" height="200" class="imggg" id="br1">
+          <div class="product1">
+            <h3>Feanty Beauty Blender</h3>
+            <h3>Price: <span id="price2">24.00</span>$</h3>
+            <br>
+            <br>
+                <button type="button" class="re">Remove</button>
+                <button type="button" class="ad">Add to Cart</button>
+                
+          </div>
+        </div>
+        <div class="product-display">
+          <img src="images/kikogel.jpg" alt="Lipstick img" width="218" height="200" class="imgggg2" id="r12">
+          <img src="images/gelshade.jpg" alt="Lipstick img" width="218" height="200" class="imgggg2" id="r22">
+          <div class="product1">
+            <h3>Kiko Eyebrow Gel</h3>
+            <h3>Price: <span id="price3">15.00</span>$</span></h3>
+            <div class="circle-container">
+                <img class="circle-image" src="images/kikogel.jpg" alt="Description of image" onclick=" showShade(['r12'],['imgggg2']) ">
+                <img class="circle-image" src="images/gelshade.jpg" alt="Description of image" onclick=" showShade(['r22'],['imgggg2']) ">
+                </div>
+                <button type="button" class="re">Remove</button>
+                <button type="button" class="ad">Add to Cart</button>
+          </div>
+        </div>
+        <div class="ADD">
+            <button type="button" onclick="">ADD PRODUCT</button>
+            <button type="button" onclick="">ADD ALL TO CART</button>
+          </div>
+  
+    </div>
+  </div> 
+
+
+    <script src="js/Home.js"></script>
+    <script src="js/Prod.js"></script>
+</body>
+</html>
