@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <!-- <link rel="stylesheet" href="StyleProd.css"> -->
+    <title></title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body class="bodyy">
+<%- include('partials/navAdmin') %>
+<div>
+    <h1 class="user" style="margin-bottom: 20px;">Users</h1>
+</div>
+
+<div id="overlay" style="display: none;"></div>
+<table class="tab">
+    <tr>
+        <th class="text">ID</th>
+        <th class="text">First Name</th>
+        <th class="text">Last Name</th>
+        <th class="text">Username</th>
+        <th class="text">Password</th>
+        <th class="text">Email</th>
+        <th class="text">Address</th>
+        <th class="text">Phone Number</th>
+        <th class="text">Admin Or User?</th>
+        <th class="text">Number Of Orders</th>
+        <th class="text"></th>
+        
+    </tr>
+    <tr>
+        <td class="text">2003</td>
+        <td class="text">Noor</td>
+        <td class="text">Haridy</td>
+        <td class="text">NoorHaridy</td>
+        <td class="text">1234</td>
+        <td class="text">NoorHaridy@gmail.com</td>
+        <td class="text">Maddi Street</td>
+        <td class="text">01234567891</td>
+        <td class="text">User</td>
+        <td class="text">2</td>
+        <td class="text"> <button onclick="showModal(['myModal1'])" class="edit-button">Edit</button>
+            <button onclick="showModal(['myModal2'])" class="Remove-button">Remove</button></td>
+    </tr>
+    <tr>
+        <td class="text">2004</td>
+        <td class="text">Nourhan</td>
+        <td class="text">Amr</td>
+        <td class="text">nour.amr</td>
+        <td class="text">nour1234</td>
+        <td class="text">Nourhan@gmail.com</td>
+        <td class="text">First Settlement</td>
+        <td class="text">01110984111</td>
+        <td class="text">Admin</td>
+        <td class="text">1</td>
+        <td class="text"> <button onclick="showModal(['myModal1'])" class="edit-button">Edit</button>
+            <button onclick="showModal(['myModal2'])" class="Remove-button">Remove</button></td>
+    </tr>
+    <tr>
+        <td class="text">2005</td>
+        <td class="text">Nourhan</td>
+        <td class="text">Mohamed</td>
+        <td class="text">nourhan.mohamed</td>
+        <td class="text">1234</td>
+        <td class="text">NourhanMohamed@gmail.com</td>
+        <td class="text">Nasr City</td>
+        <td class="text">01230984111</td>
+        <td class="text">User</td>
+        <td class="text">3</td>
+        <td class="text"> <button onclick="showModal(['myModal1'])" class="edit-button">Edit</button>
+            <button onclick="showModal(['myModal2'])" class="Remove-button">Remove</button></td>
+    </tr>
+</table>
+
+<div class="buttons-container">
+    <button onclick="showModal(['myModal'])" class="add-button">Add</button>
+</div>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal(['myModal'])">&times;</span>
+        <h2 style= "color:rgb(211, 170, 170)" class="adduser">Add User</h2>
+        <form onsubmit="return UserValidation();">
+            <div class="form-group">
+                <label class="label-field">First Name:</label>
+                <input type="text" name="firstName" placeholder="Enter First Name" class="input-field" id="Fname">
+                <div class="error" id="fnameError"></div>
+            </div>
+            <div class="form-group">
+                <label class="label-field">Last Name:</label>
+                <input type="text" name="lastName" placeholder="Enter Last Name" class="input-field" id="Lname">
+                <div class="error" id="lnameError"></div>
+            </div>
+            <div class="form-group">
+                <label class="label-field">Username:</label>
+                <input type="text" name="username" placeholder="Enter Username" class="input-field" id="username">
+                <div class="error" id="usernameError"></div>
+            </div>
+            <div class="form-group">
+                <label class="label-field">Password:</label>
+                <input type="text" name="pass" placeholder="Enter Password" class="input-field" id="password">
+                <div class="error" id="passwordError"></div>
+            </div>
+            <div class="form-group">
+                <label class="label-field">Email:</label>
+            <input type="text" name="email" placeholder="Enter Email" class="input-field" id="email">
+            <div class="error" id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label class="label-field">Address:</label>
+                <input type="text" name="address" placeholder="Enter Address" class="input-field" id="address">
+                <div class="error" id="addressError"></div>
+            </div>
+            <div class="form-group">
+                <label class="label-field">Phone Number:</label>
+            <input type="text" name="phone" placeholder="Enter Phone number" class="input-field" id="phone">
+            <div class="error" id="phoneError"></div>
+            </div>
+            <div class="form-group1">
+                <label class="label-field">Admin/User:</label>
+                <div>
+                    <input type="radio" id="admin1" name="role" class="input-field">
+                    <label for="admin1">Admin</label>
+                </div>
+                <div>
+                    <input type="radio" id="user1" name="role" class="input-field">
+                    <label for="user1">User</label>
+                </div>
+               
+            </div>
+            <div class="error" id="UserAdminError"></div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="submit-btn">
+            </div>
+        </form>
+    </div>
+</div>
+<div id="myModal1" class="modal1">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal(['myModal1'])">&times;</span>
+        <h2 style="color:rgb(211, 170, 170)" class="adduser">Edit User</h2>
+        <form onsubmit="return UserValidationEdit();">
+                <div class="form-group">
+                    <label class="label-field">Select Field to Edit:</label>
+                    <select id="editFieldd" name="editField" class="input-field1">
+                        <option value="select">select</option>
+                        <option value="username">Username</option>
+                        <option value="password">Password</option>
+                        <option value="email">Email</option>
+                        <option value="address">Address</option>
+                        <option value="phone">Phone Number</option>
+                    </select>
+                    <div class="error" id="optionError"></div>
+                </div>
+                <div class="form-group">
+                    <label class="label-field">New Value:</label>
+                    <input type="text" name="newValue" placeholder="Enter New Value" class="input-field" id="val">
+                    <div class="error" id="valError"></div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="submit-btn">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="myModal2" class="modal2">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal(['myModal2'])">&times;</span>
+            <h2 style="color:rgb(211, 170, 170)" class="adduser">Remove User</h2>
+            <form onsubmit="return UservalidationRemove();">
+                <h2>Are you sure you want to delete the user?</h2>
+                <div class="form-group1">
+                    <div>
+                        <input type="radio" id="Yes1" name="role" class="input-radio">
+                        <label for="Yes1">Yes</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="No1" name="role" class="input-radio">
+                        <label for="No1">No</label>
+                    </div>
+                </div>
+                <div class="error" id="RadioError"></div>
+                <div class="form-group">
+                    <div>
+                        <input type="submit" value="Submit" class="submit-btn">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+<script src="js/admin.js"></script>
+</body>
+</html>

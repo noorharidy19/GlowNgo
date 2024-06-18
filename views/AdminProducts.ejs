@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <!-- <link rel="stylesheet" href="StyleProd.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Products</title>
+    <script src="js/admin.js"></script>
+    
+</head>
+<body class="bodyy">
+    
+        <!-- <header class="myElement">
+            <a href="#" class="logo" ><img src="images/logo.jpeg" width="180" height="80" ></a>
+            
+        <!-- <span class="search">
+            <input type="text" placeholder="Search">
+            <i class="fa-solid fa-search"></i>
+        </span> -->
+            <!-- <nav class="navigation">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode();">
+                    <span class="slider round"></span>
+                    <i class="fa-regular fa-moon"></i>
+                  </label>
+                <a href="Home.html" class="nav1">Home</a>
+                <a href="Products.html" class="nav1">Products</a>
+                <a href="MyAccount.html" class="nav1"><i class="fa-solid fa-user"></i></a>
+            </nav>
+        </header>-->
+        <%- include('partials/navAdmin') %>
+        
+        <!-- <div id="mySidenav" class="sidenav">
+        <a href="/adminProducts" id="Products">Products<i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="/user" id="Users">Users&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-users"></i></a>
+        <a href="/orders" id="Orders">Orders&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-basket-shopping"></i></a>
+        </div> -->
+        <h1 class="Products">Products</h1>
+        <div id="overlay" style="display: none;"></div>
+        <div class="buttons-container">
+            <button onclick="showModal(['Add-container'])" class="But">Add</button>
+        </div>
+    
+    
+    <table class="prod">
+   
+        <tr>
+            <th class="text">Product ID</th>
+            <th class="text">Product Image</th>
+            <th class="text">Product Name</th>
+            <th class="text">Product Price</th>
+            <th class="text">Product Category</th>
+            <th class="text">Product Quantity</th>
+            <th class="text">Product Shades</th>
+            <th class="text"></th>
+        
+            
+        </tr>
+        <tr>
+            <td class="text">1001</td>
+            <td class="text"><img class="product-image" src="images/fentyFounjpg.jpg" width="150" height="150"></td>
+            <td class="text"> Fenty Beauty Foundation</td>
+            <td class="text">40.00$</td>
+            <td class="text">Face</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/founshade1.jpg" alt="Description of image" onclick=" showShade(['found1'],['found'])">
+                <img class="circle-image" src="images/foundshade2.jpg" alt="Description of image" onclick=" showShade(['found2'],['found'])">
+                <img class="circle-image" src="images/founds3.jpg" alt="Description of image" onclick=" showShade(['found3'],['found'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">1002</td>
+            <td class="text"><img class="product-image" src="images/fentycon.jpg" width="150" height="150"></td>
+            <td class="text"> Fenty Beauty Concealer</td>
+            <td class="text">30.00$</td>
+            <td class="text">Face</td>
+            <td class="text">10</td>
+            <td class="text">  
+              <img class="circle-image" src="images/con1.jpg" alt="Description of image" onclick=" showShade(['con2'],['con'])">
+              <img class="circle-image" src="images/con2.jpg" alt="Description of image" onclick=" showShade(['con3'],['con'])">
+              <img class="circle-image" src="images/con3.jpg" alt="Description of image" onclick=" showShade(['con4'],['con'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">1003</td>
+            <td class="text"><img class="product-image" src="images/primerdiorjpg.jpg" width="150" height="150"></td>
+            <td class="text"> Dior Primer</td>
+            <td class="text">40.00$</td>
+            <td class="text">Face</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/primeBA.jpg" alt="Description of image" onclick=" showShade(['prime2'],['prime'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">1004</td>
+            <td class="text"><img class="product-image"src="images/spayrare8.jpg" width="150" height="150"></td>
+            <td class="text"> Rare Beauty Setting Spray</td>
+            <td class="text">14.00$</td>
+            <td class="text">Face</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <p>-</p>
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">1005</td>
+            <td class="text"><img class="product-image" src="images/kikohighlighter.jpg" width="150" height="150"></td>
+            <td class="text"> Kiko Highlighter</td>
+            <td class="text">17.00$</td>
+            <td>Face</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/high1.jpg" alt="Description of image" onclick=" showShade(['high2'],['high'])">
+                <img class="circle-image" src="images/high2.jpg" alt="Description of image" onclick=" showShade(['high3'],['high'])">
+                <img class="circle-image" src="images/high3.jpg" alt="Description of image" onclick=" showShade(['high4'],['high'])">
+            </td>
+                <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+                    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+            </tr>
+        <tr>
+            <td class="text">1006</td>
+            <td class="text"><img class="product-image"src="images/kikopowder.jpg" width="150" height="150"></td>
+            <td class="text">Kiko Powder</td>
+            <td class="text">25.00$</td>
+            <td class="text" >Face</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/powder1.jpg" alt="Description of image" onclick=" showShade(['powd2'],['powd'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">1007</td>
+            <td class="text"><img class="product-image" src="images/cont.jpg" width="150" height="150"></td>
+            <td class="text"> Charlotte Tilbury Contouer Wand</td>
+            <td class="text">42.00$</td>
+            <td class="text">Face</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/cont1.jpg" alt="Description of image" onclick=" showShade(['cont2'],['cont'])">
+                              <img class="circle-image" src="images/cont2.jpg" alt="Description of image" onclick=" showShade(['cont3'],['cont'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">1008</td>
+            <td class="text"><img class="product-image" src="images/bronzerkiko.jpg" width="150" height="150"></td>
+            <td class="text">Kiko Bronzer</td>
+            <td class="text">20.00$</td>
+            <td class="text">Face</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/bronz1.jpg" alt="Description of image" onclick=" showShade(['bronz2'],['bronz'])">
+                <img class="circle-image" src="images/bronz2.jpg" alt="Description of image" onclick=" showShade(['bronz3'],['bronz'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">1009</td>
+            <td class="text"><img class="product-image" src="images/rarelush.jpg" width="150" height="150"></td>
+            <td class="text">Rare Beauty Liquid Blush</td>
+            <td class="text">23.00$</td>
+            <td class="text">Face</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/blush1.jpg" alt="Description of image" onclick=" showShade(['blush2'],['blush'])">
+                <img class="circle-image" src="images/blush2.jpg" alt="Description of image" onclick=" showShade(['blush3'],['blush'])">
+                <img class="circle-image" src="images/blush3.jpg" alt="Description of image" onclick=" showShade(['blush4'],['blush'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">2001</td>
+            <td class="text"><img class="product-image" src="images/mascararare.jpeg" width="150" height="150"></td>
+            <td class="text">Rare Beauty Mascara</td>
+            <td class="text">11.00$</td>
+            <td class="text">Eyes</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/mascarararesh.webp" alt="Description of image" onclick=" showShade(['shade'],['hide1'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">2002</td>
+            <td class="text"><img class="product-image" src="images/kikolinear.jpeg" width="150" height="150"></td>
+            <td class="text">Kiko EyeLiner</td>
+            <td class="text">30.00$</td>
+            <td class="text">Eyes</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/pencilshade.jpg" alt="Description of image" onclick=" showShade(['shade2'],['hide4'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">2003</td>
+            <td class="text"><img class="product-image" src="images/shadowmay.jpeg" width="150" height="150"></td>
+            <td class="text">Rare Beauty Eye Shadow</td>
+            <td class="text">11.00$</td>
+            <td class="text">Eyes</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/rareshadow.webp" alt="Description of image" onclick=" showShade(['shadesh'],['hide3'])">
+                      
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">2004</td>
+            <td class="text"><img class="product-image" src="images/kikofalse.png" width="150" height="150"></td>
+            <td class="text">Kiko EyeLashes</td>
+            <td class="text">11.00$</td>
+            <td class="text">Eyes</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/kikoshade1.png" alt="Description of image" onclick=" showShade(['shade21'],['hide21'])">
+                <img class="circle-image" src="images/kikoshade2.png" alt="Description of image" onclick=" showShade(['shade22'],['hide22'])">
+            </td>
+            <td> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+                <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">2005</td>
+            <td class="text"><img class="product-image" src="images/rareprimer.jpeg" width="150" height="150"></td>
+            <td class="text">Rare Beauty Eye Primer</td>
+            <td class="text">21.00$</td>
+            <td class="text">Eyes</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/rareshadeprimer.jpg" alt="Description of image" onclick=" showShade(['shade3'],['hide6'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">2006</td>
+            <td class="text"><img class="product-image" src="images/kikopencil.jpeg" width="150" height="150"></td>
+            <td class="text">Kiko Eye Pencil</td>
+            <td class="text">15.00$</td>
+            <td class="text">Eyes</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/pencilshade.jpg" alt="Description of image" onclick=" showShade(['shade1'],['hidee2'])">
+                          <img class="circle-image" src="images/pencilshade1.jpg" alt="Description of image" onclick=" showShade(['shade6'],['hidee2'])">
+                          <img class="circle-image" src="images/pencilshade2.jpg" alt="Description of image" onclick=" showShade(['shade7'],['hidee2'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">3001</td>
+            <td class="text"><img class="product-image" src="images/rarestick1.jpg" width="150" height="150"></td>
+            <td class="text">Rare Beauty Lip Stick</td>
+            <td class="text">20.00$</td>
+            <td class="text">Lips</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/rareshade.webp" alt="Description of image" onclick=" showShade(['shade1'],['hide2'])">
+                <img class="circle-image" src="images/rareshade1.webp" alt="Description of image" onclick=" showShade(['shade2'],['hide2'])">
+                <img class="circle-image" src="images/rareshade2.webp" alt="Description of image" onclick=" showShade(['shade3'],['hide2'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">3002</td>
+            <td class="text"><img class="product-image" src="images/kikolinear.jpeg" width="150" height="150"></td>
+            <td class="text">Rare Beauty Lip Liner</td>
+            <td class="text">15.00$</td>
+            <td class="text">Lips</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/lipshade.webp" alt="Description of image" onclick=" showShade(['shadelip1'],['hide3'])">
+                  <img class="circle-image" src="images/lipshade1.webp" alt="Description of image" onclick=" showShade(['shadelip2'],['hide3'])">
+                  <img class="circle-image" src="images/lipshade2.webp" alt="Description of image" onclick=" showShade(['shadelip3'],['hide3'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        
+        <tr>
+            <td class="text">3003</td>
+            <td class="text"><img class="product-image" src="images/lifterglossjpg.jpg" width="150" height="150"></td>
+            <td class="text">Maybelline Lifter Gloss</td>
+            <td class="text">11.00$</td>
+            <td class="text">Lips</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/glosshade.jpg" alt="Description of image" onclick=" showShade(['shadegloss1'],['hide4'])">
+                  <img class="circle-image" src="images/glosshade1.jpg" alt="Description of image" onclick=" showShade(['shadegloss2'],['hide4'])">
+                  <img class="circle-image" src="images/glosshade2.jpg" alt="Description of image" onclick=" showShade(['shadegloss3'],['hide4'])">
+                  </td>
+                  <td> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+                    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        
+        <tr>
+            <td class="text">3004</td>
+            <td class="text"><img class="product-image" src="images/oil.jpg" width="150" height="150"></td>
+            <td class="text">Dior Lip Oil</td>
+            <td class="text">40.00$</td>
+            <td class="text">Lips</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/oilshade1.jpg" alt="Description of image" onclick=" showShade(['shadeoil1'],['hide5'])">
+                <img class="circle-image" src="images/oilshade2.webp" alt="Description of image" onclick=" showShade(['shadeoil2'],['hide5'])">
+                <img class="circle-image" src="images/oilshade3.jpg" alt="Description of image" onclick=" showShade(['shadeoil3'],['hide5'])">
+            </td>
+            <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+                <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        
+        <tr>
+            <td class="text">3005</td>
+            <td class="text"><img class="product-image" src="images/plumperrr.jpg" width="150" height="150"></td>
+            <td class="text">Dior Plumping Gloss</td>
+            <td class="text">40.00$</td>
+            <td class="text">Lips</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/plumpshade1.jpg" alt="Description of image" onclick=" showShade(['shadeplump1'],['hide6'])">
+                <img class="circle-image" src="images/plumpshade2.jpg" alt="Description of image" onclick=" showShade(['shadeplump2'],['hide6'])">
+                <img class="circle-image" src="images/plumpsahde3.jpg" alt="Description of image" onclick=" showShade(['shadeplump3'],['hide6'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        
+        <tr>
+            <td class="text">3006</td>
+            <td class="text"><img class="product-image" src="images/benetint.jpg" width="150" height="150"></td>
+            <td class="text">Benetint</td>
+            <td class="text">24.00$</td>
+            <td class="text">Lips</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/tintshade.jpg" alt="Description of image" onclick=" showShade(['shadetint1'],['hide7'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        
+        <tr>
+            <td class="text">3007</td>
+            <td class="text"><img class="product-image" src="images/balmm.jpg" width="150" height="150"></td>
+            <td class="text">Summer Fridays Lip Balm</td>
+            <td class="text">24.00$</td>
+            <td class="text">Lips</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/sfsahde.webp" alt="Description of image" onclick=" showShade(['shadesf1'],['hide8'])">
+                <img class="circle-image" src="images/sfshade1.webp" alt="Description of image" onclick=" showShade(['shadesf2'],['hide8'])">
+                <img class="circle-image" src="images/sfshade2.webp" alt="Description of image" onclick=" showShade(['shadesf3'],['hide8'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        
+        <tr>
+            <td class="text">3008</td>
+            <td class="text"><img class="product-image" src="images/liqkiko.jpg" width="150" height="150"></td>
+            <td class="text">Kiko Unlimited Double Touch</td>
+            <td class="text">17.00$</td>
+            <td class="text">Lips</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/shade.png" alt="Description of image" onclick=" showShade(['shadeliq1'],['hide9'])">
+                <img class="circle-image" src="images/shade1.png" alt="Description of image" onclick=" showShade(['shadeliq2'],['hide9'])">
+                <img class="circle-image" src="images/shade2.png" alt="Description of image" onclick=" showShade(['shadeliq3'],['hide9'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">4001</td>
+            <td class="text"><img class="product-image" src="images/kikogel.jpg" width="150" height="150"></td>
+            <td class="text">kiko Eyebrow Gel</td>
+            <td class="text">15.00$</td>
+            <td class="text">Brows</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/gelshade.jpg" alt="Description of image" onclick=" showShade(['r22'],['imgggg2']) ">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">4002</td>
+            <td class="text"><img class="product-image" src="images/rarebrow.jpg" width="150" height="150"></td>
+            <td class="text">RareBeauty Eyebrow pencil</td>
+            <td class="text">19.00$</td>
+            <td class="text">Brows</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/browshade.jpg" alt="Description of image" onclick=" showShade(['shade1'],['hide2'])">
+                <img class="circle-image" src="images/browshad2.jpg" alt="Description of image" onclick=" showShade(['shade2'],['hide2'])">
+                <img class="circle-image" src="images/browshade3.jpg" alt="Description of image" onclick=" showShade(['shade3'],['hide2'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">4003</td>
+            <td class="text"><img class="product-image" src="images/maybelineeye.jpeg" width="150" height="150"></td>
+            <td class="text">Maybeline Eyebrow mascara</td>
+            <td class="text">20.00$</td>
+            <td class="text">Brows</td>
+            <td class="text">10</td>
+            <td class="text">  
+                <img class="circle-image" src="images/shade1eyebrowjpg.jpg" alt="Description of image" onclick=" showShade(['shade4'],['hide3'])">
+                <img class="circle-image" src="images/shade2eyebrow.jpg" alt="Description of image" onclick=" showShade(['shade5'],['hide3'])">
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">5001</td>
+            <td class="text"><img class="product-image" src="images/kikobrush1.jpg" width="150" height="150"></td>
+            <td class="text">Kiko Brush Set</td>
+            <td class="text">33.00$</td>
+            <td class="text">Tools</td>
+            <td class="text">10</td>
+            <td class="text">  
+               <p>-</p>
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">5002</td>
+            <td class="text"><img class="product-image" src="images/spongefanty.jpg" width="150" height="150"></td>
+            <td class="text">Fenty Beauty Blender</td>
+            <td class="text">24.00$</td>
+            <td class="text" >Tools</td>
+            <td class="text">10</td>
+            <td class="text">  
+               <p>-</p>
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+        <tr>
+            <td class="text">5003</td>
+            <td class="text"><img class="product-image" src="images/diorcurler.jpg" width="150" height="150"></td>
+            <td class="text">Dior EyeLash Curler</td>
+            <td class="text">30.00$</td>
+            <td class="text" >Tools</td>
+            <td class="text">10</td>
+            <td class="text">  
+               <p>-</p>
+ </td>
+ <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+    <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
+        </tr>
+    </table>
+    <div class="Add-container" id="Add-container">
+        <div class="add-content">
+            <span class="close" onclick="closeModal(['Add-container'])">&times;</span>
+            <h2 style="color:rgb(211, 170, 170)" class="adduser">Add Product </h2>
+            <form action="/addProduct" method="post" onsubmit="return validationForm();" id="n1">
+    <!-- <div class="formprod">
+        <label class="label-field2">Product Image:</label>
+        <input type="file" name="productImage" class="input-field2" id="productImage">
+        <div class="error" id="imageError"></div>
+    </div> -->
+    <div class="formprod">
+        <label class="label-field2">Product Name:</label>
+        <input type="text" name="productName" placeholder="Enter Product Name" class="input-field2" id="productName">
+        <div class="error" id="nameError"></div>
+    </div>
+    <div class="formprod">
+        <label class="label-field2">Product Price:</label>
+        <input type="text" name="productPrice" placeholder="Enter Product Price" class="input-field2" id="productPrice">
+        <div class="error" id="priceError"></div>
+    </div>
+    <div class="formprod">
+        <label class="label-field2">Product Category:</label>
+        <select name="productCategory" class="input-field2" id="productCategory">
+            <option value="">Select Product Category</option>
+            <option value="Face">Face</option>
+            <option value="Eyes">Eyes</option>
+            <option value="Lips">lips</option>
+            <option value="Brows">Brows</option>
+            <option value="Tools">Tools</option>
+        </select>
+        <div class="error" id="categoryError"></div>
+    </div>
+    <div class="formprod">
+        <label class="label-field2">Product Quantity:</label>
+        <input type="text" name="productQuantity" placeholder="Enter Product Quantity" class="input-field2" id="productQuantity">
+        <div class="error" id="quantityError"></div>
+    </div>
+    <!-- <div class="formprod">
+        <label class="label-field2">Product Description:</label>
+        <input type="text" name="productDescription" placeholder="Enter Product Description" class="input-field2" id="productDescription">
+        <div class="error" id="descriptionError"></div>
+    </div>
+    <div class="formprod">
+        <label class="label-field2">How To Use:</label>
+        <input type="text" name="howToUse" placeholder="Enter How To Use" class="input-field2" id="howToUse">
+        <div class="error" id="howToUseError"></div>
+    </div> -->
+    <!-- <div class="formprod">
+        <label class="label-field2">Product Shades:</label>
+        <input type="file" name="productShades" placeholder="Enter Product Shades" class="input-field2" id="productShade">
+        <div class="error" id="shadesError"></div>
+    </div> -->
+    <div class="form-group">
+        <input type="submit" value="Submit" class="submit-btn">
+        
+    </div>
+  
+</form>
+    </div>
+    </div>
+    <div class="Edit-container" id="Edit-container">
+        <div class="edit-content">
+            <span class="close" onclick="closeModal(['Edit-container'])">&times;</span>
+            <h2 style="color:rgb(211, 170, 170)" class="adduser">Edit Product</h2>
+            <form onsubmit="return validationFormEdit();">
+                <div class="formprod">
+                    <label class="label-field2">Select Field to Edit:</label>
+                    <select id="editField" name="editField" class="input-field2" onchange="showImage(this.value)">
+                        <option value="select">Select</option>
+                        <option value="productName">Product Name</option>
+                        <option value="productImage">Product Image</option>
+                        <option value="productPrice">Product Price</option>
+                        <option value="productQuantity">Product Quantity</option>
+                        <option value="productDescription">Product Description</option>
+                        <option value="howToUse">How To Use</option>
+                        <option value="productShades">Product Shades</option>
+                    </select>
+                    <div class="error" id="choiceError"></div>
+                </div>
+                <div class="formprodimg" id="image">
+                    <label class="label-field2">New Value:</label>
+                    <input type="file" name="newValue" placeholder="Enter New Image" class="input-field2" id="productImage1">
+                    <div class="error" id="imageError1"></div>
+                </div>
+                <div class="formprod" id="imag">
+                    <label class="label-field2">New Value:</label>
+                    <input type="text" name="newValue" placeholder="Enter New Value" class="input-field2" id="productChoice">
+                    <div class="error" id="valueError"></div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="submit-btn">
+                </div>
+            </form>
+    </div>
+
+    </div>
+    <div class="Remove-container" id="Remove-container">
+        <div class="remove">
+            <span class="close" onclick="closeModal(['Remove-container'])">&times;</span>
+            <h2 style="color:rgb(211, 170, 170)" class="adduser">Remove Product</h2>
+            <form onsubmit="return validationFormRemove();">
+                <h2>Are you sure you want to delete the user?</h2>
+                <div class="form-group1">
+                    <div>
+                        <input type="radio" id="Yes3" name="role" class="input-radio">
+                        <label for="Yes3">Yes</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="No3" name="role" class="input-radio">
+                        <label for="No3">No</label>
+                    </div>
+                </div>
+                <div class="error" id="RadioProductsError"></div>
+                <div class="form-group">
+                    <div>
+                        <input type="submit" value="Submit" class="submit-btn">
+                    </div>
+                </div>
+            </form>
+
+
+    </div>
+
+</body>
+</html>
