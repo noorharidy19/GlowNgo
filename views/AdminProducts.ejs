@@ -43,9 +43,48 @@
         <div class="buttons-container">
             <button onclick="showModal(['Add-container'])" class="But">Add</button>
         </div>
+
+        <% if (products && products.length > 0) { %>
+            <table class="prod">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Shades</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(product => { %>
+                        <tr>
+                            <td class="text"><%= product._id %></td>
+                            <td class="text"><img class="product-image" src="../images/<%= product.Image %>" width="150" height="150"></td>
+                            <td class="text"><%= product.name %></td>
+                            <td class="text"><%= product.price %>$</td>
+                            <td class="text"><%= product.category %></td>
+                            <td class="text"><%= product.quantity %></td>
+                            <td class="text">
+                                <img class="circle-image" src="../images/<%= product.Shade %>" alt="Shade Image">
+                            </td>
+                            <td class="text">
+                                <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
+                                <button onclick="showModal(['Remove-container'])" class="But">Remove</button>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>There are no products to display...</p>
+        <% } %>
+        
     
     
-    <table class="prod">
+    <!-- <table class="prod">
    
         <tr>
             <th class="text">Product ID</th>
@@ -473,7 +512,7 @@
  <td class="text"> <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
     <button onclick="showModal(['Remove-container'])" class="But">Remove</button></td>
         </tr>
-    </table>
+    </table> -->
     <div class="Add-container" id="Add-container">
         <div class="add-content">
             <span class="close" onclick="closeModal(['Add-container'])">&times;</span>
@@ -521,11 +560,11 @@
         <input type="text" name="howToUse" placeholder="Enter How To Use" class="input-field2" id="howToUse">
         <div class="error" id="howToUseError"></div>
     </div> -->
-    <!-- <div class="formprod">
+    <div class="formprod">
         <label class="label-field2">Product Shades:</label>
         <input type="file" name="productShades" placeholder="Enter Product Shades" class="input-field2" id="productShade">
         <div class="error" id="shadesError"></div>
-    </div> -->
+    </div>
     <div class="form-group">
         <input type="submit" value="Submit" class="submit-btn">
         

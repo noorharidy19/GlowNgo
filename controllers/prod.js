@@ -37,7 +37,19 @@ const Addproducts = (req, res) => {
         }
     });
 };
+const getProducts = (req, res) => {
+    Products.find()
+        .then(result => {
+            res.render('AdminProducts', { products: result });
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send('Error retrieving products');
+        });
+};
 
+  
 module.exports = {
-    Addproducts
+    Addproducts,
+    getProducts
 };

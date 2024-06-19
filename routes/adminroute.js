@@ -7,9 +7,9 @@ router.get('/home', (req, res) => {
 router.get('/admin', (req, res) => {
     res.render('admin');
 });
-router.get('/adminProducts', (req, res) => {
-    res.render('AdminProducts');
-});
+// router.get('/adminProducts', (req, res) => {
+//     res.render('AdminProducts');
+// });
 router.get('/orders', (req, res) => {
     res.render('orders');
 });

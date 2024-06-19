@@ -6,9 +6,7 @@ router.use(bodyParser.json());
 
 const prod = require("../controllers/prod");
 
-router.get('/adminProducts', (req, res) => {
-    res.render('AdminProducts');
-});
+router.get('/AdminProducts', prod.getProducts);
 
 
 
