@@ -394,7 +394,7 @@
         <div class="popup">
             <span class="close-btn" onclick="hidePopupsignin('popupContainerSignIn')">&times;</span>
             <h2>Log in</h2>
-<form onsubmit="return validateForm2()">
+<form onsubmit="return validateForm2()" method = "post" action="/login">
     <input type="text" id="username" placeholder="Username" class="textt">
     <span id="usernameErr" style="color: red;"></span>
     <input type="password" id="password" placeholder="Password" class="textt">
