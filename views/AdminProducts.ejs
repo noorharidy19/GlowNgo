@@ -577,38 +577,31 @@
         <div class="edit-content">
             <span class="close" onclick="closeModal(['Edit-container'])">&times;</span>
             <h2 style="color:rgb(211, 170, 170)" class="adduser">Edit Product</h2>
-            <form onsubmit="return validationFormEdit();">
-                <div class="formprod">
-                    <label class="label-field2">Select Field to Edit:</label>
-                    <select id="editField" name="editField" class="input-field2" onchange="showImage(this.value)">
-                        <option value="select">Select</option>
-                        <option value="productName">Product Name</option>
-                        <option value="productImage">Product Image</option>
-                        <option value="productPrice">Product Price</option>
-                        <option value="productQuantity">Product Quantity</option>
-                        <option value="productDescription">Product Description</option>
-                        <option value="howToUse">How To Use</option>
-                        <option value="productShades">Product Shades</option>
-                    </select>
-                    <div class="error" id="choiceError"></div>
-                </div>
-                <div class="formprodimg" id="image">
-                    <label class="label-field2">New Value:</label>
-                    <input type="file" name="newValue" placeholder="Enter New Image" class="input-field2" id="productImage1">
-                    <div class="error" id="imageError1"></div>
-                </div>
-                <div class="formprod" id="imag">
-                    <label class="label-field2">New Value:</label>
-                    <input type="text" name="newValue" placeholder="Enter New Value" class="input-field2" id="productChoice">
-                    <div class="error" id="valueError"></div>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Submit" class="submit-btn">
-                </div>
-            </form>
+            <!-- <% products.forEach(product => { %> -->
+                <form action="/edit/<%= product._id %>?_method=PUT" method="post">
+                    <div class="formprod">
+                        <label class="label-field2">Product Name:</label>
+                        <input type="text" name="name" placeholder="<%= product.name %>" class="input-field2">
+                    </div>
+                    <div class="formprod">
+                        <label class="label-field2">Product Price:</label>
+                        <input type="text" name="price" placeholder="<%= product.price %>" class="input-field2">
+                    </div>
+                    <div class="formprod">
+                        <label class="label-field2">Product Quantity:</label>
+                        <input type="text" name="quantity" placeholder="<%= product.quantity %>" class="input-field2">
+                    </div>
+                    <div class="formprod">
+                        <label class="label-field2">Product Category:</label>
+                        <input type="text" name="category" placeholder="<%= product.category %>" class="input-field2">
+                    </div>
+                    <button type="submit" class="But">Edit</button>
+                </form>
+            <!-- <% }) %> -->
+        </div>
     </div>
-
-    </div>
+    
+    
     <div class="Remove-container" id="Remove-container">
         <div class="remove">
             <span class="close" onclick="closeModal(['Remove-container'])">&times;</span>
@@ -627,13 +620,13 @@
                 </div>
                 <div class="error" id="RadioProductsError"></div>
                 <div class="form-group">
-                    <% products.forEach(product => { %>
+                    <!-- <% products.forEach(product => { %> -->
                         <div>
                             <form action="/delete/<%= product._id %>?_method=DELETE" method="post" onsubmit="return validationFormRemove();">
                                 <button type="submit" class="But">Remove Product <%= product._id %></button>
                             </form>
                         </div>
-                    <% }) %>
+                    <!-- <% }) %> -->
                 </div>
             </form>
         </div>
