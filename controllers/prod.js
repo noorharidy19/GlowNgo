@@ -55,9 +55,59 @@ const deleteProducts = (req,res)=>{
     });
 }
 
+
+// const updateProduct = (req, res) => {
+//     const id = req.params.id;
+//     const updates = req.body;
+
+//     Products.updateOne({ _id: id }, updates)
+//         .then((result) => {
+//             if (result.nModified === 0) {
+//                 return res.status(404).send('Product not found or no changes made');
+//             }
+//             res.redirect('/');
+//         })
+//         .catch((error) => {
+//             console.error(error);
+//             res.status(500).send('Error updating product');
+//         });
+// }; 
+const updateProduct = (req, res) => {
+  console.log('Received update request for ID:', req.params.id);
+  console.log('Request body:', req.body);
+  
+  let updateObject = { ...req.body };
+
+  // Remove properties that are empty strings
+  for (let prop in updateObject) {
+      if (updateObject[prop] === '') {
+          delete updateObject[prop];
+      }
+  }
+
+  console.log('Update object:', updateObject);
+
+  Products.findByIdAndUpdate(req.params.id, updateObject, { new: true, runValidators: true })
+      .then((updatedProduct) => {
+          if (!updatedProduct) {
+              return res.status(404).send('Product not found');
+          } else {
+              console.log("Product updated successfully:", updatedProduct);
+              res.redirect("/AdminProducts");
+          }
+      })
+      .catch((err) => {
+          console.error('Error updating product:', err);
+          res.status(500).send('Error updating product');
+      });
+};
+
+
+
   
 module.exports = {
     Addproducts,
     getProducts,
-    deleteProducts
+    deleteProducts,
+    updateProduct
 };
