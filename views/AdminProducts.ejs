@@ -72,7 +72,7 @@
                             </td>
                             <td class="text">
                                 <button onclick="showModal(['Edit-container'])" class="But">Edit</button>
-                                <button onclick="showModal(['Remove-container'])" class="But">Remove</button>
+                            <button onclick="showModal(['Remove-container'])" class="But">Remove</button>
                             </td>
                         </tr>
                     <% }) %>
@@ -614,27 +614,31 @@
             <span class="close" onclick="closeModal(['Remove-container'])">&times;</span>
             <h2 style="color:rgb(211, 170, 170)" class="adduser">Remove Product</h2>
             <form onsubmit="return validationFormRemove();">
-                <h2>Are you sure you want to delete the user?</h2>
+                <h2>Are you sure you want to delete the product?</h2>
                 <div class="form-group1">
                     <div>
-                        <input type="radio" id="Yes3" name="role" class="input-radio">
+                        <input type="radio" id="Yes3" name="confirmation" value="yes" class="input-radio">
                         <label for="Yes3">Yes</label>
                     </div>
                     <div>
-                        <input type="radio" id="No3" name="role" class="input-radio">
+                        <input type="radio" id="No3" name="confirmation" value="no" class="input-radio">
                         <label for="No3">No</label>
                     </div>
                 </div>
                 <div class="error" id="RadioProductsError"></div>
                 <div class="form-group">
-                    <div>
-                        <input type="submit" value="Submit" class="submit-btn">
-                    </div>
+                    <% products.forEach(product => { %>
+                        <div>
+                            <form action="/delete/<%= product._id %>?_method=DELETE" method="post" onsubmit="return validationFormRemove();">
+                                <button type="submit" class="But">Remove Product <%= product._id %></button>
+                            </form>
+                        </div>
+                    <% }) %>
                 </div>
             </form>
-
-
+        </div>
     </div>
+    
 
 </body>
 </html>

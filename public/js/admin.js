@@ -199,8 +199,9 @@ function validationFormRemove() {
     } else {
         document.getElementById('RadioProductsError').innerHTML = "";
     }
-    return Validation;
+    return Yes.checked;
 }
+
 function validationFormEdit() {
     var choice = document.getElementById('editField').value;
     var productField = document.getElementById('productChoice').value;

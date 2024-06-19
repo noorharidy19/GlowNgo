@@ -5,18 +5,21 @@ const mongoose = require('mongoose');
 const adminRouter = require('./routes/adminroute');
 const adminPRouter = require('./routes/adminProute');
 const navRouter = require('./routes/navRoute');
+var methodOverride = require('method-override');
+
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+app.use(methodOverride('_method'));
 
 // Serve static files from the "public" directory, and tell clients to cache the files for 7 days
 app.use(express.static("public", { maxAge: "7d" }));
-app.use(adminRouter);
 app.use(adminPRouter);
+app.use(adminRouter);
 app.use(navRouter);
 app.set('view engine', 'ejs');
+
 
 // Define a router and a route handler
 const router = express.Router();

@@ -47,9 +47,17 @@ const getProducts = (req, res) => {
             res.status(500).send('Error retrieving products');
         });
 };
+const deleteProducts = (req,res)=>{
+    Products.findByIdAndDelete(req.params.id).then(()=>{
+        res.redirect("/adminProducts");
+    }).catch((err)=>{
+        console.log(err);
+    });
+}
 
   
 module.exports = {
     Addproducts,
-    getProducts
+    getProducts,
+    deleteProducts
 };

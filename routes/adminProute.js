@@ -8,7 +8,7 @@ const prod = require("../controllers/prod");
 
 router.get('/AdminProducts', prod.getProducts);
 
-
+router.delete('/delete/:id',prod.deleteProducts);
 
 router.post('/addProduct', prod.Addproducts);
 module.exports = router;
