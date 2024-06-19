@@ -6,7 +6,8 @@ const adminRouter = require('./routes/adminroute');
 const adminPRouter = require('./routes/adminProute');
 const navRouter = require('./routes/navRoute');
 var methodOverride = require('method-override');
-
+const session = require('express-session');
+const loginroutes = require('./routes/login');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,7 +20,7 @@ app.use(adminPRouter);
 app.use(adminRouter);
 app.use(navRouter);
 app.set('view engine', 'ejs');
-
+app.use(loginroutes);
 
 // Define a router and a route handler
 const router = express.Router();
@@ -29,7 +30,11 @@ router.get('/', (req, res) => {
 
 // Use the router
 app.use('/', router);
-
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true,
+  }));
 // Correct MongoDB connection string
 const dbURI='mongodb+srv://Noor:haridy20@cluster0.oetujgm.mongodb.net/projectDb?retryWrites=true&w=majority&appName=Cluster0'
 
