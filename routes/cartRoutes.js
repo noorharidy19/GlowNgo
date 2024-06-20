@@ -20,6 +20,3 @@ router.get('/cart', isAuthenticated, async (req, res) => {
 
 module.exports = router;
 
-
-
-
