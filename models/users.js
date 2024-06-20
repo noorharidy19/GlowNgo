@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema({
     acceptedTerms: {
         type: Boolean,
         required: true
+    },
+    type: {
+        type: String,
+        default: "customer"
     }
 });
 
