@@ -1,4 +1,4 @@
-const express = require('express');
+    const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -9,12 +9,20 @@ var methodOverride = require('method-override');
 const session = require('express-session');
 const loginroutes = require('./routes/login');
 const signupRoute = require('./routes/signuproute');
+const validator = require('express-validator');
+const {check,validationResult} = require('express-validator');
 require("dotenv").config();
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
+
+app.use(express.json());
+app.get('/',(req,res)=>{
+    res.render('contact',{errors: ''});
+});
 
 // Serve static files from the "public" directory, and tell clients to cache the files for 7 days
 app.use(express.static("public", { maxAge: "7d" }));

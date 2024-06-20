@@ -519,22 +519,23 @@
             <h2 style="color:rgb(211, 170, 170)" class="adduser">Add Product </h2>
             <form action="/addProduct" method="post" onsubmit="return validationForm();" id="n1"  enctype="multipart/form-data">
     <div class="formprod">
-        <label class="label-field2">Product Image:</label>
+        <label class="label-field2" for="image">Product Image:</label>
         <input type="file" name="productImage" class="input-field2" id="productImage">
         <div class="error" id="imageError"></div>
+
     </div> 
     <div class="formprod">
-        <label class="label-field2">Product Name:</label>
+        <label class="label-field2" for="name">Product Name:</label>
         <input type="text" name="productName" placeholder="Enter Product Name" class="input-field2" id="productName">
         <div class="error" id="nameError"></div>
     </div>
     <div class="formprod">
-        <label class="label-field2">Product Price:</label>
+        <label class="label-field2" for="price">Product Price:</label>
         <input type="text" name="productPrice" placeholder="Enter Product Price" class="input-field2" id="productPrice">
         <div class="error" id="priceError"></div>
     </div>
     <div class="formprod">
-        <label class="label-field2">Product Category:</label>
+        <label class="label-field2" for="category">Product Category:</label>
         <select name="productCategory" class="input-field2" id="productCategory">
             <option value="">Select Product Category</option>
             <option value="Face">Face</option>
@@ -546,7 +547,7 @@
         <div class="error" id="categoryError"></div>
     </div>
     <div class="formprod">
-        <label class="label-field2">Product Quantity:</label>
+        <label class="label-field2" for="quantity">Product Quantity:</label>
         <input type="text" name="productQuantity" placeholder="Enter Product Quantity" class="input-field2" id="productQuantity">
         <div class="error" id="quantityError"></div>
     </div>
@@ -561,7 +562,7 @@
         <div class="error" id="howToUseError"></div>
     </div> -->
     <div class="formprod">
-        <label class="label-field2">Product Shades:</label>
+        <label class="label-field2" for="shades">Product Shades:</label>
         <input type="file" name="productShades" placeholder="Enter Product Shades" class="input-field2" id="productShade">
         <div class="error" id="shadesError"></div>
     </div>
@@ -606,29 +607,30 @@
         <div class="remove">
             <span class="close" onclick="closeModal(['Remove-container'])">&times;</span>
             <h2 style="color:rgb(211, 170, 170)" class="adduser">Remove Product</h2>
-            <form onsubmit="return validationFormRemove();">
+            <% products.forEach(product => { %>
+            <form onsubmit="return validationFormRemove();" action="/delete/<%= product._id %>?_method=DELETE" method="post">
                 <h2>Are you sure you want to delete the product?</h2>
-                <div class="form-group1">
+                <!-- <div class="form-group1">
                     <div>
-                        <input type="radio" id="Yes3" name="confirmation" value="yes" class="input-radio">
+                        <input type="radio" id="Yes3" name="confirmation" value="yes" class="input-radio" for="yes">
                         <label for="Yes3">Yes</label>
                     </div>
                     <div>
-                        <input type="radio" id="No3" name="confirmation" value="no" class="input-radio">
+                        <input type="radio" id="No3" name="confirmation" value="no" class="input-radio" for="no">
                         <label for="No3">No</label>
                     </div>
                 </div>
-                <div class="error" id="RadioProductsError"></div>
+                <div class="error" id="RadioProductsError"></div> -->
                 <div class="form-group">
-                    <!-- <% products.forEach(product => { %> -->
+
                         <div>
-                            <form action="/delete/<%= product._id %>?_method=DELETE" method="post" onsubmit="return validationFormRemove();">
                                 <button type="submit" class="But">Remove Product <%= product._id %></button>
-                            </form>
+                            
                         </div>
-                    <!-- <% }) %> -->
+                    
                 </div>
             </form>
+            <% }) %>
         </div>
     </div>
     
