@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { signupProcess } = require('../controllers/signup');
+const { signupProcess } = require('../controllers/signup.js');
 
 router.get('/signup', (req, res) => {
-  res.render('signup', {
+  res.render('Home', {
     currentPage: "signup",
     user: req.session.user || "",
   });
@@ -12,4 +12,3 @@ router.get('/signup', (req, res) => {
 router.post('/signup', signupProcess);
 
 module.exports = router;
-

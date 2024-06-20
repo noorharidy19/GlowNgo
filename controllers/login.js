@@ -12,7 +12,7 @@ const loginProcess = async (req, res) => {
 
     // Check if the user exists
     if (!user) {
-      return res.render("login", {
+      return res.render("Home", {
         currentPage: "login",
         user: req.session.user || "",
         error: "User does not exist.",
@@ -22,20 +22,23 @@ const loginProcess = async (req, res) => {
     // Check if the password is correct
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.render("login", {
+      return res.render("Home", {
         currentPage: "login",
         user: req.session.user || "",
         error: "Invalid username or password.",
+       
       });
+      
     }
 
     // Store user data in the session
     req.session.user = user;
 
     // Redirect to home page or render index with user info
-    res.render("index", {
-      currentPage: "home",
+    res.render("Home", {
+      currentPage: "Home",
       user: req.session.user || "",
+      // username: req.session.user ? req.session.user.username : ""
     });
   } catch (error) {
     console.error(error);
@@ -44,5 +47,5 @@ const loginProcess = async (req, res) => {
 };
 
 module.exports = {
-  loginProcess,
+  loginProcess
 };

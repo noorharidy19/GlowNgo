@@ -46,6 +46,7 @@
     </header> 
  <section class="Home">
     <div id="slideshow">
+       
         <div class="slide-wrapper">
             <div class="slide" style="background-image: url('images/slide11.png');"></div>
             <div class="slide" style="background-image: url('images/bran1.png');"></div>
@@ -395,9 +396,9 @@
             <span class="close-btn" onclick="hidePopupsignin('popupContainerSignIn')">&times;</span>
             <h2>Log in</h2>
 <form onsubmit="return validateForm2()" method = "post" action="/login">
-    <input type="text" id="username" placeholder="Username" class="textt">
+    <input type="text" id="username" placeholder="Username" class="textt" name="username>
     <span id="usernameErr" style="color: red;"></span>
-    <input type="password" id="password" placeholder="Password" class="textt">
+    <input type="password" id="password" placeholder="Password" class="textt" name="password">
     <span id="passwordErr" style="color: red;"></span>
     <!-- <i class="fa-solid fa-eye fa-fade fa-sm" onclick="Show()"></i> -->
     <button type="button" onclick="validateForm2()">Login</button>
@@ -421,21 +422,21 @@
         <div class="popup">
             <span class="close-btn" onclick="hidePopupsignin('popupContainerSignUp')">&times;</span>
             <h2>Sign Up</h2>
-            <form onsubmit="return SignupValidation()"method="post" action="/signup">
-                <input type="text" id="name" placeholder="Name" class="textt">
+            <form onsubmit="return SignupValidation()" method="post" action="/signup">
+                <input type="text" id="name" name="username" placeholder="Name" class="textt">
                 <span id="nameErr" style="color: red;"></span>
-                <input type="email" id="email" placeholder="Email" class="textt">
+                <input type="email" id="email" name="email" placeholder="Email" class="textt">
                 <span id="emailErr" style="color: red;"></span>
-                <input type="password" id="pass" placeholder="Password" class="textt">
+                <input type="password" id="pass" name="password" placeholder="Password" class="textt">
                 <span id="passwordErr" style="color: red;"></span>
-                <input type="password" id="confirm_pass" placeholder="Confirm Password" class="textt">
+                <input type="password" id="confirm_pass" name="confirmPassword" placeholder="Confirm Password" class="textt">
                 <span id="confirm_passwordErr" style="color: red;"></span>
-                <input type="text" id="country" placeholder="Address" class="textt">
+                <input type="text" id="country" name="address" placeholder="Address" class="textt">
                 <span id="countryErr" style="color: red;"></span>
-                <input type="tel" id="phone" placeholder="Phone Number" class="textt">
+                <input type="tel" id="phone" name="phoneNumber" placeholder="Phone Number" class="textt">
                 <span id="phoneErr" style="color: red;"></span>
                 <br>
-                <input type="checkbox" id="terms">
+                <input type="checkbox" id="terms" name="acceptedTerms">
                 <label for="terms">I accept the terms and conditions </label>
                 <br>
                 <span id="termsErr" style="color: red;"></span>
