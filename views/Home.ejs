@@ -46,6 +46,7 @@
     </header> 
  <section class="Home">
     <div id="slideshow">
+       
         <div class="slide-wrapper">
             <div class="slide" style="background-image: url('images/slide11.png');"></div>
             <div class="slide" style="background-image: url('images/bran1.png');"></div>
@@ -395,9 +396,9 @@
             <span class="close-btn" onclick="hidePopupsignin('popupContainerSignIn')">&times;</span>
             <h2>Log in</h2>
 <form onsubmit="return validateForm2()" method = "post" action="/login">
-    <input type="text" id="username" placeholder="Username" class="textt">
+    <input type="text" id="username" placeholder="Username" class="textt" name="username>
     <span id="usernameErr" style="color: red;"></span>
-    <input type="password" id="password" placeholder="Password" class="textt">
+    <input type="password" id="password" placeholder="Password" class="textt" name="password">
     <span id="passwordErr" style="color: red;"></span>
     <!-- <i class="fa-solid fa-eye fa-fade fa-sm" onclick="Show()"></i> -->
     <button type="button" onclick="validateForm2()">Login</button>

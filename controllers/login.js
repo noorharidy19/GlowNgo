@@ -26,7 +26,9 @@ const loginProcess = async (req, res) => {
         currentPage: "login",
         user: req.session.user || "",
         error: "Invalid username or password.",
+       
       });
+      
     }
 
     // Store user data in the session
@@ -36,6 +38,7 @@ const loginProcess = async (req, res) => {
     res.render("Home", {
       currentPage: "Home",
       user: req.session.user || "",
+      // username: req.session.user ? req.session.user.username : ""
     });
   } catch (error) {
     console.error(error);
@@ -44,5 +47,5 @@ const loginProcess = async (req, res) => {
 };
 
 module.exports = {
-  loginProcess,
+  loginProcess
 };

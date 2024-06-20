@@ -56,6 +56,7 @@ const signupProcess = async (req, res) => {
       currentPage: "Home",
       user: req.session.user || "",
       successMessage: "Account created successfully!",
+      username: req.session.user ? req.session.user.username : "",
     });
   } catch (error) {
     console.error(error);
