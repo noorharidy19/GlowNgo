@@ -42,7 +42,7 @@ const signupProcess = async (req, res) => {
       confirmPassword: hashedPassword,
       address,
       phoneNumber,
-      acceptedTerms
+      acceptedTerms:req.body.acceptedTerms = req.body.acceptedTerms === 'on'
     });
 
     // Save the user to the database
