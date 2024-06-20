@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const User = require('./signupSch.js');
+const User = require("../models/signupSch.js");
 
 // Signup process function
 const signupProcess = async (req, res) => {
@@ -7,27 +7,27 @@ const signupProcess = async (req, res) => {
     // Retrieve form data from req.body
     const { username, email, password, confirmPassword, address, phoneNumber, acceptedTerms } = req.body;
 
-    // Basic validation
+    // Basic validation (you can expand this as needed)
     if (!username || !email || !password || !confirmPassword || !address || !phoneNumber || !acceptedTerms) {
-      return res.render('signup', {
-        currentPage: 'signup',
-        error: 'All fields are required.',
+      return res.render("Home", {
+        currentPage: "signup",
+        error: "All fields are required.",
       });
     }
 
     if (password !== confirmPassword) {
-      return res.render('signup', {
-        currentPage: 'signup',
-        error: 'Passwords do not match.',
+      return res.render("Home", {
+        currentPage: "signup",
+        error: "Passwords do not match.",
       });
     }
 
     // Check if the user or email already exists
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
     if (existingUser) {
-      return res.render('signup', {
-        currentPage: 'signup',
-        error: 'User or email already exists.',
+      return res.render("Home", {
+        currentPage: "signup",
+        error: "User or email already exists.",
       });
     }
 
@@ -39,6 +39,7 @@ const signupProcess = async (req, res) => {
       username,
       email,
       password: hashedPassword,
+      confirmPassword: hashedPassword,
       address,
       phoneNumber,
       acceptedTerms
@@ -51,14 +52,14 @@ const signupProcess = async (req, res) => {
     req.session.user = newUser;
 
     // Redirect to home page or render index with user info
-    res.render('index', {
-      currentPage: 'home',
-      user: req.session.user || '',
-      successMessage: 'Account created successfully!',
+    res.render("Home", {
+      currentPage: "Home",
+      user: req.session.user || "",
+      successMessage: "Account created successfully!",
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send("Internal Server Error");
   }
 };
 
