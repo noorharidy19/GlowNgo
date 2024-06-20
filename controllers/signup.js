@@ -42,7 +42,7 @@ const signupProcess = async (req, res) => {
       confirmPassword: hashedPassword,
       address,
       phoneNumber,
-      acceptedTerms
+      acceptedTerms:req.body.acceptedTerms = req.body.acceptedTerms === 'on'
     });
 
     // Save the user to the database
@@ -56,6 +56,7 @@ const signupProcess = async (req, res) => {
       currentPage: "Home",
       user: req.session.user || "",
       successMessage: "Account created successfully!",
+      username: req.session.user ? req.session.user.username : "",
     });
   } catch (error) {
     console.error(error);

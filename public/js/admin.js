@@ -186,22 +186,77 @@ function validationForm() {
 
     return Validation;
 }
+// }
+// document.addEventListener('DOMContentLoaded', () => {
+//     const deleteForm = document.getElementById('deleteProductForm');
 
-function validationFormRemove() {
-    var Yes = document.getElementById('Yes3');
-    var No = document.getElementById('No3');
-    var Validation = true;
+//     deleteForm.addEventListener('submit', function(event) {
+//         event.preventDefault(); // Prevent the default form submission
 
-    //Id Validation
-    if(!Yes.checked && !No.checked) {
-        document.getElementById('RadioProductsError').innerHTML = "Please select Yes or No";
-        Validation = false;
-    } else {
-        document.getElementById('RadioProductsError').innerHTML = "";
-    }
-    return Yes.checked;
-}
+//         const form = event.target;
+//         const formData = new FormData(form);
 
+//         // Convert FormData to JSON object
+//         const data = {};
+//         formData.forEach((value, key) => {
+//             data[key] = value;
+//         });
+
+//         fetch(form.action, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify(data)
+//         })
+//         .then(response => response.json())
+//         .then(result => {
+//             if (result.message) {
+//                 // Show alert with the message
+//                 alert(result.message);
+//             } else {
+//                 // Redirect to the admin products page if no error message
+//                 window.location.href = "/adminProducts";
+//             }
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//             alert('An error occurred while processing your request.');
+//         });
+//     });
+// });
+
+// function validationFormRemove() {
+//     var Yes = document.getElementById('Yes3');
+//     var No = document.getElementById('No3');
+//     var Validation = true;
+
+
+//     //Id Validation
+//     if(!Yes.checked && !No.checked) {
+//         document.getElementById('RadioProductsError').innerHTML = "Please select Yes or No";
+//         Validation = false;
+//     } else {
+//         document.getElementById('RadioProductsError').innerHTML = "";
+//     }
+//     return Yes.checked;
+// }
+
+// function validationFormRemove() {
+//     const confirmation = document.querySelector('input[name="confirmation"]:checked');
+
+//     if (!confirmation) {
+//         alert('Please select Yes or No.');
+//         return false; // Prevent form submission if no radio button is checked
+//     }
+
+//     if (confirmation.value === 'yes') {
+//         return confirm('Are you sure you want to delete this product?');
+//     }
+
+//     // If 'No' is selected, just proceed with the form submission
+//     return true;
+// }
 function validationFormEdit() {
     var choice = document.getElementById('editField').value;
     var productField = document.getElementById('productChoice').value;

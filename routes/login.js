@@ -10,8 +10,9 @@ const loginController = require('../controllers/login'); // Assuming your login 
 //     res.redirect('/login'); // Redirect to login if user is not authenticated
 //   }
 // }
+
 router.get('/Home', (req, res) => {
-    res.render('Home');
+  res.render('Home', { user: req.user });
 });
 router.get('/Products', (req, res) => {
     res.render('Products');
@@ -31,7 +32,7 @@ router.get('/profile', (req, res) => {
       error: '',
     });
   });
-module.exports = router;
+
 
 router.post('/myprofile', loginController.loginProcess);
 

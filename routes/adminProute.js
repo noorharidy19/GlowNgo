@@ -1,5 +1,6 @@
 const express = require("express");
 var bodyParser = require('body-parser');
+const { addProductValidation, validate } = require('../mildware/validation');
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -11,6 +12,5 @@ router.get('/AdminProducts', prod.getProducts);
 router.put('/edit/:id', prod.updateProduct);
 router.delete('/delete/:id',prod.deleteProducts);
 router.post('/addProduct', prod.Addproducts);
-
 
 module.exports = router;
