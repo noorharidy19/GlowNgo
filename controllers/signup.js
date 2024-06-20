@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const User = require("../models/signupSch.js");
+const User = require("../models/users.js");
 
 // Signup process function
 const signupProcess = async (req, res) => {
@@ -47,7 +47,7 @@ const signupProcess = async (req, res) => {
 
     // Save the user to the database
     await newUser.save();
-
+    console.log("New user saved to database:", newUser);
     // Store user data in the session
     req.session.user = newUser;
 
