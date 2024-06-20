@@ -9,14 +9,14 @@ const signupProcess = async (req, res) => {
 
     // Basic validation (you can expand this as needed)
     if (!username || !email || !password || !confirmPassword || !address || !phoneNumber || !acceptedTerms) {
-      return res.render("/Home", {
+      return res.render("Home", {
         currentPage: "signup",
         error: "All fields are required.",
       });
     }
 
     if (password !== confirmPassword) {
-      return res.render("/Home", {
+      return res.render("Home", {
         currentPage: "signup",
         error: "Passwords do not match.",
       });
@@ -25,7 +25,7 @@ const signupProcess = async (req, res) => {
     // Check if the user or email already exists
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
     if (existingUser) {
-      return res.render("/Home", {
+      return res.render("Home", {
         currentPage: "signup",
         error: "User or email already exists.",
       });
@@ -52,7 +52,7 @@ const signupProcess = async (req, res) => {
     req.session.user = newUser;
 
     // Redirect to home page or render index with user info
-    res.render("/Home", {
+    res.render("Home", {
       currentPage: "Home",
       user: req.session.user || "",
       successMessage: "Account created successfully!",
