@@ -8,6 +8,8 @@ const navRouter = require('./routes/navRoute');
 var methodOverride = require('method-override');
 const session = require('express-session');
 const loginroutes = require('./routes/login');
+const signupRoute = require('./routes/signup');
+const pageRoutes = require('./routes/pages');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,7 +23,8 @@ app.use(adminRouter);
 app.use(navRouter);
 app.set('view engine', 'ejs');
 app.use(loginroutes);
-
+app.use('/', signupRoute);
+app.use('/', pageRoutes);
 // Define a router and a route handler
 const router = express.Router();
 router.get('/', (req, res) => {
