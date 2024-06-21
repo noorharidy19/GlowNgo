@@ -14,7 +14,8 @@
         <a href="/Home" class="nav1">Home</a>
         <a href="/Products" class="nav1">Products</a>
         <a href="/About" class="nav1">About</a>
-        <a href="/myprofile" class="nav1"><i class="fa-solid fa-user"></i></a>
+        <a href="#" class="nav1" id="signOutIcon" style="display: none;" onclick="signOut()"><i class="fa-solid fa-sign-out"></i></a>
+        <a href="/myprofile" class="nav1" id="myProfileIcon" style="display: none;"><i class="fa-solid fa-user"></i></a>
         <a href="#" class="nav1" id="signInIcon" onclick="showPopupSignin('popupContainerSignIn')"><i id="signInIconImage" class="fa-solid fa-user"></i></a>
         <div id="overlay" style="display: none;"></div>
         <a href="#" class="nav1" title="shopping cart" onclick="showPopup(['CART'])"><i class="fa-solid fa-cart-shopping"></i></a>  
@@ -23,4 +24,16 @@
     </nav>
 </header>
 <section>
+  <script>
+//     function signOut() {
+//     document.getElementById('signOutIcon').style.display = 'none';
+//     document.getElementById('myProfileIcon').style.display = 'none';
+//     document.getElementById('signInIcon').style.display = 'block';
+// }
+// function onLogin() {
+//     document.getElementById('signInIcon').style.display = 'none';
+//     document.getElementById('signOutIcon').style.display = 'block';
+//     document.getElementById('myProfileIcon').style.display = 'block';
+//   }
+  </script>
     </html>

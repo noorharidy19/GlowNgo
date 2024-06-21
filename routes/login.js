@@ -18,6 +18,6 @@ router.get('/About', (req, res) => {
 
 
 
-router.get('/login', loginController.loginProcess);
+router.post('/login', loginController.loginProcess);
 
 module.exports = router;

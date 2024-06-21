@@ -395,13 +395,13 @@
         <div class="popup">
             <span class="close-btn" onclick="hidePopupsignin('popupContainerSignIn')">&times;</span>
             <h2>Log in</h2>
-<form method = "get" action="/login">
+            <form action="/login" method="post" id="loginForm">
     <input type="text" id="username" placeholder="Username" class="textt" name="username">
     <span id="usernameErr" style="color: red;"></span>
     <input type="password" id="password" placeholder="Password" class="textt" name="password">
     <span id="passwordErr" style="color: red;"></span>
     <!-- <i class="fa-solid fa-eye fa-fade fa-sm" onclick="Show()"></i> -->
-    <button type="button" onclick="validateForm2()">Login</button>
+    <button type="submit" onclick="validateForm2()">Login</button>
     <br>    
     <div class="forget"> <a href="#" onclick="hidePopupsignin('popupContainerSignIn'); showPopupSignin('popupContainerForget')">Forgot Password</a></div>
     <br>
@@ -582,6 +582,10 @@
   
     </div>
   </div> 
+
+  
+  
+  
 
 
     <script src="js/Home.js"></script>
