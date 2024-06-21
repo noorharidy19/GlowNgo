@@ -21,7 +21,7 @@ router.get('/profile/:email', async (req, res) => {
         if (!user) {
             return res.status(404).json({ msg: 'User not found' });
         }
-        res.render('profile', { user });
+        res.render('myprofile', { user }); // Pass user object to the template
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

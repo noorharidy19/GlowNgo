@@ -1,4 +1,4 @@
-const User = require('../models/profileSch');
+const User = require('../models/users');
 const bcrypt = require('bcryptjs');
 
 // Update username
