@@ -33,7 +33,7 @@ app.use(navRouter);
 app.use(adminUroute);
 app.set('view engine', 'ejs');
 app.use(loginroutes);
-app.use('/', signupRoute);
+app.use(signupRoute);
 
 // Define a router and a route handler
 const router = express.Router();
@@ -42,7 +42,7 @@ router.get('/', (req, res) => {
 });
 
 // Use the router
-app.use('/', router);
+app.use(router);
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
