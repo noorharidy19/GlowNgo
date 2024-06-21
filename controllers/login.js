@@ -39,6 +39,29 @@ const loginProcess = async (req, res) => {
     }
 };
 
+// Forgot password function
+const forgotPassword = async (req, res) => {
+    try {
+        // Retrieve username from req.body
+        const { username } = req.body;
+
+        // Search for the user in the database
+        const user = await User.findOne({ username });
+
+        // Check if the user exists
+        if (!user) {
+            return res.send("User not found");
+        }
+
+        // Return the user's email
+        return res.send(`Email for user ${username}: ${user.email}`);
+    } catch (error) {
+        console.error("Error during forgot password process:", error);
+        res.send("An error occurred");
+    }
+};
+
 module.exports = {
-    loginProcess
+    loginProcess,
+    forgotPassword
 };
