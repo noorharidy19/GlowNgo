@@ -216,36 +216,36 @@ function validateForm2() {
         error = true;
     }
 
-    if (!error && !isValidCredentials(username, password)) {
-        document.getElementById('usernameErr').innerHTML = "Invalid username or password. Please try again.";
-        error = true;
-    }
+    // if (!error && !isValidCredentials(username, password)) {
+    //     document.getElementById('usernameErr').innerHTML = "Invalid username or password. Please try again.";
+    //     error = true;
+    // }
 
-    if (!error) {
-        if (username === "nourhan.mohamed" && password === "1234") {
-            window.location.href = "myprofile.html";
-            return false; 
-        } else if (username === "nour.amr" && password === "nour1234") {
-            window.location.href = "admin.html";
-            return false; 
-        } else {
-            document.getElementById('usernameErr').innerHTML = "Invalid username or password. Please try again.";
-            error = true;
-        }
-    }
+    // if (!error) {
+    //     if (username === "nourhan.mohamed" && password === "1234") {
+    //         window.location.href = "myprofile.html";
+    //         return false; 
+    //     } else if (username === "nour.amr" && password === "nour1234") {
+    //         window.location.href = "admin.html";
+    //         return false; 
+    //     } else {
+    //         document.getElementById('usernameErr').innerHTML = "Invalid username or password. Please try again.";
+    //         error = true;
+    //     }
+    // }
 
     return !error;
 }
 
 
-function isValidCredentials(username, password) {
-    var validUsers = {
-        "nourhan.mohamed": "1234",
-        "nour.amr": "nour1234"
-    };
+// function isValidCredentials(username, password) {
+//     var validUsers = {
+//         "nourhan.mohamed": "1234",
+//         "nour.amr": "nour1234"
+//     };
 
-    return validUsers.hasOwnProperty(username) && validUsers[username] === password;
-}
+//     return validUsers.hasOwnProperty(username) && validUsers[username] === password;
+// }
 
 
 function sendResetPasswordEmail() {
