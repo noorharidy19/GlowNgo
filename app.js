@@ -10,8 +10,8 @@ var methodOverride = require('method-override');
 const session = require('express-session');
 const loginroutes = require('./routes/login');
 const signupRoute = require('./routes/signuproute');
-const validator = require('express-validator');
-const {check,validationResult} = require('express-validator');
+// const validator = require('express-validator');
+// const {check,validationResult} = require('express-validator');
 require("dotenv").config();
 
 const app = express();

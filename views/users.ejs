@@ -113,30 +113,41 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal(['myModal1'])">&times;</span>
         <h2 style="color:rgb(211, 170, 170)" class="adduser">Edit User</h2>
-        <form onsubmit="return UserValidationEdit();">
-                <div class="form-group">
-                    <label class="label-field">Select Field to Edit:</label>
-                    <select id="editFieldd" name="editField" class="input-field1">
-                        <option value="select">select</option>
-                        <option value="username">Username</option>
-                        <option value="password">Password</option>
-                        <option value="email">Email</option>
-                        <option value="address">Address</option>
-                        <option value="phone">Phone Number</option>
-                    </select>
-                    <div class="error" id="optionError"></div>
+        
+        <% users.forEach(user => { %>
+            <form action="/editt/<%= user._id %>?_method=PUT" method="post" onsubmit="return UserValidationEdit();">
+                <div class="formprod">
+                    <label class="label-field2">Username:</label>
+                    <input type="text" name="username" placeholder="<%= user.username %>" class="input-field2" id="name">
+                    <div class="error" id="nameError"></div>
                 </div>
-                <div class="form-group">
-                    <label class="label-field">New Value:</label>
-                    <input type="text" name="newValue" placeholder="Enter New Value" class="input-field" id="val">
-                    <div class="error" id="valError"></div>
+                <div class="formprod">
+                    <label class="label-field2">Email:</label>
+                    <input type="email" name="email" placeholder="<%= user.email %>" class="input-field2" id="email">
+                    <div class="error" id="emailError"></div>
                 </div>
-                <div class="form-group">
+                <div class="formprod">
+                    <label class="label-field2">Password:</label>
+                    <input type="password" name="password" placeholder="<%= user.password %>" class="input-field2" id="password">
+                    <div class="error" id="passwordError"></div>
+                </div>
+                <div class="formprod">
+                    <label class="label-field2">Address:</label>
+                    <input type="text" name="address" placeholder="<%= user.address %>" class="input-field2" id="address">
+                    <div class="error" id="addressError"></div>
+                </div>
+                <div class="formprod">
+                    <label class="label-field2">Phone Number:</label>
+                    <input type="text" name="phoneNumber" placeholder="<%= user.phoneNumber %>" class="input-field2" id="phoneNumber">
+                    <div class="error" id="phoneNumberError"></div>
+                </div>
+                <div class="formprod">
                     <input type="submit" value="Submit" class="submit-btn">
                 </div>
             </form>
+        <% }) %>
+            </div>
         </div>
-    </div>
     <div id="myModal2" class="modal2">
         <div class="modal-content">
             <span class="close" onclick="closeModal(['myModal2'])">&times;</span>
