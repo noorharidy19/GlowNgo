@@ -140,10 +140,11 @@
     <div id="myModal2" class="modal2">
         <div class="modal-content">
             <span class="close" onclick="closeModal(['myModal2'])">&times;</span>
-            <h2 style="color:rgb(211, 170, 170)" class="adduser">Remove User</h2>
-            <form onsubmit="return UservalidationRemove();">
+                 <h2 style="color:rgb(211, 170, 170)" class="adduser">Remove User</h2>
+                 <% users.forEach(user => { %>
+            <form onsubmit="return UservalidationRemove();" action="/deletee/<%= user._id %>?_method=DELETE" method="post">
                 <h2>Are you sure you want to delete the user?</h2>
-                <div class="form-group1">
+                <!-- <div class="form-group1">
                     <div>
                         <input type="radio" id="Yes1" name="role" class="input-radio">
                         <label for="Yes1">Yes</label>
@@ -153,13 +154,15 @@
                         <label for="No1">No</label>
                     </div>
                 </div>
-                <div class="error" id="RadioError"></div>
+                <div class="error" id="RadioError"></div> -->
                 <div class="form-group">
                     <div>
-                        <input type="submit" value="Submit" class="submit-btn">
-                    </div>
+                        <button type="submit" class="But">Remove User <%= user._id %></button>
+                    
+                </div>
                 </div>
             </form>
+            <% }) %>
         </div>
     </div>
     

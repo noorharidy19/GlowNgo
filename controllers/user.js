@@ -11,6 +11,16 @@ const getUsers = (req, res) => {
             res.status(500).send('Error retrieving users');
         });
 };
+
+const deleteUsers = (req,res)=>{
+  User.findByIdAndDelete(req.params.id).then(()=>{
+      res.redirect("/user");
+  }).catch((err)=>{
+      console.log(err);
+  });
+}
+
 module.exports = {
-  getUsers
+  getUsers,
+  deleteUsers
 };

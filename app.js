@@ -13,7 +13,6 @@ const signupRoute = require('./routes/signuproute');
 const validator = require('express-validator');
 const {check,validationResult} = require('express-validator');
 require("dotenv").config();
-const MongoStore = require('connect-mongo');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -48,7 +47,6 @@ app.use(session({
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: 'mongodb+srv://Noor:haridy20@cluster0.oetujgm.mongodb.net/projectDb?retryWrites=true&w=majority&appName=Cluster0' })
   }));
 // Correct MongoDB connection string
 // const dbURI='mongodb+srv://Noor:haridy20@cluster0.oetujgm.mongodb.net/projectDb?retryWrites=true&w=majority&appName=Cluster0'
