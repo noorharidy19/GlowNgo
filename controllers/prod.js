@@ -64,6 +64,11 @@ const getProductsByCategory = (category) => {
     return (req, res) => {
         Products.find({ category: category })
             .then(result => {
+                // Add stock status to each product
+                result.forEach(product => {
+                    product.stockStatus = product.quantity > 0 ? 'In Stock' : 'Out of Stock';
+                });
+
                 res.render('brow', { products: result });
             })
             .catch(err => {

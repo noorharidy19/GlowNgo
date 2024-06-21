@@ -29,25 +29,67 @@
     <% products.forEach(product => { %>
         <div class="AllProducts">
             <div class="container">
-                <img src="../images/<%= product.image %>" alt="Makeup img" width="318" height="300" class="imggel">
+                <img src="../images/<%= product.Image %>" alt="Makeup img" width="318" height="300" class="imggel">
                 <h2 class="eye"><%= product.name %></h2>
                 <h3 class="eye"><%= product.price %> $</h3>
+                <h4 class="<%= product.stockStatus === 'In Stock' ? 'in-stock' : 'out-of-stock' %>"><%= product.stockStatus %></h4>
                 <div class="middle">
                     <div class="text" onclick=""><i class="fa-solid fa-cart-shopping" title="Add To Cart"></i></div>
                     <div id="overlay" style="display: none;"></div>
-                    <div class="text" onclick="showPopup(['<%= product.id %>'])"><i class="fa-sharp fa-solid fa-eye" title="View more"></i></div>
+                    <div class="text" onclick="showPopup(['<%= product.name %>'])"><i class="fa-sharp fa-solid fa-eye" title="View more"></i></div>
                     <div class="text" onclick=""><i class="fa-solid fa-heart" title="Add To Whishlist"></i></div>
                 </div>
             </div>
         </div>
     <% }); %>
 </div>
+<% products.forEach(product => { %>
+    <div class="Products-window " id="<%= product.name %>">
+        <h2 class="p1"> <%= product.name %> <span class="price"><%= product.price %> $</span>  </h2>
+       
+        <div class="popup">
+            
+            <span class="close-btn" onclick="hidePopup(['<%= product.name %>'])">&times;</span>
+            
+            <div class="image-container">
+                <img src="../images/<%= product.Image %>" alt="Makeup img" width="320" height="300" class="hide1" id="shadee">
+                <!-- You can add more images if product object has more images -->
+                
+                <div class="circle-container">
+                    <img class="circle-image" src="../images/<%= product.Image %>" alt="Description of image" onclick=" showShade(['shadee'],['hidee'])">
+                  <!-- You can add more images if product object has more images -->
+                  
+                </div>
+              </div>
+           
+        <div>
+            <h1 class="btn1" id="b1" onclick="des()">Description </h1>
+            <h1 class="btn2" id="b2" onclick="use()">how to use</h1>
+            <!-- <div id="i77" class="nourhan"> <%= product.description %> </div>
+            <div id="i7" class="noor"><%= product.usage %> </div> -->
+        </div>
+    
+        <div class="rev">
+            <h1 class="o">ADD TO <i class="fa-solid fa-cart-shopping" title="cart" style="color:rgb(222, 128, 128)"></i>
+                <i class="fa-regular fa-heart" title="wishlist"  style="color:rgb(222, 128, 128)" ></i> </h1>
+            <!-- <h1>Reviews <i class="fa-brands fa-tiktok"></i> </h1> -->
+             
+        </div> 
+    </div>
+    <% }); %>
 
-</body>
 
+<style>
+    .in-stock {
+    color: green;
+    text-align: center;
+}
 
-
-
+.out-of-stock {
+    color: red;
+    text-align: center;
+}
+</style>
 
 
 
