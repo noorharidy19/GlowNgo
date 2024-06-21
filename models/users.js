@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    addresses: [addressSchema], // Array of addresses
+    address: addressSchema, // Single address
     phoneNumber: {
         type: String,
         required: true

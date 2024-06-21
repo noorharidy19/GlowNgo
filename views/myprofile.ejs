@@ -50,13 +50,17 @@
         <h3 class="info">Profile Information</h3>
         <form>
             <label for="username">User Name:</label><br>
-            <input type="text" id="username" name="username" value="nourhan.mohamed"><br>
+            <input type="text" id="username" name="username" value="<%= user.username %>"><br>
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" value="Nourhan22@miuegypt.edu.eg"><br>
+            <input type="email" id="email" name="email" value="<%= user.email %>"><br>
             <label for="phone">Phone:</label><br>
-            <input type="tel" id="phone" name="phone" value="0119287736"><br>
+            <input type="tel" id="phone" name="phone" value="<%= user.phoneNumber %>"><br>
             <label for="address">Address:</label><br>
-            <textarea id="address" name="address">New cairo, palm hills compound villa 455</textarea><br>
+            <% if (user.address) { %>
+                <textarea id="address" name="address"><%= user.address.street %>, <%= user.address.city %>, <%= user.address.state %>, <%= user.address.buildingNo %></textarea><br>
+            <% } else { %>
+                <textarea id="address" name="address"></textarea><br>
+            <% } %>
         </form>
     </div>
 
