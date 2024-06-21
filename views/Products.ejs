@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/StyleProd.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   
+    <title>Products</title>
+    <script src="js/Prod.js"></script>
+</head>
+<body class="bodyy">
+    <%- include('partials/nav') %>
+    <section class="Products">
+        <div class="prod">
+            
+    <div class="shopp">
+        <h2 class="prd">All Products</h2>
+        <a href="allproducts.html"><img src="images/all.jpg" alt="Makeup img" width="318" height="300"></a>   
+       
+    </div>
+ <div class="shopp">
+    <h2 class="fac">Face</h2>
+        <a href="face.html"><img src="images/face.jpg" alt="Makeup img" width="318" height="300"></a> 
+
+ </div>
+ <div class="shopp">
+    <h2 class="ey">Eyes</h2>
+        <a href="Eyes.html"><img src="images/eye.jpg" alt="Makeup img" width="318" height="300"></a> 
+
+ </div>
+ <div class="shopp">
+    <h2 class="lipss">Lips</h2>
+    <a href="lip.html"><img src="images/lips.jpg" alt="Makeup img" width="318" height="300"></a> 
+ </div>
+ <div class="shopp">
+    <h2 class="brows">Brows</h2>
+    <a href="/brow"><img src="images/brows.jpg" alt="Makeup img" width="318" height="300"></a> 
+ </div>
+ <div class="shopp">
+    <h2 class="tools">Tools</h2>
+    <a href="tools.html"><img src="images/tools1.jpg" alt="Makeup img" width="318" height="300"></a> 
+ </div>
+</div>
+ 
+  
+ </section>
+   <!-- --------------------------------CART------------------------------------ -->
+   <div class="CART " id="CART">
+    <h2 class="pcart"> Your Cart&nbsp; <i class="fa-solid fa-bag-shopping"></i></i>  </h2>
+   
+    <div class="popupp">
+        <span class="close-btn" onclick="hidePopup(['CART'])">&times;</span>
+        <div class="product-display">
+          <img src="images/fentycon.jpg" alt="Concelar img" width="218" height="200" class="imgg" id="c">
+          <img src="images/con2.jpg" alt="Concelar img" width="218" height="200" class="imgg" id="c1">
+          <div class="product1">
+            <h3>Fenty Beauty Concealer</h3>
+            <h3>Price: <span id="price1">30.00</span>$   Quantity: <span id="quantity1">1</span></h3>
+            <div class="circle-container">
+              <img class="circle-image" src="images/fentycon.jpg" alt="Description of image" onclick="showShade(['c'],['imgg'])">
+              <img class="circle-image" src="images/con2.jpg" alt="Description of image" onclick="showShade(['c1'],['imgg'])">
+            </div>
+            <button type="button" class="remove" onclick="changeQuantity(-1, 'quantity1', 'price1')">-</button>
+            <button type="button" class="add" onclick="changeQuantity(1, 'quantity1', 'price1')">+</button>
+            
+          </div>
+        </div>
+        <div class="product-display">
+          <img src="images/bronzerkiko.jpg" alt="Bronzer img" width="218" height="200" class="imggg" id="br1">
+          <img src="images/bronz1.jpg" alt="Bronzer img" width="218" height="200" class="imggg" id="b">
+          <div class="product1">
+            <h3>Kiko Bronzer</h3>
+            <h3>Price: <span id="price2">20.00</span>$   Quantity: <span id="quantity2">1</span></h3>
+            <div class="circle-container">
+                <img class="circle-image" src="images/bronzerkiko.jpg" alt="Description of image" onclick=" showShade(['br1'],['imggg'])">
+                <img class="circle-image" src="images/bronz1.jpg" alt="Description of image" onclick=" showShade(['b'],['imggg']) ">
+                </div>
+                <button type="button" class="remove" onclick="changeQuantity(-1, 'quantity2', 'price2')">-</button>
+                <button type="button" class="add" onclick="changeQuantity(1, 'quantity2', 'price2')">+</button>
+                
+          </div>
+        </div>
+        <div class="product-display">
+          <img src="images/benetint.jpg" alt="Lipstick img" width="218" height="200" class="imgggg" id="r1">
+          <img src="images/tintshade.jpg" alt="Lipstick img" width="218" height="200" class="imgggg" id="r2">
+          <div class="product1">
+            <h3>Benetint</h3>
+            <h3>Price: <span id="price3">24.00</span>$   Quantity: <span id="quantity3">1</span></h3>
+            <div class="circle-container">
+                <img class="circle-image" src="images/benetint.jpg" alt="Description of image" onclick=" showShade(['r1'],['imgggg']) ">
+                <img class="circle-image" src="images/tintshade.jpg" alt="Description of image" onclick=" showShade(['r2'],['imgggg']) ">
+                </div>
+                <button type="button" class="remove" onclick="changeQuantity(-1, 'quantity3', 'price3')">-</button>
+                <button type="button" class="add" onclick="changeQuantity(1, 'quantity3', 'price3')">+</button>
+          </div>
+        </div>
+        <div class="total">
+            <h3>Total: <span id="total"></span>$</h3>
+        </div>
+        <div class="checkout">
+            <button type="button" onclick="window.location.href = 'checkout.html'">Procced to Check Out</button>
+          </div>
+      
+
+    </div>
+</div>
+    <!-- --------------------------------WISHLIST------------------------------------ -->
+<div class="WISHLIST " id="WISHLIST">
+  <h2 class="pcart"> Your Wishlist&nbsp; <i class="fa-regular fa-heart"></i>  </h2>
+  <div class="popupp">
+      <span class="close-btn" onclick="hidePopup(['WISHLIST'])">&times;</span>
+      <div class="product-display">
+        <img src="images/rareprimer.jpeg" alt="Concelar img" width="218" height="200" class="imgg1" id="c2">
+        <img src="images/rareshadeprimer.jpg" alt="Concelar img" width="218" height="200" class="imgg1" id="c12">
+        <div class="product1">
+          <h3>Rare Beauty Primer</h3>
+          <h3>Price: <span id="price1">21.00</span>$</h3>
+          <div class="circle-container">
+            <img class="circle-image" src="images/rareprimer.jpeg" alt="Description of image" onclick="showShade(['c2'],['imgg1'])">
+            <img class="circle-image" src="images/rareshadeprimer.jpg" alt="Description of image" onclick="showShade(['c12'],['imgg1'])">
+          </div>
+          <button type="button" class="re">Remove</button>
+          <button type="button" class="ad">Add to Cart</button>
+          
+        </div>
+      </div>
+      <div class="product-display">
+        <img src="images/spongefanty.jpg" alt="Bronzer img" width="218" height="200" class="imggg" id="br1">
+        <div class="product1">
+          <h3>Feanty Beauty Blender</h3>
+          <h3>Price: <span id="price2">24.00</span>$</h3>
+          <br>
+          <br>
+              <button type="button" class="re">Remove</button>
+              <button type="button" class="ad">Add to Cart</button>
+              
+        </div>
+      </div>
+      <div class="product-display">
+        <img src="images/kikogel.jpg" alt="Lipstick img" width="218" height="200" class="imgggg2" id="r12">
+        <img src="images/gelshade.jpg" alt="Lipstick img" width="218" height="200" class="imgggg2" id="r22">
+        <div class="product1">
+          <h3>Kiko Eyebrow Gel</h3>
+          <h3>Price: <span id="price3">15.00</span>$</span></h3>
+          <div class="circle-container">
+              <img class="circle-image" src="images/kikogel.jpg" alt="Description of image" onclick=" showShade(['r12'],['imgggg2']) ">
+              <img class="circle-image" src="images/gelshade.jpg" alt="Description of image" onclick=" showShade(['r22'],['imgggg2']) ">
+              </div>
+              <button type="button" class="re">Remove</button>
+              <button type="button" class="ad">Add to Cart</button>
+        </div>
+      </div>
+      <div class="ADD">
+          <button type="button" onclick="">ADD PRODUCT</button>
+          <button type="button" onclick="">ADD ALL TO CART</button>
+        </div>
+
+  </div>
+</div>
+   
+</body>
+</html>
