@@ -1,12 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/profile');
+const User = require('../models/users');
 
 // Update username
 router.put('/:email/username', userController.updateUsername);
 
-// Add or update address
-router.put('/:email/address', userController.updateAddress);
+// Route to render profile page
+router.get('/profile', userController.getProfilePage);
+
+// Route to update address
+router.post('/profile/update', userController.updateAddress);
 
 // Change user password
 router.put('/:email/password', userController.changePassword);
@@ -14,10 +18,10 @@ router.put('/:email/password', userController.changePassword);
 // Update phone
 router.put('/:email/phone', userController.updatePhone);
 
-// Route to get profile information
-router.get('/profile/:email', async (req, res) => {
+// Route to get profile information by username
+router.get('/profile/:username', async (req, res) => {
     try {
-        const user = await User.findOne({ email: req.params.email });
+        const user = await User.findOne({ username: req.params.username });
         if (!user) {
             return res.status(404).json({ msg: 'User not found' });
         }
