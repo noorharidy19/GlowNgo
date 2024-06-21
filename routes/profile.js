@@ -6,8 +6,11 @@ const User = require('../models/users');
 // Update username
 router.put('/:email/username', userController.updateUsername);
 
-// Add or update address
-router.put('/:email/address', userController.updateAddress);
+// Route to render profile page
+router.get('/profile', userController.getProfilePage);
+
+// Route to update address
+router.post('/profile/update', userController.updateAddress);
 
 // Change user password
 router.put('/:email/password', userController.changePassword);
