@@ -50,16 +50,23 @@
         <h3 class="info">Profile Information</h3>
         <form>
             <label for="username">User Name:</label><br>
-            <input type="text" id="username" name="username" value="<%= user.username %>"><br>
+            <input type="text" id="username" name="username" value="<%= user.username %>" readonly><br>
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" value="<%= user.email %>"><br>
+            <input type="email" id="email" name="email" value="<%= user.email %>" readonly><br>
             <label for="phone">Phone:</label><br>
-            <input type="tel" id="phone" name="phone" value="<%= user.phoneNumber %>"><br>
-            <label for="address">Address:</label><br>
+            <input type="tel" id="phone" name="phone" value="<%= user.phoneNumber %>" readonly><br>
+            
             <% if (user.address) { %>
-                <textarea id="address" name="address"><%= user.address.street %>, <%= user.address.city %>, <%= user.address.state %>, <%= user.address.buildingNo %></textarea><br>
+                <label for="street">Street:</label><br>
+                <input type="text" id="street" name="street" value="<%= user.address.street %>" readonly><br>
+                <label for="city">City:</label><br>
+                <input type="text" id="city" name="city" value="<%= user.address.city %>" readonly><br>
+                <label for="state">State:</label><br>
+                <input type="text" id="state" name="state" value="<%= user.address.state %>" readonly><br>
+                <label for="buildingNo">Building Number:</label><br>
+                <input type="text" id="buildingNo" name="buildingNo" value="<%= user.address.buildingNo %>" readonly><br>
             <% } else { %>
-                <textarea id="address" name="address"></textarea><br>
+                <p>No address information available.</p>
             <% } %>
         </form>
     </div>

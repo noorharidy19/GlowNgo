@@ -108,3 +108,20 @@ exports.updatePhone = async (req, res) => {
         res.status(500).send('Server Error');
     }
 };
+
+// Example controller method to render profile page
+exports.renderUserProfile = async (req, res) => {
+    try {
+        const user = await User.findOne({ username: req.params.username });
+
+        if (!user) {
+            return res.status(404).json({ msg: 'User not found' });
+        }
+
+        res.render('myprofile', { user }); // Render the EJS template with user object
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+};

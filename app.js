@@ -10,7 +10,7 @@ var methodOverride = require('method-override');
 const session = require('express-session');
 const loginroutes = require('./routes/login');
 const signupRoute = require('./routes/signuproute');
-const profileRoutes = require('./routes/userRoutes');
+const profileRoutes = require('./routes/profile');
 // const validator = require('express-validator');
 // const {check,validationResult} = require('express-validator');
 require("dotenv").config();
@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
-app.use(profileRoutes);
+app.use('/api/users',profileRoutes);
 app.use(express.json());
 app.get('/',(req,res)=>{
     res.render('contact',{errors: ''});
