@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const adminRouter = require('./routes/adminroute');
 const adminPRouter = require('./routes/adminProute');
 const navRouter = require('./routes/navRoute');
+const adminUroute = require('./routes/adminUroute');
 var methodOverride = require('method-override');
 const session = require('express-session');
 const loginroutes = require('./routes/login');
@@ -12,6 +13,7 @@ const signupRoute = require('./routes/signuproute');
 const validator = require('express-validator');
 const {check,validationResult} = require('express-validator');
 require("dotenv").config();
+const MongoStore = require('connect-mongo');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,9 +28,10 @@ app.get('/',(req,res)=>{
 
 // Serve static files from the "public" directory, and tell clients to cache the files for 7 days
 app.use(express.static("public", { maxAge: "7d" }));
-app.use(adminPRouter);
 app.use(adminRouter);
+app.use(adminPRouter);
 app.use(navRouter);
+app.use(adminUroute);
 app.set('view engine', 'ejs');
 app.use(loginroutes);
 app.use('/', signupRoute);
@@ -45,6 +48,7 @@ app.use(session({
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: 'mongodb+srv://Noor:haridy20@cluster0.oetujgm.mongodb.net/projectDb?retryWrites=true&w=majority&appName=Cluster0' })
   }));
 // Correct MongoDB connection string
 // const dbURI='mongodb+srv://Noor:haridy20@cluster0.oetujgm.mongodb.net/projectDb?retryWrites=true&w=majority&appName=Cluster0'

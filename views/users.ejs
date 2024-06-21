@@ -17,64 +17,35 @@
 </div>
 
 <div id="overlay" style="display: none;"></div>
-<table class="tab">
-    <tr>
-        <th class="text">ID</th>
-        <th class="text">First Name</th>
-        <th class="text">Last Name</th>
-        <th class="text">Username</th>
-        <th class="text">Password</th>
-        <th class="text">Email</th>
-        <th class="text">Address</th>
-        <th class="text">Phone Number</th>
-        <th class="text">Admin Or User?</th>
-        <th class="text">Number Of Orders</th>
-        <th class="text"></th>
-        
-    </tr>
-    <tr>
-        <td class="text">2003</td>
-        <td class="text">Noor</td>
-        <td class="text">Haridy</td>
-        <td class="text">NoorHaridy</td>
-        <td class="text">1234</td>
-        <td class="text">NoorHaridy@gmail.com</td>
-        <td class="text">Maddi Street</td>
-        <td class="text">01234567891</td>
-        <td class="text">User</td>
-        <td class="text">2</td>
-        <td class="text"> <button onclick="showModal(['myModal1'])" class="edit-button">Edit</button>
-            <button onclick="showModal(['myModal2'])" class="Remove-button">Remove</button></td>
-    </tr>
-    <tr>
-        <td class="text">2004</td>
-        <td class="text">Nourhan</td>
-        <td class="text">Amr</td>
-        <td class="text">nour.amr</td>
-        <td class="text">nour1234</td>
-        <td class="text">Nourhan@gmail.com</td>
-        <td class="text">First Settlement</td>
-        <td class="text">01110984111</td>
-        <td class="text">Admin</td>
-        <td class="text">1</td>
-        <td class="text"> <button onclick="showModal(['myModal1'])" class="edit-button">Edit</button>
-            <button onclick="showModal(['myModal2'])" class="Remove-button">Remove</button></td>
-    </tr>
-    <tr>
-        <td class="text">2005</td>
-        <td class="text">Nourhan</td>
-        <td class="text">Mohamed</td>
-        <td class="text">nourhan.mohamed</td>
-        <td class="text">1234</td>
-        <td class="text">NourhanMohamed@gmail.com</td>
-        <td class="text">Nasr City</td>
-        <td class="text">01230984111</td>
-        <td class="text">User</td>
-        <td class="text">3</td>
-        <td class="text"> <button onclick="showModal(['myModal1'])" class="edit-button">Edit</button>
-            <button onclick="showModal(['myModal2'])" class="Remove-button">Remove</button></td>
-    </tr>
-</table>
+<% if (users && users.length > 0) { %>
+    <table class="tab">
+        <tr>
+            <th class="text">ID</th>
+            <th class="text">Username</th>
+            <th class="text">Email</th>
+            <th class="text">Address</th>
+            <th class="text">Phone Number</th>
+            <th class="text">Role</th>
+            <th class="text"></th>
+        </tr>
+        <% users.forEach(function(user) { %>
+        <tr>
+            <td class="text"><%= user._id %></td>
+            <td class="text"><%= user.username %></td>
+            <td class="text"><%= user.email %></td>
+            <td class="text"><%= user.address %></td>
+            <td class="text"><%= user.phoneNumber %></td>
+            <td class="text"><%= user.type %></td>
+            <td class="text">
+                <button onclick="showModal(['myModal1'])" class="edit-button">Edit</button>
+                <button onclick="showModal(['myModal2'])" class="Remove-button">Remove</button>
+            </td>
+        </tr>
+        <% }); %>
+    </table>
+<% } else { %>
+    <p>There are no Users to display...</p>
+<% } %>
 
 <div class="buttons-container">
     <button onclick="showModal(['myModal'])" class="add-button">Add</button>

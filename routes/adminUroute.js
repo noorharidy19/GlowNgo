@@ -1,12 +1,12 @@
 const express = require("express");
 var bodyParser = require('body-parser');
-// const { addProductValidation, validate } = require('../mildware/validation');
+const user = require("../controllers/user");
 
 const router = express.Router();
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-const user = require("../controllers/user");
-
+router.get('/user', user.getUsers);
 
 module.exports = router;
+

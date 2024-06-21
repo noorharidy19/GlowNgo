@@ -11,7 +11,7 @@ router.get('/admin', (req, res) => {
 router.get('/orders', (req, res) => {
     res.render('orders');
 });
-router.get('/user', (req, res) => {
-    res.render('users');
-});
+// router.get('/user', (req, res) => {
+//     res.render('users');
+// });
 module.exports = router;
