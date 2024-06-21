@@ -458,17 +458,16 @@
     
     
     <div class="popup-container" id="popupContainerForget">
-    <div class="popup">
-        <span class="close-btn" onclick="hidePopupsignin('popupContainerForget')">&times;</span>
-        <h2>Reset Password</h2>
-        <form onsubmit="return sendResetPasswordEmail()">
-            <input type="email" id="resetEmail" placeholder="Enter your email" required>
-            <button type="submit">Send Email</button>
-            <div id="messageContainer" >To reset your password, enter your email address below. We will then send an email containing a link to reset your password.</div>
-        </form>
-
+        <div class="popup">
+            <span class="close-btn" onclick="hidePopupsignin('popupContainerForget')">&times;</span>
+            <h2>Reset Password</h2>
+            <form id="forgotPasswordForm" method="post" action="/forgot-password">
+                <input type="text" id="resetUsername" name="username" placeholder="Enter your username" required>
+                <button type="submit">Send Email</button>
+                <div id="messageContainer">To reset your password, enter your username below. We will then send an email containing a link to reset your password.</div>
+            </form>
+        </div>
     </div>
-</div>
     <!-- --------------------------------CART------------------------------------ -->
     <div class="CART " id="CART">
         <h2 class="pcart"> Your Cart&nbsp; <i class="fa-solid fa-bag-shopping"></i></i>  </h2>

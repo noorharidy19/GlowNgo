@@ -1,4 +1,4 @@
-const User = require('../models/profileSch');
+const User = require('../models/users');
 const bcrypt = require('bcryptjs');
 
 // Update username
@@ -28,8 +28,8 @@ exports.updateUsername = async (req, res) => {
     }
 };
 
-// Add new address
-exports.addAddress = async (req, res) => {
+// Add or update address
+exports.updateAddress = async (req, res) => {
     const { street, city, state, buildingNo } = req.body;
 
     const newAddress = {
@@ -46,66 +46,7 @@ exports.addAddress = async (req, res) => {
             return res.status(404).json({ msg: 'User not found' });
         }
 
-        user.addresses.push(newAddress);
-        await user.save();
-
-        res.json(user);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-};
-
-// Update an address by index
-exports.updateAddress = async (req, res) => {
-    const { street, city, state, buildingNo } = req.body;
-    const addressIndex = req.params.index;
-
-    try {
-        let user = await User.findOne({ email: req.params.email });
-
-        if (!user) {
-            return res.status(404).json({ msg: 'User not found' });
-        }
-
-        // Check if address index is valid
-        if (addressIndex < 0 || addressIndex >= user.addresses.length) {
-            return res.status(400).json({ msg: 'Invalid address index' });
-        }
-
-        // Update address fields
-        user.addresses[addressIndex].street = street;
-        user.addresses[addressIndex].city = city;
-        user.addresses[addressIndex].state = state;
-        user.addresses[addressIndex].buildingNo = buildingNo;
-
-        await user.save();
-
-        res.json(user);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-};
-
-// Delete an address by index
-exports.deleteAddress = async (req, res) => {
-    const addressIndex = req.params.index;
-
-    try {
-        let user = await User.findOne({ email: req.params.email });
-
-        if (!user) {
-            return res.status(404).json({ msg: 'User not found' });
-        }
-
-        // Check if address index is valid
-        if (addressIndex < 0 || addressIndex >= user.addresses.length) {
-            return res.status(400).json({ msg: 'Invalid address index' });
-        }
-
-        // Remove address at specified index
-        user.addresses.splice(addressIndex, 1);
+        user.address = newAddress;
         await user.save();
 
         res.json(user);
@@ -117,7 +58,11 @@ exports.deleteAddress = async (req, res) => {
 
 // Change user password
 exports.changePassword = async (req, res) => {
-    const { oldPassword, newPassword } = req.body;
+    const { oldPassword, newPassword, confirmPassword } = req.body;
+
+    if (newPassword !== confirmPassword) {
+        return res.status(400).json({ msg: 'New passwords do not match' });
+    }
 
     try {
         let user = await User.findOne({ email: req.params.email });
@@ -154,7 +99,7 @@ exports.updatePhone = async (req, res) => {
             return res.status(404).json({ msg: 'User not found' });
         }
 
-        user.phone = phone;
+        user.phoneNumber = phone;
         await user.save();
 
         res.json(user);
