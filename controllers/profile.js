@@ -31,14 +31,6 @@ exports.updateUsername = async (req, res) => {
 // Add or update address
 exports.updateAddress = async (req, res) => {
     const { street, city, state, buildingNo } = req.body;
-
-    const newAddress = {
-        street,
-        city,
-        state,
-        buildingNo,
-    };
-
     try {
         let user = await User.findOne({ email: req.params.email });
 
@@ -46,10 +38,17 @@ exports.updateAddress = async (req, res) => {
             return res.status(404).json({ msg: 'User not found' });
         }
 
-        user.address = newAddress;
+        // Update address fields
+        user.address = {
+            street,
+            city,
+            state,
+            buildingNo
+        };
+
         await user.save();
 
-        res.json(user);
+        res.redirect('/profile'); // Redirect back to profile page after update
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -109,17 +108,14 @@ exports.updatePhone = async (req, res) => {
     }
 };
 
-// Example controller method to render profile page
-exports.renderUserProfile = async (req, res) => {
+// GET profile page
+exports.getProfilePage = async (req, res) => {
     try {
         const user = await User.findOne({ username: req.params.username });
-
         if (!user) {
             return res.status(404).json({ msg: 'User not found' });
         }
-
-        res.render('myprofile', { user }); // Render the EJS template with user object
-
+        res.render('myprofile', { user });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
