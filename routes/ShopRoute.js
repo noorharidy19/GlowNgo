@@ -9,5 +9,5 @@ const router = express.Router();
 //     res.render('Home');
 // });
 
-router.get('/brow', getProductsByCategory('Brows'));
+router.get('/brow', getProductsByCategory('Brows','brow'));
 module.exports = router;
