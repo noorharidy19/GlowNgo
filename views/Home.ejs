@@ -464,7 +464,11 @@
             <form id="forgotPasswordForm" method="post" action="/forgot-password">
                 <input type="text" id="resetUsername" name="username" placeholder="Enter your username" required>
                 <button type="submit" onclick="sendResetPasswordEmail()">Send Email</button>
-                <div >To reset your password, enter your username below. We will then send an email containing a link to reset your password.</div>
+                <div class="returnlogin">
+                   <a href="#" onclick="hidePopupsignin('popupContainerForget'); showPopupSignin('popupContainerSignIn')">Return to Login</a>
+                </div>
+                <br>
+                <div>To reset your password, enter your username below. We will then send an email containing a link to reset your password.</div>
             </form>
         </div>
     </div>
