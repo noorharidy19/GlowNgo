@@ -36,20 +36,33 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    var buttons = document.querySelectorAll('button[data-target]');
+    var forms = document.querySelectorAll('.form-container');
 
-function toggleForm(formId) {
-    var formContainer = document.getElementById(formId);
-    if (formContainer.style.display === 'none') {
-        formContainer.style.display = 'block';
-    } else {
-        formContainer.style.display = 'none';
+    function hideAllForms() {
+        forms.forEach(function(form) {
+            form.classList.remove('active');
+        });
     }
-}
 
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var targetId = button.getAttribute('data-target');
+            var targetForm = document.getElementById(targetId);
 
+            if (!targetForm) return;
 
+            var isCurrentlyVisible = targetForm.classList.contains('active');
 
+            hideAllForms();
 
+            if (!isCurrentlyVisible) {
+                targetForm.classList.add('active');
+            }
+        });
+    });
+});
 
 function changePassword() {
     var oldPassword = document.getElementById("oldPassword").value;

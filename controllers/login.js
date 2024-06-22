@@ -24,7 +24,7 @@ const loginProcess = async (req, res) => {
                 console.log("login successful");
                 console.log("Welcome to the admin page, " + username);
             } else if (user.type === 'customer') {
-                res.render('home', { user });
+                res.render('myprofile', { user });
                 console.log("login successful");
                 console.log("Welcome to the home page, " + username);
             } else {
