@@ -258,41 +258,36 @@ function validationForm() {
 //     return true;
 // }
 function validationFormEdit() {
-    var name = document.getElementById('name').value;
-    var price = document.getElementById('price').value;
-    var quantity = document.getElementById('quantity').value;
-    var choice = document.getElementById('choice').value;
+    var name4 = document.getElementById('PRODname').value;
+    var price4 = document.getElementById('PRODprice').value;
+    var quantity4 = document.getElementById('PRODquan').value;
     
-    if(name == "" || !/^[a-zA-Z\s]+$/.test(name)){
-        document.getElementById('nameError').innerHTML = "Please enter a valid product name";
+    var Validation = true; 
+    if(name4 == !/^[a-zA-Z\s]+$/.test(name4)){
+        document.getElementById('NAMEerror').innerHTML = "Please enter a valid product name";
         Validation= false;
     } else {
-        document.getElementById('nameError').innerHTML = "";
+        document.getElementById('NAMEerror').innerHTML = "";
     }
 
     //Price Validation
-    if(price == "" || price < 0|| isNaN(price)){
-        document.getElementById('priceError').innerHTML = "Please enter a valid product price";
+    if( price4 < 0|| isNaN(price4)){
+        document.getElementById('PRICEerror').innerHTML = "Please enter a valid product price";
         Validation = false;
     } else {
-        document.getElementById('priceError').innerHTML = "";
+        document.getElementById('PRICEerror').innerHTML = "";
     }
 
     //Quantity Validation
-    if(quantity == "" || quantity < 0|| isNaN(quantity)){
-        document.getElementById('quantityError').innerHTML = "Please enter a valid product quantity";
+    if( quantity4 < 0|| isNaN(quantity4)){
+        document.getElementById('QUANTITYerror').innerHTML = "Please enter a valid product quantity";
         Validation = false;
     } else {
-        document.getElementById('quantityError').innerHTML = "";
+        document.getElementById('QUANTITYerror').innerHTML = "";
     }
 
-    if (choice == "select") {
-        document.getElementById('choiceError').innerHTML = "Please choose a field to edit";
-        Validation = false;
-    } else {
-        document.getElementById('choiceError').innerHTML = "";
-    return Validation;
-}
+return Validation;
+
 }
 
 function UserValidation(){
