@@ -10,31 +10,40 @@
     <title>Products</title>
     <script src="js/admin.js"></script>
     <style>
-   .pagination a {
-    text-decoration: none;
-    color: white;
-    background-color: rgb(208, 177, 177);
-    padding: 12px 20px; /* Added more padding for better spacing */
-    margin: 10px 5px; /* Added margin for spacing between buttons */
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    display: inline-block; /* Ensure proper spacing and layout */
-}
-.pagination span {
-    text-decoration: none;
-    color:rgb(164, 111, 111);
-    padding: 12px 20px; /* Added more padding for better spacing */
-    margin: 10px 5px; /* Added margin for spacing between buttons */
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    display: inline-block; 
-    font-size: larger;
-    font-weight: bold;
+.pagination {
+  display: flex;
+  gap: 20px; /* Space between page number and buttons */
+  margin-top: 20px;
 }
 
-.pagination a:hover {
-    color:rgb(164, 111, 111);
+.pagination-info {
+  color: rgb(164, 111, 111);
+  padding: 12px 20px;
+  font-size: larger;
+  font-weight: bold;
 }
+
+.pagination-buttons {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+.pagination-link {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(208, 177, 177);
+  padding: 12px 20px;
+  margin: 0; /* No margin needed since gap handles spacing */
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  display: inline-block;
+}
+
+.pagination-link:hover {
+  background-color: rgb(164, 111, 111);
+  color: white;
+}
+
 
         </style>
     
@@ -112,16 +121,23 @@
 <% } %>
 
 <div class="pagination">
-    <% if(hasPreviousPage) { %>
-        <a href="/AdminProducts?page=1">&laquo; First</a>
-        <a href="/AdminProducts?page=<%= previousPage %>">Previous</a>
-    <% } %>
-    <span>Page <%= page %> of <%= lastPage %></span>
-    <% if(hasNextPage) { %>
-        <a href="/AdminProducts?page=<%= nextPage %>">Next</a>
-        <a href="/AdminProducts?page=<%= lastPage %>">Last &raquo;</a>
-    <% } %>
+    <span class="pagination-info">Page <%= page %> of <%= totalPages %></span>
+    <div class="pagination-buttons">
+        <% if (page > 1 && page < totalPages) { %>
+            <a class="pagination-link" href="/AdminProducts?page=<%= previousPage %>">Previous</a>
+            <a class="pagination-link" href="/AdminProducts?page=<%= nextPage %>">Next</a>
+        <% } else if (page === 1 && totalPages > 1) { %>
+            <a class="pagination-link" href="/AdminProducts?page=<%= nextPage %>">Next</a>
+            <a class="pagination-link" href="/AdminProducts?page=<%= totalPages %>">Last »</a>
+        <% } else if (page === totalPages && totalPages > 1) { %>
+            <a class="pagination-link" href="/AdminProducts?page=1">« First</a>
+            <a class="pagination-link" href="/AdminProducts?page=<%= previousPage %>">Previous</a>
+        <% } %>
+    </div>
 </div>
+  
+  
+  
     
     
 
