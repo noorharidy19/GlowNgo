@@ -54,7 +54,7 @@
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" value="<%= user.email %>" readonly><br>
             <label for="phone">Phone:</label><br>
-            <input type="tel" id="phone" name="phone" value="<%= user.phone %>" readonly><br>
+            <input type="tel" id="phone" name="phone" value="<%= user.phoneNumber %>" readonly><br>
             <label for="address">Address:</label><br>
             <textarea id="address" name="address" rows="4" readonly><%= user.address ? `${user.address.street}, ${user.address.city}, ${user.address.state}, ${user.address.buildingNo}` : '' %></textarea><br>
         </form>
@@ -82,9 +82,10 @@
         <!-- Change Username Button -->
         <button data-target="username-form">Change Username</button>
         <div id="username-form" class="form-container">
-            <form action="/profile/<%= user._id %>?_method=PUT" method="post">
+            <form action="/profile/<%= user.username %>" method="post">
+                <input type="hidden" name="_method" value="PUT">
                 <label for="newUsername">New Username:</label><br>
-                <input type="text" id="newUsername" name="username" required><br><br>
+                <input type="text" id="username" name="username" required><br><br>
                 <button type="submit">Confirm</button>
             </form>
         </div>
