@@ -1,33 +1,27 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const addressSchema = new mongoose.Schema({
-    street: { type: String, required: true },
-    city: { type: String, required: true },
-    state: { type: String, required: true },
-    buildingNo: { type: String, required: true },
-});
+const userSchema = new Schema({
+    username: { type: String, 
+                unique: true, 
+                required: true 
+    },
+    password: { type: String, required: true },
 
-const userSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true
+    email: { type: String,
+             unique: true, 
+             required: true 
+            },
+
+    phone: { type: String },
+
+    address: {
+        street: { type: String },
+        city: { type: String },
+        state: { type: String },
+        buildingNo: { type: String }
     },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    address: addressSchema, // Single address
-    phoneNumber: {
-        type: String,
-        required: true
-    },
+
     acceptedTerms: {
         type: Boolean,
         required: true
@@ -35,8 +29,12 @@ const userSchema = new mongoose.Schema({
     type: {
         type: String,
         default: "customer"
-    }
+    },
 });
+
+userSchema.methods.comparePassword = async function(candidatePassword) {
+    return await bcrypt.compare(candidatePassword, this.password);
+};
 
 const User = mongoose.model('User', userSchema);
 

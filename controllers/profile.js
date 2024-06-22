@@ -1,110 +1,83 @@
 const User = require('../models/users');
 const bcrypt = require('bcryptjs');
 
-// Update username
-exports.updateUsername = async (req, res) => {
-    const { username } = req.body;
-
-    try {
-        let user = await User.findOne({ username: req.params.username });
-
-        if (!user) {
-            return res.status(404).json({ msg: 'User not found' });
-        }
-
-        // Check if new username already exists
-        let usernameExists = await User.findOne({ username });
-        if (usernameExists) {
-            return res.status(400).json({ msg: 'Username already exists' });
-        }
-
-        user.username = username;
-        await user.save();
-
-        res.json(user);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-};
-
-// Add or update address
-exports.updateAddress = async (req, res) => {
-    const { street, city, state, buildingNo } = req.body;
-    try {
-        let user = await User.findOne({ username: req.params.username });
-
-        if (!user) {
-            return res.status(404).json({ msg: 'User not found' });
-        }
-
-        // Update address fields
-        user.address = {
-            street,
-            city,
-            state,
-            buildingNo
-        };
-
-        await user.save();
-
-        res.redirect('/profile'); // Redirect back to profile page after update
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-};
-
-// Change user password
+// Change Password
 exports.changePassword = async (req, res) => {
     const { oldPassword, newPassword, confirmPassword } = req.body;
 
-    if (newPassword !== confirmPassword) {
-        return res.status(400).json({ msg: 'New passwords do not match' });
-    }
-
     try {
-        let user = await User.findOne({ username: req.params.username });
+        const user = await User.findOne({ username: req.params.username });
 
-        if (!user) {
-            return res.status(404).json({ msg: 'User not found' });
+        // Validate old password using comparePassword method
+        if (!user || !(await user.comparePassword(oldPassword))) {
+            return res.status(401).json({ error: 'Incorrect old password' });
         }
 
-        const isMatch = await bcrypt.compare(oldPassword, user.password);
-        if (!isMatch) {
-            return res.status(400).json({ msg: 'Incorrect old password' });
+        // Validate new passwords match
+        if (newPassword !== confirmPassword) {
+            return res.status(400).json({ error: 'Passwords do not match' });
         }
 
-        const salt = await bcrypt.genSalt(10);
-        user.password = await bcrypt.hash(newPassword, salt);
-
+        // Update password
+        user.password = newPassword;
         await user.save();
 
-        res.json({ msg: 'Password updated successfully' });
+        res.status(200).json({ message: 'Password updated successfully' });
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
 };
 
-// Update phone
-exports.updatePhone = async (req, res) => {
-    const { phone } = req.body;
+// Change Username
+exports.changeUsername = async (req, res) => {
+    try {
+        // Correctly construct the update object
+        let updateObject = { username: req.body.username };
+        // Update username
+        await User.findByIdAndUpdate(req.params.id, updateObject, { new: true, runValidators: true });
+        res.status(200).json({ message: 'Username updated successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
+    }
+};
+
+// Change Phone Number
+exports.changePhone = async (req, res) => {
+    const { newPhone } = req.body;
 
     try {
-        let user = await User.findOne({ username: req.params.username });
+        // Retrieve user from database
+        const user = await User.findOne({ username: req.params.username });
 
-        if (!user) {
-            return res.status(404).json({ msg: 'User not found' });
-        }
-
-        user.phoneNumber = phone;
+        // Update phone number
+        user.phone = newPhone;
         await user.save();
 
-        res.json(user);
+        res.status(200).json({ message: 'Phone number updated successfully' });
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
+    }
+};
+
+// Change Address
+exports.changeAddress = async (req, res) => {
+    const { street, city, state, buildingNo } = req.body;
+
+    try {
+        // Retrieve user from database
+        const user = await User.findOne({ username: req.user.username });
+
+        // Update address
+        user.address = { street, city, state, buildingNo };
+        await user.save();
+
+        res.status(200).json({ message: 'Address updated successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
 };
 
