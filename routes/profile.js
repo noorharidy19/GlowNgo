@@ -4,7 +4,7 @@ const userController = require('../controllers/profile');
 const User = require('../models/users');
 
 // Update username
-router.put('/:email/username', userController.updateUsername);
+router.put('/:username/username', userController.updateUsername);
 
 // Route to render profile page
 router.get('/profile', userController.getProfilePage);
@@ -13,10 +13,10 @@ router.get('/profile', userController.getProfilePage);
 router.post('/profile/update', userController.updateAddress);
 
 // Change user password
-router.put('/:email/password', userController.changePassword);
+router.put('/:username/password', userController.changePassword);
 
 // Update phone
-router.put('/:email/phone', userController.updatePhone);
+router.put('/:username/phone', userController.updatePhone);
 
 // Route to get profile information by username
 router.get('/profile/:username', async (req, res) => {

@@ -134,6 +134,10 @@ body {
     padding: 20px;
 }
 
+.form-container {
+  display: none;
+}
+
 .tabcontent h3 {
     color: #B76E79;
 }
@@ -350,6 +354,7 @@ button + button {
     text-align: center;
     margin-top: 20px;
   }
+  
   
   .ADD button {
     background-color: rgb(255, 105, 180); 
