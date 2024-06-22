@@ -10,4 +10,6 @@ const router = express.Router();
 // });
 
 router.get('/brow', getProductsByCategory('Brows','brow'));
+router.get('/tools', getProductsByCategory('Tools','tools'));
+
 module.exports = router;
