@@ -248,22 +248,56 @@ function validateForm2() {
 // }
 
 
-function sendResetPasswordEmail() {
-    var email = document.getElementById("resetEmail").value;
+async function sendResetPasswordEmail() {
+    var username = document.getElementById("resetUsername").value;
     var messageContainer = document.getElementById("messageContainer");
-    if (!isValidEmail(email)) {
-        messageContainer.innerHTML = "Please enter a valid email address.";
-        messageContainer.style.display = "block";
-        return false; 
-    }
-   
-    messageContainer.innerHTML = "We've sent you the verification code. Please check your email and revisit our website.";
-    messageContainer.style.display = "block";
-    messageContainer.style.color="green";
-  
-    return false; 
-}
 
+    if (!username) {
+        messageContainer.innerHTML = "Please enter a username.";
+        messageContainer.style.display = "block";
+        return false;
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: '/forgot-password',
+        data: JSON.stringify({ username: username }),
+        contentType: 'application/json',
+        success: function(data) {
+            if (data.success) {
+                // Show popup with the user's email
+                var popupContainer = document.getElementById("popupContainerForget");
+                var popupMessage = document.getElementById("popupMessage");
+                popupMessage.innerHTML = `Email for user ${username} found: ${data.email}`;
+                popupContainer.style.display = 'block';
+                // Add a confirmation message
+                popupMessage.innerHTML += `<br>Email validation successful!`;
+                // Display a confirmation dialog box
+                confirm("Email validation successful! Press OK to continue.");
+            } else {
+                messageContainer.innerHTML = data.msg || "An error occurred.";
+                messageContainer.style.display = "block";
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error sending reset password email:', error);
+            messageContainer.innerHTML = "An error occurred.";
+            messageContainer.style.display = "block";
+        }
+    });
+
+    return false; // Prevent form submission
+}
+function showConfirmationPopup(email) {
+    var popupContainer = document.getElementById("popupContainerForget");
+    var popupMessage = document.getElementById("popupMessage");
+    popupMessage.innerHTML = `Email for user found: ${email}`;
+    popupContainer.style.display = 'block';
+    // Add a confirmation message
+    popupMessage.innerHTML += `<br>Email validation successful!`;
+    // Display a confirmation dialog box
+    confirm("Email validation successful! Press OK to continue.");
+  }
 function isValidEmail(email) {
     
     return /\S+@\S+\.\S+/.test(email);

@@ -39,7 +39,6 @@ const loginProcess = async (req, res) => {
     }
 };
 
-// Forgot password function
 const forgotPassword = async (req, res) => {
     try {
         // Retrieve username from req.body
@@ -50,14 +49,15 @@ const forgotPassword = async (req, res) => {
 
         // Check if the user exists
         if (!user) {
-            return res.send("User not found");
+            return res.json({ success: false, msg: "User not found" });
         }
 
         // Return the user's email
-        return res.send(`Email for user ${username}: ${user.email}`);
+        return res.json({ success: true, email: user.email });
+        res.redirect("/Home?showConfirmationPopup=true");
     } catch (error) {
         console.error("Error during forgot password process:", error);
-        res.send("An error occurred");
+        res.json({ success: false, msg: "An error occurred" });
     }
 };
 
@@ -65,3 +65,4 @@ module.exports = {
     loginProcess,
     forgotPassword
 };
+
