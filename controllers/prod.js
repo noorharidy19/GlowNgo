@@ -60,7 +60,7 @@ const getProducts = (req, res) => {
             res.status(500).send('Error retrieving products');
         });
 };
-const getProductsByCategory = (category) => {
+const getProductsByCategory = (category, pageName) => {
     return (req, res) => {
         Products.find({ category: category })
             .then(result => {
@@ -69,7 +69,7 @@ const getProductsByCategory = (category) => {
                     product.stockStatus = product.quantity > 0 ? 'In Stock' : 'Out of Stock';
                 });
 
-                res.render('brow', { products: result });
+                res.render(pageName, { products: result });
             })
             .catch(err => {
                 console.error(err);
@@ -133,6 +133,7 @@ const updateProduct = (req, res) => {
           res.status(500).send('Error updating product');
       });
 };
+
 
 
 
