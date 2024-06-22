@@ -46,6 +46,21 @@
 <% } else { %>
     <p>There are no Users to display...</p>
 <% } %>
+<div class="pagination">
+    <span class="pagination-info">Page <%= currentPage %> of <%= totalPagesCount %></span>
+    <div class="pagination-buttons">
+        <% if (currentPage > 1 && currentPage < totalPagesCount) { %>
+            <a class="pagination-link" href="/users?page=<%= previousPageNumber %>">Previous</a>
+            <a class="pagination-link" href="/users?page=<%= nextPageNumber %>">Next</a>
+        <% } else if (currentPage === 1 && totalPagesCount > 1) { %>
+            <a class="pagination-link" href="/users?page=<%= nextPageNumber %>">Next</a>
+            <a class="pagination-link" href="/users?page=<%= totalPagesCount %>">Last »</a>
+        <% } else if (currentPage === totalPagesCount && totalPagesCount > 1) { %>
+            <a class="pagination-link" href="/users?page=1">« First</a>
+            <a class="pagination-link" href="/users?page=<%= previousPageNumber %>">Previous</a>
+        <% } %>
+    </div>
+</div>
 
 <div class="buttons-container">
     <button onclick="showModal(['myModal'])" class="add-button">Add</button>
@@ -177,7 +192,43 @@
         </div>
     </div>
     
-
+    <style>
+        .pagination {
+          display: flex;
+          gap: 20px; /* Space between page number and buttons */
+          margin-top: 20px;
+        }
+        
+        .pagination-info {
+          color: rgb(164, 111, 111);
+          padding: 12px 20px;
+          font-size: larger;
+          font-weight: bold;
+        }
+        
+        .pagination-buttons {
+          display: flex;
+          gap: 10px; /* Space between buttons */
+        }
+        
+        .pagination-link {
+          text-decoration: none;
+          color: white;
+          background-color: rgb(208, 177, 177);
+          padding: 12px 20px;
+          margin: 0; /* No margin needed since gap handles spacing */
+          border-radius: 5px;
+          transition: background-color 0.3s;
+          display: inline-block;
+        }
+        
+        .pagination-link:hover {
+          background-color: rgb(164, 111, 111);
+          color: white;
+        }
+        
+        
+                </style>
 <script src="js/admin.js"></script>
 </body>
 </html>
