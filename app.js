@@ -21,7 +21,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
-app.use('/profile', profileRoutes);
 app.use(express.json());
 // app.get('/',(req,res)=>{
 //     res.render('contact',{errors: ''});
@@ -37,6 +36,7 @@ app.set('view engine', 'ejs');
 app.use(loginroutes);
 app.use(signupRoute);
 app.use(shoproute);
+app.use('/profile', profileRoutes);
 
 // Define a router and a route handler
 const router = express.Router();

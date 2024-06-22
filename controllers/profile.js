@@ -30,17 +30,28 @@ exports.changePassword = async (req, res) => {
 };
 
 // Change Username
-exports.changeUsername = async (req, res) => {
-    try {
-        // Correctly construct the update object
-        let updateObject = { username: req.body.username };
-        // Update username
-        await User.findByIdAndUpdate(req.params.id, updateObject, { new: true, runValidators: true });
-        res.status(200).json({ message: 'Username updated successfully' });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Server error' });
-    }
+exports.changeUsername = (req, res) => {
+    console.log('Received update request for ID:', req.params.id);
+    console.log('Request body:', req.body);
+
+    let updateObject = { username: req.body.username };
+    
+
+    console.log('Update object:', updateObject);
+
+    User.findByIdAndUpdate(req.params.id, updateObject, { new: true, runValidators: true })
+        .then((updatedUser) => {
+            if (!updatedUser) {
+                return res.status(404).send('User not found');
+            } else {
+                console.log("Username updated successfully:", updatedUser);
+                res.status(200).json({ message: 'Username updated successfully', user: updatedUser });
+            }
+        })
+        .catch((err) => {
+            console.error('Error updating username:', err);
+            res.status(500).json({ error: 'Error updating username' });
+        });
 };
 
 // Change Phone Number

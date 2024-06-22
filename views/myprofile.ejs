@@ -82,7 +82,7 @@
         <!-- Change Username Button -->
         <button data-target="username-form">Change Username</button>
         <div id="username-form" class="form-container">
-            <form action="/profile/<%= user.id %>?_method=PUT" method="post">
+            <form action="/profile/<%= user._id %>?_method=PUT" method="post">
                 <label for="newUsername">New Username:</label><br>
                 <input type="text" id="newUsername" name="username" required><br><br>
                 <button type="submit">Confirm</button>
