@@ -258,70 +258,41 @@ function validationForm() {
 //     return true;
 // }
 function validationFormEdit() {
-    var choice = document.getElementById('editField').value;
-    var productField = document.getElementById('productChoice').value;
-    var img = document.getElementById('productImage1').value;
-    var Validation = true;
-    //Choice Validation
-    if(choice == "select") {
+    var name = document.getElementById('name').value;
+    var price = document.getElementById('price').value;
+    var quantity = document.getElementById('quantity').value;
+    var choice = document.getElementById('choice').value;
+    
+    if(name == "" || !/^[a-zA-Z\s]+$/.test(name)){
+        document.getElementById('nameError').innerHTML = "Please enter a valid product name";
+        Validation= false;
+    } else {
+        document.getElementById('nameError').innerHTML = "";
+    }
+
+    //Price Validation
+    if(price == "" || price < 0|| isNaN(price)){
+        document.getElementById('priceError').innerHTML = "Please enter a valid product price";
+        Validation = false;
+    } else {
+        document.getElementById('priceError').innerHTML = "";
+    }
+
+    //Quantity Validation
+    if(quantity == "" || quantity < 0|| isNaN(quantity)){
+        document.getElementById('quantityError').innerHTML = "Please enter a valid product quantity";
+        Validation = false;
+    } else {
+        document.getElementById('quantityError').innerHTML = "";
+    }
+
+    if (choice == "select") {
         document.getElementById('choiceError').innerHTML = "Please choose a field to edit";
         Validation = false;
     } else {
         document.getElementById('choiceError').innerHTML = "";
-        //Field Validation
-        if(choice == "productName") {
-            if(productField == "" || !/^[a-zA-Z\s]+$/.test(productField)) {
-                document.getElementById('valueError').innerHTML = "Please enter a valid product name";
-                Validation = false;
-            } else {
-                document.getElementById('valueError').innerHTML = "";
-            }
-        } else if(choice == "productPrice") {
-            if(productField == "" || productField < 0 || isNaN(productField)) {
-                document.getElementById('valueError').innerHTML = "Please enter a valid product price";
-                Validation = false;
-            } else {
-                document.getElementById('valueError').innerHTML = "";
-            }
-        } else if(choice == "productQuantity") {
-            if(productField == "" || productField < 0 || isNaN(productField)) {
-                document.getElementById('valueError').innerHTML = "Please enter a valid product quantity";
-                Validation = false;
-            } else {
-                document.getElementById('valueError').innerHTML = "";
-            }
-        } else if(choice == "productDescription") {
-            if(productField == "") {
-                document.getElementById('valueError').innerHTML = "Please enter a valid product description";
-                Validation = false;
-            } else {
-                document.getElementById('valueError').innerHTML = "";
-            }
-        } else if(choice == "howToUse") {
-            if(productField == "") {
-                document.getElementById('valueError').innerHTML = "Please enter how to use product";
-                Validation = false;
-            } else {
-                document.getElementById('valueError').innerHTML = "";
-            }
-        } else if(choice == "productShades") {
-            if(productField == "") {
-                document.getElementById('valueError').innerHTML = "Please choose product shade";
-                Validation = false;
-            } else {
-                document.getElementById('valueError').innerHTML = "";
-            }
-        } else if(choice == "productImage") {
-            if(img == "") {
-                document.getElementById('imageError1').innerHTML = "Please upload product image";
-                Validation = false;
-            } else {
-                document.getElementById('imageError1').innerHTML = "";
-            }
-        }
-    }
-
     return Validation;
+}
 }
 
 function UserValidation(){
@@ -403,58 +374,54 @@ function UserValidation(){
     return Validation;
 }
 function UserValidationEdit(){
-    var choicee = document.getElementById('editFieldd').value;
-    var userField = document.getElementById('val').value;
+    var username = document.getElementById('name').value;
+    var email1 = document.getElementById('email1').value;
+    var password1 = document.getElementById('password1').value;
+    var address1 = document.getElementById('address1').value;
+    var phoneNumber = document.getElementById('phoneNumber').value;
     
     var Validation = true;
 
-    //Choice Validation
-
-    if(choicee == "select") {
-        document.getElementById('optionError').innerHTML = "Please choose a field to edit";
+    if(username == "" || !/^[a-zA-Z0-9]+$/.test(username)){
+        document.getElementById('nameError').innerHTML = "Please enter a valid username";
         Validation = false;
     } else {
-        document.getElementById('optionError').innerHTML = "";
-        //Field Validation
-        if(choicee == "email") {
-            if(userField == "" || !/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(userField)) {
-                document.getElementById('valError').innerHTML = "Please enter a valid email";
-                Validation = false;
-            } else {
-                document.getElementById('valError').innerHTML = "";
-            }
-        } else if(choicee == "password") {
-            if(userField == "" || userField.length < 8 ||isNaN(userField)) {
-                document.getElementById('valError').innerHTML = "Please enter a valid password (min 8 characters)";
-                Validation = false;
-            } else {
-                document.getElementById('valError').innerHTML = "";
-            }
-        } else if(choicee == "username") {
-            if(userField == "" || !/^[a-zA-Z0-9]+$/.test(userField)) {
-                document.getElementById('valError').innerHTML = "Please enter a valid username";
-                Validation = false;
-            } else {
-                document.getElementById('valError').innerHTML = "";
-            }
-        } else if(choicee == "phone") {
-            if(userField == "" || userField.length < 11 ||userField.length > 11 || isNaN(userField)) {
-                document.getElementById('valError').innerHTML = "Please enter a valid phone number";
-                Validation = false;
-            } else {
-                document.getElementById('valError').innerHTML = "";
-            }
-        } else if(choicee == "address") {
-            if(userField == "") {
-                document.getElementById('valError').innerHTML = "Please enter a valid address";
-                Validation = false;
-            } else {
-                document.getElementById('valError').innerHTML = "";
-            }
-        }
+        document.getElementById('nameError').innerHTML = "";
+    }
+    //Email Validation
+    if(email1 == "" || !/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email1)){
+        document.getElementById('emailError1').innerHTML = "Please enter a valid email";
+        Validation = false;
+    } else {
+        document.getElementById('emailError1').innerHTML = "";
+    }
 
- 
-}
+    //Password Validation
+    if(password1 == "" || password1.length < 8 ||isNaN(password1)){
+        document.getElementById('passwordError1').innerHTML = "Please enter a valid password (min 8 characters)";
+        Validation = false;
+    } else {
+        document.getElementById('passwordError1').innerHTML = "";
+    }
+
+    //Address Validation
+    if(address1 == ""){
+        document.getElementById('addressError1').innerHTML = "Please enter a valid address";
+        Validation = false;
+    } else {
+        document.getElementById('addressError1').innerHTML = "";
+    }
+
+    //Phone Validation
+    if(phoneNumber == "" || phoneNumber.length < 11 ||phoneNumber.length > 11 || isNaN(phoneNumber)){
+        document.getElementById('phoneNumberError').innerHTML = "Please enter a valid phone number";
+        Validation = false;
+    } else {
+        document.getElementById('phoneNumberError').innerHTML = "";
+    }
+
+    
+
  return Validation;
 }
 function UservalidationRemove() {

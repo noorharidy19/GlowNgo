@@ -202,10 +202,10 @@
             <span class="close" onclick="closeModal(['Edit-container'])">&times;</span>
             <h2 style="color:rgb(211, 170, 170)" class="adduser">Edit Product</h2>
             <!-- <% products.forEach(product => { %> -->
-            <form action="/edit/<%= product._id %>?_method=PUT" method="post">
+            <form action="/edit/<%= product._id %>?_method=PUT" method="post" onclick="return validationFormEdit()">
                 <div class="formprod">
                     <label class="label-field2">Product Name:</label>
-                    <input type="text" name="name" placeholder="<%= product.name %>" class="input-field2">
+                    <input id="name" type="text" name="name" placeholder="<%= product.name %>" class="input-field2">
                     <% if (locals.errors && locals.errors.length > 0) { %>
                         <% locals.errors.forEach(error => { %>
                             <% if (error.param === 'name') { %>
@@ -216,7 +216,7 @@
                 </div>
                 <div class="formprod">
                     <label class="label-field2">Product Price:</label>
-                    <input type="text" name="price" placeholder="<%= product.price %>" class="input-field2">
+                    <input id="price" type="text" name="price" placeholder="<%= product.price %>" class="input-field2">
                     <% if (locals.errors && locals.errors.length > 0) { %>
                         <% locals.errors.forEach(error => { %>
                             <% if (error.param === 'price') { %>
@@ -227,7 +227,7 @@
                 </div>
                 <div class="formprod">
                     <label class="label-field2">Product Quantity:</label>
-                    <input type="text" name="quantity" placeholder="<%= product.quantity %>" class="input-field2">
+                    <input id="quantity" type="text" name="quantity" placeholder="<%= product.quantity %>" class="input-field2">
                     <% if (locals.errors && locals.errors.length > 0) { %>
                         <% locals.errors.forEach(error => { %>
                             <% if (error.param === 'quantity') { %>
@@ -238,7 +238,7 @@
                 </div>
                 <div class="formprod">
                     <label class="label-field2">Product Category:</label>
-                    <select name="category" class="input-field2" placeholder="<%= product.category%>">
+                    <select id="choice" name="category" class="input-field2" placeholder="<%= product.category%>">
                         <option value="Face" <%= product.category === 'Face' ? 'selected' : '' %>>Face</option>
                         <option value="Eyes" <%= product.category === 'Eyes' ? 'selected' : '' %>>Eyes</option>
                         <option value="Lips" <%= product.category === 'Lips' ? 'selected' : '' %>>Lips</option>
