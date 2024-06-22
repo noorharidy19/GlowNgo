@@ -1,19 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const loginController = require('../controllers/login'); // Assuming your login controller is in the controllers directory
+const loginController = require('../controllers/login'); 
+const Cart = require('../models/cart');
+const Wishlist = require('../models/wishlist');
+const isAuthenticated = require('../mildware/auth'); 
 
-// Middleware to check if user is authenticated
-function isAuthenticated(req, res, next) {
-    if (req.session.user) {
-        return next();
-    } else {
-        res.redirect('/login'); // Redirect to login if user is not authenticated
+// Route to render home page, requiring authentication
+router.get('/Home', isAuthenticated, async (req, res) => {
+    try {
+        const userId = req.session.user._id;
+        
+        // Fetch the cart and wishlist concurrently
+        const [cart, wishlist] = await Promise.all([
+            Cart.findOne({ user: userId }).populate('items.product'),
+            Wishlist.findOne({ user: userId }).populate('items.product')
+        ]);
+
+        const cartData = cart ? cart : { items: [] };
+        const wishlistData = wishlist ? wishlist : { items: [] };
+
+        res.render('Home', { cart: cartData, wishlist: wishlistData }); // Pass 'cart' and 'wishlist' data to 'Home.ejs'
+    } catch (error) {
+        console.error('Error fetching cart or wishlist:', error);
+        res.status(500).send('Error fetching cart or wishlist');
     }
-}
-
-// Define routes
-router.get('/Home', isAuthenticated, (req, res) => {
-    res.render('Home', { user: req.session.user, errorMessage: '' });
 });
 
 router.get('/Products', isAuthenticated, (req, res) => {
@@ -30,4 +40,4 @@ router.post('/login', loginController.loginProcess);
 // Forgot password route
 router.post('/forgot-password', loginController.forgotPassword);
 
-module.exports = router;
+module.exports = router;

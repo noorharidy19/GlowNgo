@@ -11,6 +11,7 @@ const session = require('express-session');
 const loginroutes = require('./routes/login');
 const signupRoute = require('./routes/signuproute');
 const profileRoutes = require('./routes/profile');
+const shoproute = require('./routes/ShopRoute');
 // const validator = require('express-validator');
 // const {check,validationResult} = require('express-validator');
 require("dotenv").config();
@@ -22,9 +23,9 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use('/api/users',profileRoutes);
 app.use(express.json());
-app.get('/',(req,res)=>{
-    res.render('contact',{errors: ''});
-});
+// app.get('/',(req,res)=>{
+//     res.render('contact',{errors: ''});
+// });
 
 // Serve static files from the "public" directory, and tell clients to cache the files for 7 days
 app.use(express.static("public", { maxAge: "7d" }));
@@ -35,6 +36,7 @@ app.use(adminUroute);
 app.set('view engine', 'ejs');
 app.use(loginroutes);
 app.use(signupRoute);
+app.use(shoproute);
 
 // Define a router and a route handler
 const router = express.Router();

@@ -49,22 +49,34 @@ const Addproducts = (req, res) => {
         }
     });
 };
-const getProducts = (req, res) => {
-    Products.find()
+
+const getProducts = (pageName) => {
+    if (typeof pageName !== 'string' || pageName.trim() === '') {
+      throw new Error('pageName must be a non-empty string');
+    }
+  
+    return (req, res, next) => {
+      Products.find()
         .then(result => {
-            res.render('AdminProducts', { products: result });
-           
+          res.render(pageName, { products: result });
         })
         .catch(err => {
-            console.error(err);
-            res.status(500).send('Error retrieving products');
+          console.error('Error retrieving products:', err);
+          res.status(500).send('We are unable to retrieve the products at this moment. Please try again later.');
         });
-};
-const getProductsByCategory = (category) => {
+    };
+  };
+
+const getProductsByCategory = (category, pageName) => {
     return (req, res) => {
         Products.find({ category: category })
             .then(result => {
-                res.render('brow', { products: result });
+                // Add stock status to each product
+                result.forEach(product => {
+                    product.stockStatus = product.quantity > 0 ? 'In Stock' : 'Out of Stock';
+                });
+
+                res.render(pageName, { products: result });
             })
             .catch(err => {
                 console.error(err);
@@ -128,6 +140,7 @@ const updateProduct = (req, res) => {
           res.status(500).send('Error updating product');
       });
 };
+
 
 
 

@@ -48,42 +48,73 @@
 
     <div id="Profile" class="tabcontent">
         <h3 class="info">Profile Information</h3>
-        <form>
+        <form action="/profile/update" method="POST">
             <label for="username">User Name:</label><br>
             <input type="text" id="username" name="username" value="<%= user.username %>" readonly><br>
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" value="<%= user.email %>" readonly><br>
             <label for="phone">Phone:</label><br>
             <input type="tel" id="phone" name="phone" value="<%= user.phoneNumber %>" readonly><br>
-            
-            <% if (user.address) { %>
-                <label for="street">Street:</label><br>
-                <input type="text" id="street" name="street" value="<%= user.address.street %>" readonly><br>
-                <label for="city">City:</label><br>
-                <input type="text" id="city" name="city" value="<%= user.address.city %>" readonly><br>
-                <label for="state">State:</label><br>
-                <input type="text" id="state" name="state" value="<%= user.address.state %>" readonly><br>
-                <label for="buildingNo">Building Number:</label><br>
-                <input type="text" id="buildingNo" name="buildingNo" value="<%= user.address.buildingNo %>" readonly><br>
-            <% } else { %>
-                <p>No address information available.</p>
-            <% } %>
+            <label for="address">Address:</label><br>
+            <textarea id="address" name="address" rows="4" readonly><%= user.address ? `${user.address.street}, ${user.address.city}, ${user.address.state}, ${user.address.buildingNo}` : '' %></textarea><br>
         </form>
-    </div>  
+    </div>
 
     <div id="Settings" class="tabcontent">
         <h3>Account Settings</h3>
-        <button onclick="openChangePassword()">Change Password</button>
-        <div id="password-form" style="display: none;">
-            <label for="oldPassword">Old Password:</label><br>
-            <input type="password" id="oldPassword" name="oldPassword"><br>
-            <label for="newPassword">New Password:</label><br>
-            <input type="password" id="newPassword" name="newPassword"><br>
-            <label for="confirmPassword">Confirm New Password:</label><br>
-            <input type="password" id="confirmPassword" name="confirmPassword"><br>
-            <button onclick="changePassword()">Confirm</button>
+    
+        <!-- Change Password Button -->
+        <button onclick="toggleForm('password-form')">Change Password</button>
+        <div id="password-form" class="form-container">
+            <form action="/profile/<%= user.username %>/password" method="POST">
+                <label for="oldPassword">Old Password:</label><br>
+                <input type="password" id="oldPassword" name="oldPassword"><br>
+                <label for="newPassword">New Password:</label><br>
+                <input type="password" id="newPassword" name="newPassword"><br>
+                <label for="confirmPassword">Confirm New Password:</label><br>
+                <input type="password" id="confirmPassword" name="confirmPassword"><br>
+                <button type="submit">Confirm</button>
+            </form>
+        </div>
+    
+        <!-- Change Username Button -->
+        <button onclick="toggleForm('username-form')">Change Username</button>
+        <div id="username-form" class="form-container">
+            <form action="/profile/<%= user.username %>/username" method="POST">
+                <label for="newUsername">New Username:</label><br>
+                <input type="text" id="newUsername" name="username"><br><br>
+                <button type="submit">Confirm</button>
+            </form>
+        </div>
+    
+        <!-- Change Phone Button -->
+        <button onclick="toggleForm('phone-form')">Change Phone</button>
+        <div id="phone-form" class="form-container">
+            <form action="/profile/<%= user.username %>/phone" method="POST">
+                <label for="newPhone">New Phone:</label><br>
+                <input type="tel" id="newPhone" name="phone"><br><br>
+                <button type="submit">Confirm</button>
+            </form>
+        </div>
+    
+        <!-- Change Address Button -->
+        <button onclick="toggleForm('address-form')">Change Address</button>
+        <div id="address-form" class="form-container">
+            <form action="/profile/update" method="POST">
+                <label for="street">Street:</label><br>
+                <input type="text" id="street" name="street"><br><br>
+                <label for="city">City:</label><br>
+                <input type="text" id="city" name="city"><br><br>
+                <label for="state">State:</label><br>
+                <input type="text" id="state" name="state"><br><br>
+                <label for="buildingNo">Building No:</label><br>
+                <input type="text" id="buildingNo" name="buildingNo"><br><br>
+                <button type="submit">Confirm</button>
+            </form>
         </div>
     </div>
+    
+
 
 <!--
     <div id="Orders" class="tabcontent">

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/StyleProd.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Face</title>
+    <script src="js/Prod.js"></script>
+</head>
+<%- include('partials/nav') %>
+<section class="face">
+    <select class="sortt" id="sortSelect" onchange="x(this.value,'brandOptions', 'products')">
+        <option>Select</option>
+        <option>A-Z</option>
+        <option>Z-A</option>
+        <option>BY BRAND</option>
+        <option>By price(LOWER->HIGHER)</option>
+        <option>By price(HIGHER->LOWER)</option>
+    </select>
+    <select id="brandOptions" style="display: none;">
+        <option>Select</option>
+        <option value="kiko">Kiko</option>
+        <option value="rarebeauty">Rare Beauty</option>
+        <option value="Fenty">Fenty Beauty</option>
+        <option value="Charlotte">Charlotte Tilbury</option>
+        <option value="Dior">Dior</option>
+      </select>
+      <div class="products">
+        <% if (products.length > 0) { %>
+            <% products.forEach(product => { %>
+                <div class="AllProducts">
+                    <div class="container">
+                        <img src="../images/<%= product.Image %>" alt="Makeup img" width="318" height="300" class="imggel">
+                        <h2 class="eye"><%= product.name %></h2>
+                        <h3 class="eye"><%= product.price %> $</h3>
+                        <h4 class="<%= product.stockStatus === 'In Stock' ? 'in-stock' : 'out-of-stock' %>">
+                            <%= product.stockStatus %>
+                        </h4>
+                        <div class="middle">
+                            <div class="text" onclick=""><i class="fa-solid fa-cart-shopping" title="Add To Cart"></i></div>
+                            <div id="overlay" style="display: none;"></div>
+                            <div class="text" onclick="showPopup('<%= product.name %>')">
+                                <i class="fa-sharp fa-solid fa-eye" title="View more"></i>
+                            </div>
+                            <div class="text" onclick=""><i class="fa-solid fa-heart" title="Add To Whishlist"></i></div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <div class="no-products">
+                <p style="font-size: 250%;">No products are available.</p>
+            </div>
+        <% } %>
+    </div>
+    
+    <% if (products.length > 0) { %>
+        <% products.forEach(product => { %>
+            <div class="Products-window" id="<%= product.name %>">
+                <h2 class="p1"><%= product.name %> <span class="price"><%= product.price %> $</span></h2>
+               
+                <div class="popup">
+                    <span class="close-btn" onclick="hidePopup('<%= product.name %>')">&times;</span>
+                    
+                    <div class="image-container">
+                        <img src="../images/<%= product.Image %>" alt="Makeup img" width="320" height="300" class="hide1" id="shadee">
+                        
+                        <div class="circle-container">
+                            <img class="circle-image" src="../images/<%= product.Image %>" alt="Description of image" onclick="showShade('shadee', 'hidee')">
+                        </div>
+                    </div>
+                   
+                    <div>
+                        <h1 class="btn1" id="b1" onclick="des()">Description</h1>
+                        <h1 class="btn2" id="b2" onclick="use()">How to use</h1>
+                    </div>
+            
+                    <div class="rev">
+                        <h1 class="o">
+                            ADD TO <i class="fa-solid fa-cart-shopping" title="cart" style="color:rgb(222, 128, 128)"></i>
+                            <i class="fa-regular fa-heart" title="wishlist" style="color:rgb(222, 128, 128)"></i>
+                        </h1>
+                    </div> 
+                </div>
+            </div>
+        <% }); %>
+    <% } %>
+    
+    
+    
+    <style>
+        .in-stock {
+        color: green;
+        text-align: center;
+    }
+    
+    .out-of-stock {
+        color: red;
+        text-align: center;
+    }
+    </style>
