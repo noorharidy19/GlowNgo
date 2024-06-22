@@ -6,22 +6,23 @@ const adminRouter = require('./routes/adminroute');
 const adminPRouter = require('./routes/adminProute');
 const navRouter = require('./routes/navRoute');
 const adminUroute = require('./routes/adminUroute');
-var methodOverride = require('method-override');
 const session = require('express-session');
 const loginroutes = require('./routes/login');
 const signupRoute = require('./routes/signuproute');
 const profileRoutes = require('./routes/profile');
 const shoproute = require('./routes/ShopRoute');
+var methodOverride = require('method-override');
+
 // const validator = require('express-validator');
 // const {check,validationResult} = require('express-validator');
 require("dotenv").config();
-
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(express.json());
+app.use(express.static('public'));
 // app.get('/',(req,res)=>{
 //     res.render('contact',{errors: ''});
 // });
@@ -43,6 +44,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
     res.send('Hello, world!');
 });
+
 
 // Use the router
 app.use(router);
