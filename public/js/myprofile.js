@@ -38,15 +38,16 @@ function openTab(evt, tabName) {
 
 
 function toggleForm(formId) {
-    const form = document.getElementById(formId);
-    if (form) {
-        if (form.style.display === 'none' || form.style.display === '') {
-            form.style.display = 'block';
-        } else {
-            form.style.display = 'none';
-        }
+    var formContainer = document.getElementById(formId);
+    if (formContainer.style.display === 'none') {
+        formContainer.style.display = 'block';
+    } else {
+        formContainer.style.display = 'none';
     }
 }
+
+
+
 
 
 
