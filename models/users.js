@@ -13,9 +13,11 @@ const userSchema = new Schema({
         required: true 
        },
 
-
+    password: { type: String,
+        required: true 
+    },
     phoneNumber: {
-        type: String,
+        type: Number,
         required: true
     },
 
@@ -37,9 +39,7 @@ const userSchema = new Schema({
 
 });
 
-userSchema.methods.comparePassword = async function(candidatePassword) {
-    return await bcrypt.compare(candidatePassword, this.password);
-};
+// 
 
 const User = mongoose.model('User', userSchema);
 
