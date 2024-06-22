@@ -62,9 +62,9 @@
 
     <div id="Settings" class="tabcontent">
         <h3>Account Settings</h3>
-    
+
         <!-- Change Password Button -->
-        <button onclick="toggleForm('password-form')">Change Password</button>
+        <button data-target="password-form">Change Password</button>
         <div id="password-form" class="form-container">
             <form action="/profile/<%= user.username %>/password" method="POST">
                 <label for="oldPassword">Old Password:</label><br>
@@ -76,9 +76,11 @@
                 <button type="submit">Confirm</button>
             </form>
         </div>
-    
+
+        <br><br>
+
         <!-- Change Username Button -->
-        <button onclick="toggleForm('username-form')">Change Username</button>
+        <button data-target="username-form">Change Username</button>
         <div id="username-form" class="form-container">
             <form action="/profile/<%= user.username %>/username" method="POST">
                 <label for="newUsername">New Username:</label><br>
@@ -86,9 +88,11 @@
                 <button type="submit">Confirm</button>
             </form>
         </div>
-    
+
+        <br><br>
+
         <!-- Change Phone Button -->
-        <button onclick="toggleForm('phone-form')">Change Phone</button>
+        <button data-target="phone-form">Change Phone</button>
         <div id="phone-form" class="form-container">
             <form action="/profile/<%= user.username %>/phone" method="POST">
                 <label for="newPhone">New Phone:</label><br>
@@ -96,9 +100,11 @@
                 <button type="submit">Confirm</button>
             </form>
         </div>
-    
+
+        <br><br>
+
         <!-- Change Address Button -->
-        <button onclick="toggleForm('address-form')">Change Address</button>
+        <button data-target="address-form">Change Address</button>
         <div id="address-form" class="form-container">
             <form action="/profile/update" method="POST">
                 <label for="street">Street:</label><br>
@@ -112,9 +118,8 @@
                 <button type="submit">Confirm</button>
             </form>
         </div>
-    </div>
+    </div> 
     
-
 
 <!--
     <div id="Orders" class="tabcontent">

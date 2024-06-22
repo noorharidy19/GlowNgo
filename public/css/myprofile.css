@@ -138,6 +138,10 @@ body {
   display: none;
 }
 
+.form-container.active {
+  display: block;
+}
+
 .tabcontent h3 {
     color: #B76E79;
 }
