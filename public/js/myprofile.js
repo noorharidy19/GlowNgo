@@ -36,14 +36,19 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
-function openChangePassword() {
-    var passwordForm = document.getElementById("password-form");
-    if (passwordForm.style.display === "none") {
-        passwordForm.style.display = "block";
-    } else {
-        passwordForm.style.display = "none";
+
+function toggleForm(formId) {
+    const form = document.getElementById(formId);
+    if (form) {
+        if (form.style.display === 'none' || form.style.display === '') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
     }
 }
+
+
 
 function changePassword() {
     var oldPassword = document.getElementById("oldPassword").value;

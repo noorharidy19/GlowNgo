@@ -6,7 +6,7 @@ exports.updateUsername = async (req, res) => {
     const { username } = req.body;
 
     try {
-        let user = await User.findOne({ email: req.params.email });
+        let user = await User.findOne({ username: req.params.username });
 
         if (!user) {
             return res.status(404).json({ msg: 'User not found' });
@@ -32,7 +32,7 @@ exports.updateUsername = async (req, res) => {
 exports.updateAddress = async (req, res) => {
     const { street, city, state, buildingNo } = req.body;
     try {
-        let user = await User.findOne({ email: req.params.email });
+        let user = await User.findOne({ username: req.params.username });
 
         if (!user) {
             return res.status(404).json({ msg: 'User not found' });
@@ -64,7 +64,7 @@ exports.changePassword = async (req, res) => {
     }
 
     try {
-        let user = await User.findOne({ email: req.params.email });
+        let user = await User.findOne({ username: req.params.username });
 
         if (!user) {
             return res.status(404).json({ msg: 'User not found' });
@@ -92,7 +92,7 @@ exports.updatePhone = async (req, res) => {
     const { phone } = req.body;
 
     try {
-        let user = await User.findOne({ email: req.params.email });
+        let user = await User.findOne({ username: req.params.username });
 
         if (!user) {
             return res.status(404).json({ msg: 'User not found' });
