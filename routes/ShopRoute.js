@@ -12,6 +12,8 @@ const router = express.Router();
 router.get('/brow', getProductsByCategory('Brows','brow'));
 router.get('/tools', getProductsByCategory('Tools','tools'));
 router.get('/Eyes', getProductsByCategory('Eyes','Eyes'));
-router.get('/lip', getProductsByCategory('lips','Eyes'));
+router.get('/lip', getProductsByCategory('Lips','lip'));
+router.get('/face', getProductsByCategory('Face','face'));
+router.get('/allproducts', prod.getProducts('allproducts'));
 
 module.exports = router;

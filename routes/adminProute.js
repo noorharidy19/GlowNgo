@@ -47,7 +47,7 @@ router.get('/AdminProducts', async (req, res) => {
 
 
 
-router.get('/AdminProducts', prod.getProducts);
+router.get('/AdminProducts', prod.getProducts('AdminProducts'));
 router.put('/edit/:id', prod.updateProduct);
 router.delete('/delete/:id',prod.deleteProducts);
 router.post('/addProduct', prod.Addproducts);
