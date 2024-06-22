@@ -1,19 +1,23 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
+
 const userSchema = new Schema({
     username: { type: String, 
                 unique: true, 
                 required: true 
     },
-    password: { type: String, required: true },
-
     email: { type: String,
-             unique: true, 
-             required: true 
-            },
+        unique: true, 
+        required: true 
+       },
 
-    phone: { type: String },
+
+    phoneNumber: {
+        type: String,
+        required: true
+    },
 
     address: {
         street: { type: String },
@@ -29,7 +33,8 @@ const userSchema = new Schema({
     type: {
         type: String,
         default: "customer"
-    },
+    }
+
 });
 
 userSchema.methods.comparePassword = async function(candidatePassword) {
@@ -39,4 +44,3 @@ userSchema.methods.comparePassword = async function(candidatePassword) {
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
-

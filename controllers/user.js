@@ -14,7 +14,7 @@ const getUsers = (req, res) => {
 
 const deleteUsers = (req,res)=>{
   User.findByIdAndDelete(req.params.id).then(()=>{
-      res.redirect("/user");
+      res.redirect("/users");
   }).catch((err)=>{
       console.log(err);
   });
@@ -40,7 +40,7 @@ const updateUser = (req, res) => {
                 return res.status(404).send('User not found');
             } else {
                 console.log("User updated successfully:", updatedUser);
-                res.redirect("/user");
+                res.redirect("/users");
             }
         })
         .catch((err) => {

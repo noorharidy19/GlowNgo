@@ -135,10 +135,10 @@
         <h2 style="color:rgb(211, 170, 170)" class="adduser">Edit User</h2>
         
         <% users.forEach(user => { %>
-            <form action="/editt/<%= user._id %>?_method=PUT" method="post" onsubmit="return UserValidationEdit();">
+            <form action="/editt/<%= user._id %>?_method=PUT" method="post">
                 <div class="formprod">
                     <label class="label-field2">Username:</label>
-                    <input type="text" name="name" placeholder="<%= user.username %>" class="input-field2" id="name">
+                    <input type="text" name="username" placeholder="<%= user.username %>" class="input-field2" id="username">
                     <div class="error" id="nameError"></div>
                 </div>
                 <div class="formprod">

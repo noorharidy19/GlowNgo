@@ -257,38 +257,6 @@ function validationForm() {
 //     // If 'No' is selected, just proceed with the form submission
 //     return true;
 // }
-function validationFormEdit() {
-    var name4 = document.getElementById('PRODname').value;
-    var price4 = document.getElementById('PRODprice').value;
-    var quantity4 = document.getElementById('PRODquan').value;
-    
-    var Validation = true; 
-    if(name4 == !/^[a-zA-Z\s]+$/.test(name4)){
-        document.getElementById('NAMEerror').innerHTML = "Please enter a valid product name";
-        Validation= false;
-    } else {
-        document.getElementById('NAMEerror').innerHTML = "";
-    }
-
-    //Price Validation
-    if( price4 < 0|| isNaN(price4)){
-        document.getElementById('PRICEerror').innerHTML = "Please enter a valid product price";
-        Validation = false;
-    } else {
-        document.getElementById('PRICEerror').innerHTML = "";
-    }
-
-    //Quantity Validation
-    if( quantity4 < 0|| isNaN(quantity4)){
-        document.getElementById('QUANTITYerror').innerHTML = "Please enter a valid product quantity";
-        Validation = false;
-    } else {
-        document.getElementById('QUANTITYerror').innerHTML = "";
-    }
-
-return Validation;
-
-}
 
 function UserValidation(){
     var fname = document.getElementById('Fname').value;
@@ -367,57 +335,6 @@ function UserValidation(){
     
 
     return Validation;
-}
-function UserValidationEdit(){
-    var username = document.getElementById('name').value;
-    var email1 = document.getElementById('email1').value;
-    var password1 = document.getElementById('password1').value;
-    var address1 = document.getElementById('address1').value;
-    var phoneNumber = document.getElementById('phoneNumber').value;
-    
-    var Validation = true;
-
-    if(username == "" || !/^[a-zA-Z0-9]+$/.test(username)){
-        document.getElementById('nameError').innerHTML = "Please enter a valid username";
-        Validation = false;
-    } else {
-        document.getElementById('nameError').innerHTML = "";
-    }
-    //Email Validation
-    if(email1 == "" || !/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email1)){
-        document.getElementById('emailError1').innerHTML = "Please enter a valid email";
-        Validation = false;
-    } else {
-        document.getElementById('emailError1').innerHTML = "";
-    }
-
-    //Password Validation
-    if(password1 == "" || password1.length < 8 ||isNaN(password1)){
-        document.getElementById('passwordError1').innerHTML = "Please enter a valid password (min 8 characters)";
-        Validation = false;
-    } else {
-        document.getElementById('passwordError1').innerHTML = "";
-    }
-
-    //Address Validation
-    if(address1 == ""){
-        document.getElementById('addressError1').innerHTML = "Please enter a valid address";
-        Validation = false;
-    } else {
-        document.getElementById('addressError1').innerHTML = "";
-    }
-
-    //Phone Validation
-    if(phoneNumber == "" || phoneNumber.length < 11 ||phoneNumber.length > 11 || isNaN(phoneNumber)){
-        document.getElementById('phoneNumberError').innerHTML = "Please enter a valid phone number";
-        Validation = false;
-    } else {
-        document.getElementById('phoneNumberError').innerHTML = "";
-    }
-
-    
-
- return Validation;
 }
 function UservalidationRemove() {
     var Yes = document.getElementById('Yes1');

@@ -90,7 +90,7 @@ function showProd1() {
 $(document).ready(function(){
     $('.dropdown-menu').hover(function(){
         $(this).find('.dropdown-contents').css('display', 'block');
-    }, function(){
+    }, function(){11111111
         $(this).find('.dropdown-contents').css('display', 'none');
     });
 });

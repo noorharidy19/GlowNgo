@@ -202,7 +202,7 @@
             <span class="close" onclick="closeModal(['Edit-container'])">&times;</span>
             <h2 style="color:rgb(211, 170, 170)" class="adduser">Edit Product</h2>
             <!-- <% products.forEach(product => { %> -->
-            <form action="/edit/<%= product._id %>?_method=PUT" method="post" onsubmit="return validationFormEdit()">
+            <form action="/edit/<%= product._id %>?_method=PUT" method="post" onsub="return validationFormEdit()">
                 <div class="formprod">
                     <label class="label-field2">Product Name:</label>
                     <input id="PRODname" type="text" name="name" placeholder="<%= product.name %>" class="input-field2">
