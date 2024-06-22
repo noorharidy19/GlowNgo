@@ -35,7 +35,7 @@ router.get('/users', async (req, res) => {
 });
 
 
-router.get('/user', user.getUsers);
+router.get('/users', user.getUsers);
 router.delete('/deletee/:id',user.deleteUsers);
 router.put('/editt/:id', user.updateUser);
 

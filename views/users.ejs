@@ -9,6 +9,11 @@
     <!-- <link rel="stylesheet" href="StyleProd.css"> -->
     <title></title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        .error {
+    color: red;
+}
+    </style>
 </head>
 <body class="bodyy">
 <%- include('partials/navAdmin') %>
@@ -87,18 +92,18 @@
             </div>
             <div class="form-group">
                 <label class="label-field">Password:</label>
-                <input type="text" name="pass" placeholder="Enter Password" class="input-field" id="password">
-                <div class="error" id="passwordError"></div>
+                <input type="text" name="pass" placeholder="Enter Password" class="input-field" id="password1">
+                <div class="error" id="passwordError1"></div>
             </div>
             <div class="form-group">
                 <label class="label-field">Email:</label>
-            <input type="text" name="email" placeholder="Enter Email" class="input-field" id="email">
-            <div class="error" id="emailError"></div>
+            <input type="text" name="email1" placeholder="Enter Email" class="input-field" id="email1">
+            <div class="error" id="emailError1"></div>
             </div>
             <div class="form-group">
                 <label class="label-field">Address:</label>
-                <input type="text" name="address" placeholder="Enter Address" class="input-field" id="address">
-                <div class="error" id="addressError"></div>
+                <input type="text" name="address" placeholder="Enter Address" class="input-field" id="address1">
+                <div class="error" id="addressError1"></div>
             </div>
             <div class="form-group">
                 <label class="label-field">Phone Number:</label>
@@ -133,7 +138,7 @@
             <form action="/editt/<%= user._id %>?_method=PUT" method="post" onsubmit="return UserValidationEdit();">
                 <div class="formprod">
                     <label class="label-field2">Username:</label>
-                    <input type="text" name="username" placeholder="<%= user.username %>" class="input-field2" id="name">
+                    <input type="text" name="name" placeholder="<%= user.username %>" class="input-field2" id="name">
                     <div class="error" id="nameError"></div>
                 </div>
                 <div class="formprod">
