@@ -309,6 +309,7 @@ function showPopupSignin(id) {
 function hidePopupsignin(id) {
     document.getElementById(id).style.display = 'none';
 }
+
 // function showPopupp(containerIds) {
 //     containerIds.forEach(function(id) {
 //         document.getElementById(id).style.display = "block";

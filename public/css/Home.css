@@ -373,7 +373,7 @@ button:hover {
     font-family: Helvetica, sans-serif; 
     font-weight: bold;
 }
-.forget {
+.forget,.returnlogin {
    
     right: 20px; 
     top: 47%; 
