@@ -14,6 +14,7 @@ const checkoutRoutes = require('./routes/checkout');
     const profileRoutes = require('./routes/profile');
     const shoproute = require('./routes/ShopRoute');
     const auth = require('./routes/authRoutes');
+    const nav = require('./routes/navRoute');
     const cartRoutes = require('./routes/cartRoutes');
     const wishlistRoute = require('./routes/wishlistRoute');
     const app = express();
@@ -22,6 +23,7 @@ const checkoutRoutes = require('./routes/checkout');
     app.use(methodOverride('_method'));
     app.use(express.json());
     app.use(express.static("public", { maxAge: "7d" }));
+    const { getCurrencyData } = require('./controllers/CurrApi');
     
     // Session middleware
     app.use(session({
@@ -40,6 +42,7 @@ const checkoutRoutes = require('./routes/checkout');
     
     
     // app.use(loginroutes);
+   
     app.use(auth);
     app.use(adminRouter);
     app.use(adminPRouter);
@@ -48,6 +51,7 @@ const checkoutRoutes = require('./routes/checkout');
     app.use('/checkout', checkoutRoutes);
     app.use('/api/cart', cartRoutes);
     app.use('/api/cart', wishlistRoute);
+    
     // Debug route
     app.get('/debug', (req, res) => {
         res.send(`User: ${req.session.user ? req.session.user.username : 'Not logged in'}`);

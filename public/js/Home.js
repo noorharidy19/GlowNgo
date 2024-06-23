@@ -288,6 +288,7 @@ async function sendResetPasswordEmail() {
 
     return false; // Prevent form submission
 }
+
 function showConfirmationPopup(email) {
     var popupContainer = document.getElementById("popupContainerForget");
     var popupMessage = document.getElementById("popupMessage");
@@ -297,7 +298,18 @@ function showConfirmationPopup(email) {
     popupMessage.innerHTML += `<br>Email validation successful!`;
     // Display a confirmation dialog box
     confirm("Email validation successful! Press OK to continue.");
-  }
+}
+
+// Ensure the function is called when the page loads, with the email from query param
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const showConfirmationPopupParam = urlParams.get('showConfirmationPopup');
+    const email = urlParams.get('email');
+
+    if (showConfirmationPopupParam === 'true' && email) {
+        showConfirmationPopup(email);
+    }
+};
 function isValidEmail(email) {
     
     return /\S+@\S+\.\S+/.test(email);

@@ -3,6 +3,7 @@ const loginController = require("../controllers/login");
 const signupController = require("../controllers/signup");
 const Product = require('../models/products');
 const { getProductsByCategory, getProducts } = require("../controllers/prod");
+const  { getUsers } = require("../controllers/user");
 const app = express.Router();
 
 // Middleware to check if the user is logged in
@@ -17,10 +18,14 @@ function ensureAuthenticated(req, res, next) {
 
 // Public routes
 app.get("/login", (req, res) => {
+  const showConfirmationPopup = req.query.showConfirmationPopup === 'true' || ' ';
+  const email = req.query.email;
   res.render("Home", { // Changed from 'Home' to 'login' to match the provided structure
     user: req.session.user || "",
-    message: req.query.loginRequired ? "You must log in to view this page." : "" // Display a message if login is required
-  });
+    message: req.query.loginRequired ? "You must log in to view this page." : "" // Display a message if login is require
+   ,showConfirmationPopup, 
+    email});
+  
 });
 
 app.get("/signup", (req, res) => {
@@ -41,21 +46,18 @@ app.get('/orders', ensureAuthenticated, (req, res) => {
 });
 // Protected routes - require login
 app.get('/Home', (req, res) => {
-  Product.find()
-    .then(products => {
-      res.render('Home', { user: req.session.user || "", products: products });
-    })
-    .catch(err => {
-      console.error('Error retrieving products:', err);
-      res.status(500).send('We are unable to retrieve the products at this moment. Please try again later.');
-    });
+  const showConfirmationPopup = req.query.showConfirmationPopup === 'true' || ' ';
+  const email = req.query.email;
+  res.render('Home', { user: req.session.user || "" ,showConfirmationPopup,email});
 });
+
+// Protected routes - require login
 
 app.get('/About', (req, res) => {
   res.render('About', { user: req.session.user || "" });
 });
 
-app.get('/profile', ensureAuthenticated, (req, res) => {
+app.get('/myprofile', ensureAuthenticated, (req, res) => {
   res.render('myprofile', { user: req.session.user });
 });
 
@@ -92,7 +94,7 @@ app.get("/logout", (req, res) => {
       return res.status(500).send("Error logging out");
     }
     res.clearCookie("connect.sid");
-    res.redirect("/login"); // Redirect to '/login' instead of '/Home'
+    res.redirect("/Home"); // Redirect to '/login' instead of '/Home'
   });
 });
 

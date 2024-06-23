@@ -420,7 +420,7 @@
             <h2>Reset Password</h2>
             <form id="forgotPasswordForm" method="post" action="/forgot-password">
                 <input type="text" id="resetUsername" name="username" placeholder="Enter your username" required>
-                <button type="submit" onclick="sendResetPasswordEmail()">Send Email</button>
+                <button type="submit" onclick="showConfirmationlogin()">Send Email</button>
                 <div class="returnlogin">
                    <a href="#" onclick="hidePopupsignin('popupContainerForget'); showPopupSignin('popupContainerSignIn')">Return to Login</a>
                 </div>
@@ -429,13 +429,15 @@
             </form>
         </div>
     </div>
-    <div class="popup-container" id="popupContainerForget" style="display: none;">
+    <% if (showConfirmationPopup!==' '){ %>
+    <div class="popup-container" id="popupContainerForget" style="display: block;">
         <div class="popup">
             <span class="close-btn" onclick="hidePopupsignin('popupContainerForget')">&times;</span>
             <h2>Email Confirmation</h2>
-            <div id="popupMessage"></div>
+            <div id="popupMessage"> an email is sent to <%=email %> for the reset password link </div>
         </div>
     </div>
+   <%}%>
     <!-- --------------------------------CART------------------------------------ -->
   
 <div class="CART" id="CART">
