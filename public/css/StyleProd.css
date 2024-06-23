@@ -1,42 +1,3 @@
-/* header{
-
-    position: fixed;
-    width: 95%;
-    display: flex;
-    padding: 10px 30px;
-    z-index: 999;
-    align-items: center;
-    justify-content:space-between;
-    border-bottom: 2px solid rgb(210, 167, 167);
-    background-color: white;
-  }
-  .logo{
-      color: rgb(187, 157, 157);
-      text-decoration: none;
-      font-size: 1.5em;
-      font-weight: 700;
-      margin-top: 5px;
-  }
-  
-  .logo img{
-    width: 180px;
-    height: 80px;
-  }
-  
-  .navigation a{
-      color: rgb(208, 177, 177);
-      text-decoration: none;
-      font-size: 1.3em;
-      padding-left: 40px;
-      padding-right: 30;
-      font-weight: 700;
-    
-  
-  }
-  .navigation a:hover{
-      color: rgba(146, 77, 89, 0.964);
-  } */
-  
   .switch {
     position: relative;
     display: inline-block;
@@ -154,17 +115,7 @@
     text-align: center;
     color: rgb(245, 242, 237); 
   }
-  /* .face-cards{
-    box-shadow: 0 5px 25px rgba(1 1 1/15%);
-    border-radius: 20px;
-    background-color: rgb(255, 202, 202);
-    margin: 15px;
-    height: 25em;
-    transition: transform 0.3s ease;
-  } */
-  /* .face-cards:hover {
-    transform: scale(1.05);
-  } */
+
   .image{
     display: block;
     border-radius: 20px;
@@ -174,10 +125,6 @@
     text-align: center;
     color:rgb(208, 177, 177);
   }
-  /* .Concelar{
-    text-align: center;
-    color: rgb(245, 242, 237); 
-  } */
   .products{
     display: flex;
     flex-direction: row;
@@ -185,41 +132,6 @@
    justify-content: center;
    margin-top: 70px;
   }
-  /* .Setting spray{
-    text-align: center;
-    color: rgb(245, 242, 237); 
-  }
-  .Powder{
-    text-align: center;
-    color: rgb(245, 242, 237); 
-  }
-  .Highlighter{
-    text-align: center;
-    color: rgb(245, 242, 237); 
-  }
-  .Contouer{
-    text-align: center;
-    color: rgb(245, 242, 237); 
-  }
-  .Bronzer{
-    text-align: center;
-    color: rgb(245, 242, 237); 
-  }
-  .Blusher{
-    text-align: center;
-    color: rgb(245, 242, 237); 
-  } */
-  /* .Eyes-cards{
-    box-shadow: 0 5px 25px rgba(1 1 1/15%);
-    border-radius: 20px;
-    background-color: rgb(255, 202, 202);
-    margin: 15px;
-    height: 25em;
-    transition: transform 0.3s ease;
-  } */
-  /* .Eyes-cards:hover {
-    transform: scale(1.05);
-  } */
   .Mascara{
     text-align: center;
     color: rgb(208, 177, 177); 
@@ -252,23 +164,10 @@
    margin-top: 70px;
    
   }
-  /* .lip{
-    box-shadow: 0 5px 25px rgba(1 1 1/15%);
-    border-radius: 20px;
-    background-color:rgb(245, 243, 243);
-    margin: 5px;
-    height: 25em;
-    
-    transition: transform 0.3s ease;
-  } */
-  /* .lip:hover {
-    transform: scale(1.05);
-  } */
+
   .lipprod{
     text-align: center;
     color:rgb(208, 177, 177);
-    /* -webkit-text-stroke: 1px rgb(180, 52, 76); */
-    
   }
   img{
     
@@ -286,14 +185,6 @@
    margin-top: 70px;
   
   }
-  /* .eyebrow{
-    box-shadow: 0 5px 25px rgba(1 1 1/15%);
-    border-radius: 20px;
-    background-color: whitesmoke;
-    margin: 15px;
-    height: 25em;
-    transition: transform 0.3s ease;
-  } */
   .AllProducts:hover {
     transform: scale(1.05);
   }
@@ -326,17 +217,6 @@
     
     transition: transform 0.3s ease;
   }
-  /* .Tools-cards{
-  box-shadow: 0 5px 25px rgba(1 1 1/15%);
-  border-radius: 20px;
-  background-color: rgb(255, 202, 202);
-  margin: 15px;
-  height: 25em;
-  transition: transform 0.3s ease;
-  } */
-  /* .Tools-cards:hover {
-  transform: scale(1.05);
-  } */
   .FaceBrush{
   text-align: center;
   color: rgb(208, 177, 177);
@@ -382,27 +262,21 @@
     margin-top: 50px;
     padding: 30px;
   }
-  
   .container {
     position: relative;
     
   }
-  
   .imggel {   
-  
     opacity: 1;
     display: block;
-    /* height: auto;  */
     transition: .5s ease;
     backface-visibility: hidden;
    border: solid rgba(238, 193, 193, 0.749);
    margin: 10px;
   }
-  
   .container:hover .imggel {
     opacity: 0.3;
   }
-  
   .middle {
     transition: .5s ease;
     opacity: 0;
@@ -418,8 +292,7 @@
     opacity: 1;
   }
   
-  .text {
-    
+  .text {  
     color: pink;
     font-size: 50px;
     padding: 16px 32px;
@@ -427,9 +300,7 @@
   i:hover{
     color:black;
   }
-  
-  
-  
+
   .Products-window {
    
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
