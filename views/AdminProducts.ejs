@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/nav.css">
     <!-- <link rel="stylesheet" href="StyleProd.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
     <title>Products</title>
     <script src="js/admin.js"></script>
     <style>
@@ -140,7 +142,7 @@
         <div class="add-content">
             <span class="close" onclick="closeModal(['Add-container'])">&times;</span>
             <h2 style="color:rgb(211, 170, 170)" class="adduser">Add Product </h2>
-            <form action="/addProduct" method="post" onsubmit="return validationForm();" id="n1"  enctype="multipart/form-data">
+            <form action="/addProduct" method="post" onsubmit="return validationForm();" id="formid"  enctype="multipart/form-data">
     <div class="formprod">
         <label class="label-field2" for="image">Product Image:</label>
         <input type="file" name="productImage" class="input-field2" id="productImage">
@@ -222,7 +224,8 @@
             <span class="close" onclick="closeModal(['Edit-container'])">&times;</span>
             <h2 style="color:rgb(211, 170, 170)" class="adduser">Edit Product</h2>
             <!-- <% products.forEach(product => { %> -->
-            <form action="/edit/<%= product._id %>?_method=PUT" method="post" onsub="return validationFormEdit()">
+            <form action="/edit/<%= product._id %>?_method=PUT" method="post" id="formid1">
+                <input type="hidden" id="productId" name="productId" value="your_product_id">
                 <div class="formprod">
                     <label class="label-field2">Product Name:</label>
                     <input id="PRODname" type="text" name="name" placeholder="<%= product.name %>" class="input-field2">
@@ -255,8 +258,91 @@
             <!-- <% }) %> -->
         </div>
     </div>
-    
-    
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <script>
+            document.getElementById('formid').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                const formData = new FormData(this);
+
+    fetch('/addproduct', {
+        method: 'POST',
+        body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    Toastify({
+                        text: data.text,
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", // `top` or `bottom`
+                        position: "center", // `left`, `center` or `right`
+                        backgroundColor: data.text === 'Product added or updated successfully' ? "linear-gradient(to right, #00b09b, #96c93d)" : "linear-gradient(to right, #ff5f6d, #ffc371)",
+                        onClose: function() {
+                            if (data.text === 'Product added or updated successfully') {
+                                window.location.href = '/adminproducts'; // Redirect to adminproducts page
+                            }
+                        }
+                    }).showToast();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Toastify({
+                        text: "Please enter a valid input for each field",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", // `top` or `bottom`
+                        position: "center", // `left`, `center` or `right`
+                        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                    }).showToast();
+                });
+            });
+            // -----------------------------------------------------------------------------------
+            document.getElementById('formid1').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData(this);
+
+    fetch(`/edit/${document.getElementById('productId').value}`, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        Toastify({
+            text: data.text,
+            duration: 3000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+            onClose: function() {
+                if (data.text === 'Product updated successfully') {
+                    window.location.href = '/AdminProducts'; // Redirect to adminproducts page
+                }
+            }
+        }).showToast();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Toastify({
+            text: error.message || "Error updating product",
+            duration: 3000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        }).showToast();
+    });
+});
+
+        </script>
+
 
 </body>
 </html>

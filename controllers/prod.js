@@ -40,11 +40,11 @@ const Addproducts = (req, res) => {
                 })
                 .then((result) => {
                     console.log('Product added or updated:', result);
-                    res.status(201).send('Product added or updated successfully');
+                  res.status(201).json({ text: 'Product added or updated successfully' });
                 })
                 .catch((err) => {
                     console.error('Error saving product:', err);
-                    res.status(500).send('Error adding or updating product');
+                    res.status(500).send({ text:'Error adding or updating product'});
                 });
         }
     });
@@ -58,11 +58,7 @@ const getProducts = (pageName) => {
     return (req, res, next) => {
       Products.find()
         .then(result => {
-            result.forEach(product => {
-                product.stockStatus = product.quantity > 0 ? 'In Stock' : 'Out of Stock';
-            });
-
-          res.render(pageName, { products: result, user: req.session.user || "" });
+          res.render(pageName, { products: result });
         })
         .catch(err => {
           console.error('Error retrieving products:', err);
@@ -71,15 +67,16 @@ const getProducts = (pageName) => {
     };
   };
 
-  const getProductsByCategory = (category, pageName) => {
+const getProductsByCategory = (category, pageName) => {
     return (req, res) => {
         Products.find({ category: category })
             .then(result => {
+                // Add stock status to each product
                 result.forEach(product => {
                     product.stockStatus = product.quantity > 0 ? 'In Stock' : 'Out of Stock';
                 });
 
-                res.render(pageName, { products: result, user: req.session.user || "" });
+                res.render(pageName, { products: result });
             })
             .catch(err => {
                 console.error(err);
@@ -115,33 +112,33 @@ const deleteProducts = (req,res)=>{
 //         });
 // }; 
 const updateProduct = (req, res) => {
-  console.log('Received update request for ID:', req.params.id);
-  console.log('Request body:', req.body);
-  
-  let updateObject = { ...req.body };
+    console.log('Received update request for ID:', req.params.id);
+    console.log('Request body:', req.body);
 
-  // Remove properties that are empty strings
-  for (let prop in updateObject) {
-      if (updateObject[prop] === '') {
-          delete updateObject[prop];
-      }
-  }
+    let updateObject = { ...req.body };
 
-  console.log('Update object:', updateObject);
+    // Remove properties that are empty strings
+    for (let prop in updateObject) {
+        if (updateObject[prop] === '') {
+            delete updateObject[prop];
+        }
+    }
 
-  Products.findByIdAndUpdate(req.params.id, updateObject, { new: true, runValidators: true })
-      .then((updatedProduct) => {
-          if (!updatedProduct) {
-              return res.status(404).send('Product not found');
-          } else {
-              console.log("Product updated successfully:", updatedProduct);
-              res.redirect("/AdminProducts");
-          }
-      })
-      .catch((err) => {
-          console.error('Error updating product:', err);
-          res.status(500).send('Error updating product');
-      });
+    console.log('Update object:', updateObject);
+
+    Products.findByIdAndUpdate(req.params.id, updateObject, { new: true, runValidators: true })
+        .then((updatedProduct) => {
+            if (!updatedProduct) {
+                return res.status(404).json({ text : 'Product not found' });
+            } else {
+                console.log("Product updated successfully:", updatedProduct);
+                res.status(200).json({ text: 'Product updated successfully' });
+            }
+        })
+        .catch((err) => {
+            console.error('Error updating product:', err);
+            res.status(500).json({ text: 'Error updating product' });
+        });
 };
 
 
