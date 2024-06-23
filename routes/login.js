@@ -26,18 +26,18 @@ router.get('/Home', isAuthenticated, async (req, res) => {
     }
 });
 
-router.get('/Products', isAuthenticated, (req, res) => {
-    res.render('Products');
-});
+// router.get('/Products', isAuthenticated, (req, res) => {
+//     res.render('Products');
+// });
 
-router.get('/About', isAuthenticated, (req, res) => {
-    res.render('About');
-});
+// router.get('/About', isAuthenticated, (req, res) => {
+//     res.render('About');
+// });
 
 // Login route
-router.post('/login', loginController.loginProcess);
+// router.post('/login', loginController.loginProcess);
 
 // Forgot password route
-router.post('/forgot-password', loginController.forgotPassword);
+
 
 module.exports = router;
