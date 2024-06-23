@@ -25,59 +25,52 @@
             <option value="kiko">Kiko</option>
             <option value="rarebeauty">Rare Beauty</option>
             <option value="maybeline">Maybeline</option>
-          </select>
-    <div class="browprod">
-    <% products.forEach(product => { %>
-        <div class="AllProducts">
-            <div class="container">
-                <img src="../images/<%= product.Image %>" alt="Makeup img" width="318" height="300" class="imggel">
-                <h2 class="eye"><%= product.name %></h2>
-                <h3 class="eye"><%= product.price %> $</h3>
-                <h4 class="<%= product.stockStatus === 'In Stock' ? 'in-stock' : 'out-of-stock' %>"><%= product.stockStatus %></h4>
-                <div class="middle">
-                    <div class="text" onclick=""><i class="fa-solid fa-cart-shopping" title="Add To Cart"></i></div>
-                    <div id="overlay" style="display: none;"></div>
-                    <div class="text" onclick="showPopup(['<%= product.name %>'])"><i class="fa-sharp fa-solid fa-eye" title="View more"></i></div>
-                    <div class="text" onclick=""><i class="fa-solid fa-heart" title="Add To Whishlist"></i></div>
+        </select>
+        <div class="browprod">
+            <% products.forEach(product => { %>
+            <div class="AllProducts">
+                <div class="container">
+                    <img src="../images/<%= product.Image %>" alt="Makeup img" width="318" height="300" class="imggel">
+                    <h2 class="eye"><%= product.name %></h2>
+                    <h3 class="eye"><%= product.price %> $</h3>
+                    <h4 class="<%= product.stockStatus === 'In Stock' ? 'in-stock' : 'out-of-stock' %>"><%= product.stockStatus %></h4>
+                    <div class="middle">
+                        <div class="text" onclick="showPopup('<%= product._id %>')"><i class="fa-solid fa-cart-shopping" title="Add To Cart"></i></div>
+                        <div id="overlay" style="display: none;"></div>
+                        <div class="text" onclick="showPopup('<%= product._id %>')"><i class="fa-sharp fa-solid fa-eye" title="View more"></i></div>
+                        <div class="text" onclick=""><i class="fa-solid fa-heart" title="Add To Whishlist"></i></div>
+                    </div>
                 </div>
             </div>
+            <% }); %>
         </div>
-    <% }); %>
-</div>
-<% products.forEach(product => { %>
-    <div class="Products-window " id="<%= product.name %>">
-        <h2 class="p1"> <%= product.name %> <span class="price"><%= product.price %> $</span>  </h2>
-       
-        <div class="popup">
-            
-            <span class="close-btn" onclick="hidePopup(['<%= product.name %>'])">&times;</span>
-            
-            <div class="image-container">
-                <img src="../images/<%= product.Image %>" alt="Makeup img" width="320" height="300" class="hide1" id="shadee">
-                <!-- You can add more images if product object has more images -->
-                
-                <div class="circle-container">
-                    <img class="circle-image" src="../images/<%= product.Image %>" alt="Description of image" onclick=" showShade(['shadee'],['hidee'])">
-                  <!-- You can add more images if product object has more images -->
-                  
+
+        <% products.forEach(product => { %>
+            <div class="Products-window" id="popup-<%= product._id %>">
+                <h2 class="p1"> <%= product.name %> <span class="price"><%= product.price %> $</span> </h2>
+                <div class="popup">
+                    <span class="close-btn" onclick="hidePopup('<%= product._id %>')">&times;</span>
+                    <div class="image-container">
+                        <img src="../images/<%= product.Image %>" alt="Makeup img" width="320" height="300" class="hide1" id="shadee-<%= product._id %>">
+                        <div class="circle-container">
+                            <img class="circle-image" src="../images/<%= product.Shade %>" alt="Description of image" onclick="showShade('shadee-<%= product._id %>')">
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="btn1" id="b1-<%= product._id %>" onclick="showDescription('<%= product._id %>')">Description</h1>
+                        <h1 class="btn2" id="b2-<%= product._id %>" onclick="showUsage('<%= product._id %>')">How to use</h1>
+                        <div id="description-<%= product._id %>" class="description-content"><%= product.description %></div>
+                        <div id="usage-<%= product._id %>" class="usage-content"><%= product.usage %></div>
+                    </div>
+                    <div class="rev">
+                        <h1 class="o">ADD TO <i class="fa-solid fa-cart-shopping" title="cart" style="color:rgb(222, 128, 128)"></i>
+                            <i class="fa-regular fa-heart" title="wishlist" style="color:rgb(222, 128, 128)"></i>
+                        </h1>
+                    </div>
                 </div>
-              </div>
-           
-        <div>
-            <h1 class="btn1" id="b1" onclick="des()">Description </h1>
-            <h1 class="btn2" id="b2" onclick="use()">how to use</h1>
-            <!-- <div id="i77" class="nourhan"> <%= product.description %> </div>
-            <div id="i7" class="noor"><%= product.usage %> </div> -->
-        </div>
-    
-        <div class="rev">
-            <h1 class="o">ADD TO <i class="fa-solid fa-cart-shopping" title="cart" style="color:rgb(222, 128, 128)"></i>
-                <i class="fa-regular fa-heart" title="wishlist"  style="color:rgb(222, 128, 128)" ></i> </h1>
-            <!-- <h1>Reviews <i class="fa-brands fa-tiktok"></i> </h1> -->
-             
-        </div> 
-    </div>
-    <% }); %>
+            </div>
+            <% }); %>
+    </section>
 
 
 <style>
@@ -91,6 +84,56 @@
     text-align: center;
 }
 </style>
+<script>
+     function showPopup(id) {
+            document.getElementById('popup-' + id).style.display = 'block';
+        }
+
+        function hidePopup(id) {
+            document.getElementById('popup-' + id).style.display = 'none';
+        }
+
+        function showDescription(id) {
+            document.getElementById('description-' + id).style.display = 'block';
+            document.getElementById('usage-' + id).style.display = 'none';
+        }
+
+        function showUsage(id) {
+            document.getElementById('usage-' + id).style.display = 'block';
+            document.getElementById('description-' + id).style.display = 'none';
+        }
+
+        function showShade(imageId) {
+            document.getElementById(imageId).style.display = 'block';
+        }
+        function showDescription(id) {
+    var darkMode = localStorage.getItem('darkMode') === 'true';
+    var descriptionElement = document.getElementById('description-' + id);
+    var usageElement = document.getElementById('usage-' + id);
+    var btn1Element = document.getElementById('b1-' + id);
+    var btn2Element = document.getElementById('b2-' + id);
+
+    descriptionElement.style.display = "inline-block";
+    usageElement.style.display = "none";
+    btn1Element.style.backgroundColor = darkMode ? "darkgray" : "pink";
+    btn2Element.style.backgroundColor = darkMode ? "whitesmoke" : "whitesmoke";
+}
+
+function showUsage(id) {
+    var darkMode = localStorage.getItem('darkMode') === 'true';
+    var descriptionElement = document.getElementById('description-' + id);
+    var usageElement = document.getElementById('usage-' + id);
+    var btn1Element = document.getElementById('b1-' + id);
+    var btn2Element = document.getElementById('b2-' + id);
+
+    usageElement.style.display = "inline-block";
+    descriptionElement.style.display = "none";
+    btn2Element.style.backgroundColor = darkMode ? "darkgray" : "pink";
+    btn1Element.style.backgroundColor = darkMode ? "whitesmoke" : "whitesmoke";
+}
+
+
+</script>
 
 
 
