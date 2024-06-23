@@ -12,6 +12,8 @@ const signupRoute = require('./routes/signuproute');
 const profileRoutes = require('./routes/profile');
 const shoproute = require('./routes/ShopRoute');
 var methodOverride = require('method-override');
+const checkoutRoutes = require('./routes/checkout');
+
 
 // const validator = require('express-validator');
 // const {check,validationResult} = require('express-validator');
@@ -38,6 +40,7 @@ app.use(loginroutes);
 app.use(signupRoute);
 app.use(shoproute);
 app.use('/profile', profileRoutes);
+app.use('/checkout', checkoutRoutes);
 
 // Define a router and a route handler
 const router = express.Router();
