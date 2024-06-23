@@ -1,4 +1,3 @@
-
 function removeFromWishlist(productId) {
     // AJAX request to remove item from wishlist
     fetch('/wishlist/remove', {
@@ -19,8 +18,27 @@ function removeFromWishlist(productId) {
     })
     .catch(error => console.error('Error:', error));
 }
-
-function addToCart(productId) {
+function addToWishlist(productId) {
+    fetch('/api/wishlist/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ productId, quantity: 1 })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Product added to wishlist successfully!');
+        } else {
+            alert('Failed to add product to wishlist: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error adding product to cart:', error);
+    });
+}
+function addPToCart(productId) {
     // AJAX request to add item to cart
     fetch('/cart/add', {
         method: 'POST',

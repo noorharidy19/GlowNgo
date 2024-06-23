@@ -15,7 +15,7 @@ const checkoutRoutes = require('./routes/checkout');
     const shoproute = require('./routes/ShopRoute');
     const auth = require('./routes/authRoutes');
     const cartRoutes = require('./routes/cartRoutes');
-    
+    const wishlistRoute = require('./routes/wishlistRoute');
     const app = express();
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
@@ -47,6 +47,7 @@ const checkoutRoutes = require('./routes/checkout');
     app.use('/profile', profileRoutes);
     app.use('/checkout', checkoutRoutes);
     app.use('/api/cart', cartRoutes);
+    app.use('/api/cart', wishlistRoute);
     // Debug route
     app.get('/debug', (req, res) => {
         res.send(`User: ${req.session.user ? req.session.user.username : 'Not logged in'}`);

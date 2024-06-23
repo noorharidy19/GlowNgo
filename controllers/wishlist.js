@@ -66,3 +66,30 @@ exports.getWishlist = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+exports.addAllToCart = async (req, res) => {
+  const { productIds } = req.body;
+  const userId = req.session.user._id;
+
+  try {
+    let cart = await Cart.findOne({ user: userId });
+
+    if (!cart) {
+      cart = new Cart({ user: userId, items: [] });
+    }
+
+    productIds.forEach(productId => {
+      const itemIndex = cart.items.findIndex(item => item.product.toString() === productId);
+
+      if (itemIndex > -1) {
+        cart.items[itemIndex].quantity += 1;
+      } else {
+        cart.items.push({ product: productId, quantity: 1 });
+      }
+    });
+
+    await cart.save();
+    res.status(200).json({ success: true, cart });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
