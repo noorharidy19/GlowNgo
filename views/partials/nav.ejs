@@ -12,15 +12,22 @@
         <span class="slider round"></span>
         <i class="fa-regular fa-moon"></i>
       </label>
+      <% if (!user) { %>
+        <a href="#" class="nav1" id="signInIcon" onclick="showPopupSignin('popupContainerSignIn')"><i id="signInIconImage" class="fa-solid fa-user"></i></a>
+        <% } else { %>
+          <a href="/logout" class="nav1" id="signOutIcon"><i class="fa-solid fa-sign-out"></i></a>
+          <a href="/myprofile" class="nav1" id="myProfileIcon"><i class="fa-solid fa-user"></i></a>
+          <a href="#" class="nav1" title="shopping cart" onclick="showPopup(['CART'])"><i class="fa-solid fa-cart-shopping"></i></a>  
+          <a href="#" class="nav1" title="Wishlist" onclick="showPopup(['WISHLIST'])"><i class="fa-solid fa-heart"></i></i></a>
+        <% } %>
         <a href="/Home" class="nav1">Home</a>
         <a href="/Products" class="nav1">Products</a>
         <a href="/About" class="nav1">About</a>
-        <a href="#" class="nav1" id="signOutIcon" style="display: none;" onclick="signOut()"><i class="fa-solid fa-sign-out"></i></a>
-        <a href="/myprofile" class="nav1" id="myProfileIcon" style="display: none;"><i class="fa-solid fa-user"></i></a>
-        <a href="#" class="nav1" id="signInIcon" onclick="showPopupSignin('popupContainerSignIn')"><i id="signInIconImage" class="fa-solid fa-user"></i></a>
+      
+        
+        
         <div id="overlay" style="display: none;"></div>
-        <a href="#" class="nav1" title="shopping cart" onclick="showPopup(['CART'])"><i class="fa-solid fa-cart-shopping"></i></a>  
-        <a href="#" class="nav1" title="Wishlist" onclick="showPopup(['WISHLIST'])"><i class="fa-solid fa-heart"></i></i></a>
+        
 
     </nav>
 </header>
