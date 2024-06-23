@@ -397,7 +397,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   }
   
-  .search {
+  /* .search {
   display: flex;
   align-items: center;
   background-color: rgb(248, 249, 250);
@@ -416,7 +416,66 @@
   
   .search i {
   margin-left: 5px;
-  }
+  } */
+  /* 
+  @media screen and (max-width: 768px) {
+    .header {
+        padding: 10px;
+        width: 100%;
+        padding: 10px 20px
+    }
+    .logo {
+        font-size: 10px;
+        font-weight: 200;
+        width: 10px;
+    }
+  
+    .logo img {
+      width: 100px;
+      height: 45px;
+    }
+  
+    .navigation a {
+        font-size: 0.8em;
+        padding-left: 20px; 
+        padding-right: 15px;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      background-color: rgb(248, 249, 250);
+      border-radius: 20px;
+      padding: 10px;
+      margin-left: 120px ;
+      width: 100px;
+      }
+      .search input[type="text"] {
+        width: 65px;
+      }
+      .switch {
+        width: 43px;
+        height: 25px;
+      }
+      .slider:before {
+        height: 17px;
+        width: 17px;
+      }
+      .switch i {
+        font-size: 0.75em;
+      }
+      input:checked + .slider:before {
+        transform: translateX(28px);
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0px;
+        bottom: 0;
+      }
+  } */
+  /* ------------------------------------------------------------------------------------------------- */
   #brandOptions {
   padding: 8px;
   font-size: 16px;
@@ -633,9 +692,9 @@
   .re:hover, .ad:hover {
   background-color: rgb(108, 117, 125);
   }
-  body {
+  /* body {
     background-color: white;
-    /* color: black; */
+  
   }
   
   .switch {
@@ -699,9 +758,8 @@
     transform: translate(-50%, -50%);
     color: rgb(191, 190, 190);
     font-size: 1em; /* Adjust as needed */
-    transition: left 0.3s ease-in-out;
-  }
-  @media screen and (max-width: 600px) {
+  
+  @media screen and (max-width: 768px) {
     .header {
         padding: 10px;
         width: 100%;
@@ -758,4 +816,4 @@
         bottom: 0;
       }
   }
-  
+   

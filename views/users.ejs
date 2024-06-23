@@ -16,6 +16,8 @@
     </style>
 </head>
 <body class="bodyy">
+ 
+<%- include('partials/nav') %>
 <%- include('partials/navAdmin') %>
 <div>
     <h1 class="user" style="margin-bottom: 20px;">Users</h1>
@@ -235,5 +237,61 @@
         
                 </style>
 <script src="js/admin.js"></script>
+<style>
+    .sidena {
+    position: fixed;
+    left: 0;
+    top: 100px; 
+    background-color: #111;
+    padding-top: 20px;
+    z-index: 1; 
+}
+
+.sidena a {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.sidenv a:hover {
+    background-color: #444;
+}
+
+#mySidena a {
+    position: absolute;
+    left: -80px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 100px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    margin-top: 15px;
+}
+
+#mySidena a:hover {
+    left: 0;
+} 
+
+ #Products {
+    top: 20px;
+    background-color: rgb(208, 177, 177);
+}
+
+#Users {
+    top: 80px;
+    background-color: rgb(208, 177, 177);
+}
+#Orders {
+    top: 140px;
+    background-color: rgb(208, 177, 177);
+}
+.sidena .icon {
+    margin-left: 5px;
+} 
+
+</style>
 </body>
 </html>

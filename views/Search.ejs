@@ -1,0 +1,53 @@
+<html>
+    <body>
+        <link rel="stylesheet" href="css/nav.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <%- include('partials/nav') %>
+        <link rel="stylesheet" href="css/StyleProd.css">
+      <!-- Promotional Banner or Message -->
+      <div style="text-align: center; padding-top: 150px;">
+        <h1 style="text-align: center; color: lightpink; font-size: 36px;">Search Results: <%= products.length %> Products Found</h1>
+    </div>
+  
+  
+        <div class="products">
+            <% if (products.length > 0) { %>
+                <% products.forEach(product => { %>
+                    <div class="AllProducts">
+                        <div class="container">
+                            <img src="../images/<%= product.Image %>" alt="Makeup img" width="318" height="300" class="imggel">
+                            <h2 class="eye"><%= product.name %></h2>
+                            <h3 class="eye"><%= product.price %> $</h3>
+                            <h4 class="<%= product.stockStatus === 'In Stock' ? 'in-stock' : 'out-of-stock' %>">
+                                <%= product.stockStatus %>
+                            </h4>
+                            <div class="middle">
+                                <div class="text" onclick=""><i class="fa-solid fa-cart-shopping" title="Add To Cart"></i></div>
+                                <div id="overlay" style="display: none;"></div>
+                                <div class="text" onclick="showPopup('<%= product.name %>')">
+                                    <i class="fa-sharp fa-solid fa-eye" title="View more"></i>
+                                </div>
+                                <div class="text" onclick=""><i class="fa-solid fa-heart" title="Add To Whishlist"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div class="no-products">
+                    <p style="font-size: 250%;">No products are available.</p>
+                </div>
+            <% } %>
+        </div>
+        <style>
+            .in-stock {
+            color: green;
+            text-align: center;
+        }
+        
+        .out-of-stock {
+            color: red;
+            text-align: center;
+        }
+        </style>
+    </body>
+</html>
