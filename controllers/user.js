@@ -4,6 +4,7 @@ const User = require("../models/users");
 const getUsers = (req, res) => {
     User.find()
         .then(result => {
+            // Pass the session user along with the users data
             res.render('users', { users: result });
         })
         .catch(err => {
