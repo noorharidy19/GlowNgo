@@ -60,5 +60,6 @@ router.get('/AdminProducts', ensureAuthenticated, (req, res) => {
 router.put('/edit/:id', prod.updateProduct);
 router.delete('/delete/:id',prod.deleteProducts);
 router.post('/addProduct', prod.Addproducts);
+router.get('/Home', prod.getProducts('Home'));
 
 module.exports = router;

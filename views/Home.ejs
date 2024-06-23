@@ -70,25 +70,32 @@
         <div>
             <br>
             <h2 class="q1">Our Products</h2>
-            <p><a href="allproducts.html" class="viewmore">view more</a></p>
-            <div id="Products">
-                <div class="shop-wrapper">
-                    <div class="shop">
-                        <a href="face.html"><img src="images/fentycon.jpg" alt=""></a>
-                        <div class="des">
-                            <h5>Fenty Beauty Concelar</h5>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+            <p><a href="/allproducts" class="viewmore">view more</a></p>
+            <div id="Products" class="shop-wrapper">
+                <% if (products.length > 0) { %>
+                    <% products.forEach(product => { %>
+                        <div class="shop">
+                            <a href="<%= product.category %>.html"><img src="images/<%= product.Image %>" alt="<%= product.name %>"></a>
+                            <div class="des">
+                                <h5><%= product.name %></h5>
+                                <div class="stars">
+                                    <% for (let i = 0; i < product.rating; i++) { %>
+                                        <i class="fas fa-star"></i>
+                                    <% } %>
+                                </div>
+                                <h4><%= product.price %> $</h4>
                             </div>
-                            <h4>30.00$</h4>
+                            <a href="/cart"><i class="fa-solid fa-cart-shopping  cart"></i></a>
                         </div>
-                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>
-                    </div>  
-                    <div class="shop">
+                    <% }) %>
+                <% } else { %>
+                    <p>No products available</p>
+                <% } %>
+                <a class="prev" onclick="plusProd(-1)">&#10094;</a>
+                <a class="next" onclick="plusProd(1)">&#10095;</a>
+            </div>
+        
+                    <!-- <div class="shop">
                         <a href="Eyes.html"><img src="images/kikolinear.jpeg" alt=""></a>
                         <div class="des">
                             <h5>Kiko Long Lasting Duo Eyeliner</h5>
@@ -227,29 +234,36 @@
                 <a class="next" onclick="plusProd(1)"> &#10093; </a>
             </div>
             </div> 
-        </div>
+        </div> -->
         <div>
             <br>
             <h2 class="q1">New Collection</h2>
-            <p><a href="allproducts.html" class="viewmore">view more</a></p>
-            <div id="Products">
-                <div class="shop-wrapper1">
-                    <div class="shop">
-                        <img src="images/balmm.jpg" alt="">
-                        <div class="des">
-                            <h5>Summer Fridays Lip Balm</h5>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+            <p><a href="/allproducts" class="viewmore">view more</a></p>
+            <div id="Products" class="shop-wrapper">
+                <% if (products.length > 0) { %>
+                    <% products.forEach(product => { %>
+                        <div class="shop">
+                            <a href="<%= product.category %>.html"><img src="images/<%= product.Image %>" alt="<%= product.name %>"></a>
+                            <div class="des">
+                                <h5><%= product.name %></h5>
+                                <div class="stars">
+                                    <% for (let i = 0; i < product.rating; i++) { %>
+                                        <i class="fas fa-star"></i>
+                                    <% } %>
+                                </div>
+                                <h4><%= product.price %> $</h4>
                             </div>
-                            <h4>24.00$</h4>
+                            <a href="/cart"><i class="fa-solid fa-cart-shopping  cart"></i></a>
                         </div>
-                        <a href="Cart.html"><i class="fa-solid fa-cart-shopping  cart"></i></a>
-                    </div>  
-                    <div class="shop">
+                    <% }) %>
+                <% } else { %>
+                    <p>No products available</p>
+                <% } %>
+                <a class="prev1" onclick="plusProd(-1)">&#10094;</a>
+                <a class="next1" onclick="plusProd(1)">&#10095;</a>
+            </div>
+
+                    <!-- <div class="shop">
                         <img src="images/liqkiko.jpg" alt="">
                         <div class="des">
                             <h5>Kiko Unlimited Double Touch</h5>
@@ -388,7 +402,7 @@
                 <a class="next" onclick="plusProd1(1)"> &#10093; </a>
             </div>
             </div> 
-        </div>
+        </div>  -->
 
     <div class="popup-container" id="popupContainerSignIn">
  

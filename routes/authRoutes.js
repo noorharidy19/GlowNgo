@@ -41,7 +41,14 @@ app.get('/orders', ensureAuthenticated, (req, res) => {
 });
 // Protected routes - require login
 app.get('/Home', (req, res) => {
-  res.render('Home', { user: req.session.user || "" });
+  Product.find()
+    .then(products => {
+      res.render('Home', { user: req.session.user || "", products: products });
+    })
+    .catch(err => {
+      console.error('Error retrieving products:', err);
+      res.status(500).send('We are unable to retrieve the products at this moment. Please try again later.');
+    });
 });
 
 app.get('/About', (req, res) => {
