@@ -4,40 +4,55 @@ const bcrypt = require('bcryptjs');
 // Login process function
 const loginProcess = async (req, res) => {
     try {
-        // Retrieve username and password from req.body
         const { username, password } = req.body;
-
-        // Search for the user in the database
         const user = await User.findOne({ username });
 
-        // Check if the user exists
         if (!user) {
-            return res.send("wrong details");
+            console.log("User does not exist.");
+            return res.render("Home", {
+                currentPage: "Home",
+                user: req.session.user || "",
+                error: "User does not exist."
+              
+            });
+            
         }
 
-        // Check if the password is correct
         const isPasswordMatch = await bcrypt.compare(password, user.password);
-        if (isPasswordMatch) {
-            // Check user type and render the appropriate EJS template
-            if (user.type === 'admin') {
-                res.render('admin', { user });
-                console.log("login successful");
-                console.log("Welcome to the admin page, " + username);
-            } else if (user.type === 'customer') {
-                res.render('myprofile', { user });
-                console.log("login successful");
-                console.log("Welcome to the home page, " + username);
-            } else {
-                res.send("User type not recognized");
-            }
+        if (!isPasswordMatch) {
+            return res.render("Home", {
+                currentPage: "Home",
+                user: req.session.user || "",
+                error: "Invalid username or password."
+            });
+        }
+
+        req.session.user = user;
+        console.log("User logged in:", req.session.user);
+
+        if (user.type === 'admin') {
+            return res.render('admin', {
+                currentPage: "admin",
+                user: req.session.user
+            });
+        } else if (user.type === 'customer') {
+            return res.render('myprofile', {
+                currentPage: "myprofile",
+                user: req.session.user
+            });
         } else {
-            res.send("wrong password");
+            return res.render("Home", {
+                currentPage: "Home",
+                user: req.session.user,
+                error: "User type not recognized."
+            });
         }
     } catch (error) {
         console.error("Error during login process:", error);
-        res.send("wrong details");
+        res.status(500).send("Internal Server Error");
     }
 };
+
 
 const forgotPassword = async (req, res) => {
     try {

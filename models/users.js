@@ -27,11 +27,6 @@ const userSchema = new Schema({
         state: { type: String },
         buildingNo: { type: String }
     },
-
-    acceptedTerms: {
-        type: Boolean,
-        required: true
-    },
     type: {
         type: String,
         default: "customer"
