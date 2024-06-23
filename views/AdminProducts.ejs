@@ -226,7 +226,7 @@
             <span class="close" onclick="closeModal(['Edit-container'])">&times;</span>
             <h2 style="color:rgb(211, 170, 170)" class="adduser">Edit Product</h2>
             <!-- <% products.forEach(product => { %> -->
-            <form action="/edit/<%= product._id %>?_method=PUT" method="post" id="formid1">
+            <form action="/edit/<%= product._id %>?_method=PUT" method="post" id="formid1" onsubmit=" return validationFormEdit()">
                 <input type="hidden" id="productId" name="productId" value="your_product_id">
                 <div class="formprod">
                     <label class="label-field2">Product Name:</label>
@@ -260,7 +260,6 @@
             <!-- <% }) %> -->
         </div>
     </div>
-<<<<<<< HEAD
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <script>
             document.getElementById('formid').addEventListener('submit', function(event) {
@@ -300,53 +299,53 @@
                     }).showToast();
                 });
             });
+
             // -----------------------------------------------------------------------------------
-            document.getElementById('formid1').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+//             document.getElementById('formid1').addEventListener('submit', function(event) {
+//     event.preventDefault(); // Prevent the default form submission
 
-    const formData = new FormData(this);
+//     const formData = new FormData(this);
 
-    fetch(`/edit/${document.getElementById('productId').value}`, {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        Toastify({
-            text: data.text,
-            duration: 3000,
-            close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "center", // `left`, `center` or `right`
-            backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-            onClose: function() {
-                if (data.text === 'Product updated successfully') {
-                    window.location.href = '/AdminProducts'; // Redirect to adminproducts page
-                }
-            }
-        }).showToast();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        Toastify({
-            text: error.message || "Error updating product",
-            duration: 3000,
-            close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "center", // `left`, `center` or `right`
-            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
-        }).showToast();
-    });
-});
+//     fetch(`/edit/${document.getElementById('productId').value}`, {
+//         method: 'POST',
+//         body: formData
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         Toastify({
+//             text: data.text,
+//             duration: 3000,
+//             close: true,
+//             gravity: "top", // `top` or `bottom`
+//             position: "center", // `left`, `center` or `right`
+//             backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+//             onClose: function() {
+//                 if (data.text === 'Product updated successfully') {
+//                     window.location.href = '/AdminProducts'; // Redirect to adminproducts page
+//                 }
+//             }
+//         }).showToast();
+//     })
+//     .catch(error => {
+//         console.error('Error:', error);
+//         Toastify({
+//             text: error.message || "Error updating product",
+//             duration: 3000,
+//             close: true,
+//             gravity: "top", // `top` or `bottom`
+//             position: "center", // `left`, `center` or `right`
+//             backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+//         }).showToast();
+//     });
+// });
 
-        </script>
+       </script>
 
-=======
     
     <style>
         .sidena {
@@ -404,7 +403,8 @@
     } 
     
     </style>
->>>>>>> be4ca17c7410aa92a09190618ef1c6ad5c11d9de
+
+
 
 </body>
 </html>

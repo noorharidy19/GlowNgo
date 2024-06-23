@@ -1,14 +1,14 @@
 header{
-
     position: fixed;
+    top: 0;
     width: 95%;
     display: flex;
-    padding: 10px 30px;
     z-index: 999;
     align-items: center;
     justify-content:space-between;
     border-bottom: 2px solid rgb(210, 167, 167);
     background-color: white;
+    padding: 10px 30px;
   }
   .logo{
       color: rgb(187, 157, 157);
@@ -24,17 +24,15 @@ header{
       padding-left: 40px;
       padding-right: 30;
       font-weight: 700;
-    
-  
   }
+
   .navigation a:hover{
       color: rgba(146, 77, 89, 0.964);
-  
-  
   }
+
   body {
     background-color: white;
-    /* color: black; */
+    padding-top: 0px;
   }
   
   .switch {
@@ -60,7 +58,7 @@ header{
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom:0;
     background-color: #ccc;
     transition: .4s;
   }
@@ -70,7 +68,7 @@ header{
     content: "";
     height: 26px;
     width: 26px;
-    left: 4px;
+    left: 5.5px;
     bottom: 4px;
     background-color: rgb(17, 16, 16);
     transition: .4s;
@@ -81,7 +79,7 @@ header{
   }
   
   input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(25px);
   }
   
   .slider.round {
@@ -97,12 +95,12 @@ header{
   
   .switch i {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 25%;
     transform: translate(-50%, -50%);
     color: rgb(191, 190, 190);
-    font-size: 1em; /* Adjust as needed */
-    transition: left 0.3s ease-in-out;
+    transition: left 0.27s ease-in-out;
+    font-size: 1.2em;
   }
   .search {
     display: flex;
@@ -140,4 +138,175 @@ header{
     color: #495057; /* Icon color */
     position: relative; /* Adjust position to align with the input line */
     margin-left: 10px; /* Space between the input and the icon */
+
   }
+
+
+@media (max-width: 1100px) {
+
+  .logo img {
+    width: 150px;
+    height: 70px;
+}
+
+  .navigation a {
+    font-size: 1.2em;
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .switch {
+    width: 50px;
+    height: 28px;
+  }
+
+  .slider {
+    width: 50px;
+    height: 28px;
+  }
+
+  .slider:before {
+    height: 22px;
+    width: 20px;
+    left: 2.5px;
+    bottom: 2.5px;
+  }
+
+  .switch i {
+    font-size: 0.95em; /* Adjust font size for smaller screens */
+  }
+
+  .search {
+    width: 100%; /* Full width on smaller screens */
+    max-width: 180px; /* Limit maximum width for readability */
+  }
+
+  .search input {
+    font-size: 12px; /* Decrease font size for smaller screens */
+    width: 140px;
+  }
+
+  .search i.fa-search {
+    margin-left: 5px; /* Space between the input and the icon */
+    font-size: 0.9em;
+  }
+
+  .search button {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 750px) {
+  header{
+    padding: 8px 15px;
+  }
+  .logo img {
+  width: 120px; /* Decrease logo width for smaller screens */
+  height: 57px; /* Maintain aspect ratio */
+}
+
+.navigation a {
+  font-size: 1em; /* Adjust font size for navigation links */
+  padding-left: 8px; /* Decrease padding */
+  padding-right: 8px; /* Decrease padding */
+}
+
+.switch {
+  width: 40px; /* Decrease switch width */
+  height: 24px; /* Decrease switch height */
+}
+
+.slider {
+  width: 40px; /* Decrease slider width */
+  height: 24px; /* Decrease slider height */
+}
+
+.slider:before {
+  height: 18px; /* Decrease slider indicator height */
+  width: 16px; /* Decrease slider indicator width */
+  left: 2px; /* Adjust position */
+  bottom: 3px; /* Adjust position */
+}
+
+.switch i {
+  font-size: 0.8em; /* Further decrease font size for switch icon */
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.search {
+  width: 100%; /* Full width on smaller screens */
+  max-width: 160px; /* Limit maximum width for readability */
+}
+
+.search input {
+  font-size: 10px; /* Decrease font size for search input */
+  width: 120px; /* Adjust input width */
+}
+
+.search i.fa-search {
+  margin-left: 5px; /* Space between the input and the icon */
+  font-size: 0.8em; /* Decrease icon size */
+}
+
+.search button {
+  font-size: 0.8em; /* Decrease button font size */
+}
+}
+
+@media (max-width: 600px) {
+  .logo img {
+    width: 100px; /* Decrease logo width further for smaller screens */
+    height: 45px;
+  }
+
+  .navigation a {
+    font-size: 0.9em; /* Decrease font size for navigation links */
+    padding-left: 6px; /* Further decrease padding */
+    padding-right: 6px; /* Further decrease padding */
+  }
+
+  .switch {
+    width: 36px; /* Decrease switch width */
+    height: 20px; /* Decrease switch height */
+  }
+
+  .slider {
+    width: 36px; /* Decrease slider width */
+    height: 20px; /* Decrease slider height */
+  }
+
+  .slider:before {
+    height: 16px; /* Decrease slider indicator height */
+    width: 14px; /* Decrease slider indicator width */
+    left: 2px; /* Adjust position */
+    bottom: 2px; /* Adjust position */
+  }
+
+  .switch i {
+    font-size: 0.7em; /* Further decrease font size for switch icon */
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(18px);
+  }
+
+  .search {
+    max-width: 135px; /* Limit maximum width for readability */
+  }
+
+  .search input {
+    font-size: 10px; /* Maintain smaller font size for search input */
+    width: 100px; /* Adjust input width */
+  }
+
+  .search i.fa-search {
+    font-size: 0.8em; /* Decrease icon size */
+  }
+
+  .search button {
+    font-size: 0.8em; /* Decrease button font size */
+  }
+}
