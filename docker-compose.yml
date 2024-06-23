@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  front:
+    container_name: front
+    image: hassanhatem/front:latest
+    ports:
+      - "3000:3000"
+    restart: always
+  nginx:
+    container_name: nginx
+    depends_on:
+      - front
+    image: hassanhatem/nginx:latest
+    ports:
+      - 80:80
+    restart: always
