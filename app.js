@@ -33,7 +33,7 @@ app.use(express.static('public'));
 app.use(express.static("public", { maxAge: "7d" }));
 app.use(adminRouter);
 app.use(adminPRouter);
-app.use(navRouter);
+// app.use(navRouter);
 app.use(adminUroute);
 app.set('view engine', 'ejs');
 app.use(loginroutes);
@@ -52,25 +52,16 @@ router.get('/', (req, res) => {
 // Use the router
 app.use(router);
 app.use(session({
-    secret: 'your-secret-key',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   }));
-// Correct MongoDB connection string
-// const dbURI='mongodb+srv://Noor:haridy20@cluster0.oetujgm.mongodb.net/projectDb?retryWrites=true&w=majority&appName=Cluster0'
+
 mongoose.connect(process.env.MONGODB_URI)
     .then((result) => {
         console.log('Connected to MongoDB');
         app.listen(process.env.PORT, () => {
-            console.log('Server is running on port 3000');
+            console.log(`Server is running on port ${process.env.PORT}`);
         });
     })
     .catch((err) => console.log(err));
-// mongoose.connect(dbURI)
-//     .then((result) => {
-//         console.log('Connected to MongoDB');
-//         app.listen(3000, () => {
-//             console.log('Server is running on port 3000');
-//         });
-//     })
-//     .catch((err) => console.log(err));
