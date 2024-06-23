@@ -1,6 +1,7 @@
 const express = require("express");
 const loginController = require("../controllers/login");
 const signupController = require("../controllers/signup");
+const Product = require('../models/products');
 const { getProductsByCategory, getProducts } = require("../controllers/prod");
 const app = express.Router();
 
@@ -52,7 +53,7 @@ app.get('/profile', ensureAuthenticated, (req, res) => {
 });
 
 
-app.get('/Products', ensureAuthenticated, (req, res) =>  {
+app.get('/Products',  (req, res) =>  {
   res.render('Products', { user: req.session.user || "" });
 });
 
@@ -62,6 +63,20 @@ app.get('/Eyes', getProductsByCategory('Eyes', 'Eyes'));
 app.get('/lip', getProductsByCategory('Lips', 'lip'));
 app.get('/face', getProductsByCategory('Face', 'face'));
 app.get('/allproducts', getProducts('allproducts'));
+
+
+app.get('/search', async (req, res) => {
+  const { query } = req.query;
+  try {
+    // Use a regex to find any product names that contain the query string, case insensitive
+    const searchResults = await Product.find({ name: { $regex: query, $options: 'i' } });
+    // Pass the entire session to the view, along with the searchResults
+    res.render('Search', { user: req.session.user || "", products: searchResults });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+});
 // Logout route
 app.get("/logout", (req, res) => {
   req.session.destroy(err => {
