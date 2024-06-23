@@ -58,7 +58,10 @@ const getProducts = (pageName) => {
     return (req, res, next) => {
       Products.find()
         .then(result => {
-          res.render(pageName, { products: result });
+            result.forEach(product => {
+                product.stockStatus = product.quantity > 0 ? 'In Stock' : 'Out of Stock';
+            });
+          res.render(pageName, { products: result , user: req.session.user || ""});
         })
         .catch(err => {
           console.error('Error retrieving products:', err);
@@ -67,7 +70,7 @@ const getProducts = (pageName) => {
     };
   };
 
-const getProductsByCategory = (category, pageName) => {
+  const getProductsByCategory = (category, pageName) => {
     return (req, res) => {
         Products.find({ category: category })
             .then(result => {
@@ -76,7 +79,8 @@ const getProductsByCategory = (category, pageName) => {
                     product.stockStatus = product.quantity > 0 ? 'In Stock' : 'Out of Stock';
                 });
 
-                res.render(pageName, { products: result });
+                res.render(pageName, { products: result, user: req.session.user || "" });
+              
             })
             .catch(err => {
                 console.error(err);
