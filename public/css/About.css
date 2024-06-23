@@ -1,7 +1,3 @@
-body {
-    background-color: white; 
-}
-
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -82,10 +78,9 @@ a:hover {
     content: none; 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
     .social-icons li {
-        display: block;
-        margin: 7px auto;
+        margin: 10x auto;
     }
 
     .contact-info {
@@ -101,7 +96,7 @@ a:hover {
     }
 
     .social-icons li i {
-        font-size: 1.5em;
+        font-size: 1.3em;
     }
 
     .follow-text{
