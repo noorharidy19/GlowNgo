@@ -11,7 +11,11 @@ const Addproducts = (req, res) => {
         if (err) {
             console.error('Multer error:', err);
             res.status(400).send('Error uploading files');
-        } else {
+        }   const { productName, productPrice, productCategory, productQuantity } = req.body;
+
+        if (!productName || !productPrice || !productCategory || !productQuantity) {
+            return res.status(400).json({ text: 'Please enter all required fields' });
+        }
             const productImage = req.files['productImage'][0]; // Assuming single file upload
             const shadeImage = req.files['productShades'][0]; // Assuming single file upload
             const productData = {
@@ -46,7 +50,7 @@ const Addproducts = (req, res) => {
                     console.error('Error saving product:', err);
                     res.status(500).send({ text:'Error adding or updating product'});
                 });
-        }
+
     });
 };
 
@@ -118,32 +122,32 @@ const deleteProducts = (req,res)=>{
 const updateProduct = (req, res) => {
     console.log('Received update request for ID:', req.params.id);
     console.log('Request body:', req.body);
-
+    
     let updateObject = { ...req.body };
-
+  
     // Remove properties that are empty strings
     for (let prop in updateObject) {
         if (updateObject[prop] === '') {
             delete updateObject[prop];
         }
     }
-
+  
     console.log('Update object:', updateObject);
-
+  
     Products.findByIdAndUpdate(req.params.id, updateObject, { new: true, runValidators: true })
         .then((updatedProduct) => {
             if (!updatedProduct) {
-                return res.status(404).json({ text : 'Product not found' });
+                return res.status(404).send('Product not found');
             } else {
                 console.log("Product updated successfully:", updatedProduct);
-                res.status(200).json({ text: 'Product updated successfully' });
+                res.redirect("/AdminProducts");
             }
         })
         .catch((err) => {
             console.error('Error updating product:', err);
-            res.status(500).json({ text: 'Error updating product' });
+            res.status(500).send('Error updating product');
         });
-};
+  };
 
 
 

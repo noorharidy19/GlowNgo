@@ -65,14 +65,13 @@ function showImage(selectedOption){
         textDiv.style.display = 'block';
     }
 };
-
-function validationForm() {
+    function validationForm() {
     var name = document.getElementById('productName').value;
     var price = document.getElementById('productPrice').value;
     var category = document.getElementById('productCategory').value;
     var quantity = document.getElementById('productQuantity').value;
-    var desc = document.getElementById('productDescription').value;
-    var howtouse = document.getElementById('howToUse').value;
+    // var desc = document.getElementById('productDescription').value;
+    // var howtouse = document.getElementById('howToUse').value;
     var shade = document.getElementById('productShade').value;
     var image = document.getElementById('productImage').value;
 
@@ -112,20 +111,20 @@ function validationForm() {
     }
 
     //Description Validation
-    if(desc == ""){
-        document.getElementById('descriptionError').innerHTML = "Please enter a valid product description";
-        Validation = false;
-    } else {
-        document.getElementById('descriptionError').innerHTML = "";
-    }
+    // if(desc == ""){
+    //     document.getElementById('descriptionError').innerHTML = "Please enter a valid product description";
+    //     Validation = false;
+    // } else {
+    //     document.getElementById('descriptionError').innerHTML = "";
+    // }
 
-    //How to use Validation
-    if(howtouse == ""){
-        document.getElementById('howToUseError').innerHTML = "Please enter how to use product";
-        Validation = false;
-    } else {
-        document.getElementById('howToUseError').innerHTML = "";
-    }
+    // //How to use Validation
+    // if(howtouse == ""){
+    //     document.getElementById('howToUseError').innerHTML = "Please enter how to use product";
+    //     Validation = false;
+    // } else {
+    //     document.getElementById('howToUseError').innerHTML = "";
+    // }
 
     //Shade Validation
     if(shade == ""){
@@ -145,6 +144,8 @@ function validationForm() {
 
     return Validation;
 }
+
+
 // }
 // document.addEventListener('DOMContentLoaded', () => {
 //     const deleteForm = document.getElementById('deleteProductForm');
@@ -391,6 +392,38 @@ function OrderValidationEdit(){
     }
 
  return Validation;
+}
+function validationFormEdit() {
+    var name4 = document.getElementById('PRODname').value;
+    var price4 = document.getElementById('PRODprice').value;
+    var quantity4 = document.getElementById('PRODquan').value;
+
+    var Validation = true; 
+    if(name4 == !/^[a-zA-Z\s]+$/.test(name4)){
+        document.getElementById('NAMEerror').innerHTML = "Please enter a valid product name";
+        Validation= false;
+    } else {
+        document.getElementById('NAMEerror').innerHTML = "";
+    }
+
+    //Price Validation
+    if( price4 < 0 || isNaN(price4)){
+        document.getElementById('PRICEerror').innerHTML = "Please enter a valid product price";
+        Validation = false;
+    } else {
+        document.getElementById('PRICEerror').innerHTML = "";
+    }
+
+    //Quantity Validation
+    if( quantity4 < 0 ||isNaN(quantity4)){
+        document.getElementById('QUANTITYerror').innerHTML = "Please enter a valid product quantity";
+        Validation = false;
+    } else {
+        document.getElementById('QUANTITYerror').innerHTML = "";
+    }
+
+return Validation;
+
 }
 function OrdervalidationRemove() {
     var Yes1 = document.getElementById('Yes2');
