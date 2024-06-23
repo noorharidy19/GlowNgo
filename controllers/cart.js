@@ -1,3 +1,5 @@
+
+
 const Cart = require('../models/cart');
 const Products = require('../models/products');
 
@@ -18,7 +20,7 @@ exports.addToCart = async (req, res) => {
       }
 
       cart = await cart.save();
-      res.status(200).json(cart);
+      res.status(200).json({ success: true, cart });
     } else {
       const newCart = new Cart({
         user: userId,
@@ -26,10 +28,38 @@ exports.addToCart = async (req, res) => {
       });
 
       const savedCart = await newCart.save();
-      res.status(201).json(savedCart);
+      res.status(201).json({ success: true, cart: savedCart });
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+exports.addAllToCart = async (req, res) => {
+  const { productIds } = req.body;
+  const userId = req.session.user._id;
+
+  try {
+    let cart = await Cart.findOne({ user: userId });
+
+    if (!cart) {
+      cart = new Cart({ user: userId, items: [] });
+    }
+
+    productIds.forEach(productId => {
+      const itemIndex = cart.items.findIndex(item => item.product.toString() === productId);
+
+      if (itemIndex > -1) {
+        cart.items[itemIndex].quantity += 1;
+      } else {
+        cart.items.push({ product: productId, quantity: 1 });
+      }
+    });
+
+    await cart.save();
+    res.status(200).json({ success: true, cart });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
