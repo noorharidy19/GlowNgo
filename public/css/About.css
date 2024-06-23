@@ -17,6 +17,7 @@ h1.about-title,
 h2 {
     color: rgb(210, 167, 167); 
     padding: 20px;
+    font-size: 25px;
 }
 
 a {
@@ -84,11 +85,35 @@ a:hover {
 @media (max-width: 600px) {
     .social-icons li {
         display: block;
-        margin: 10px auto;
+        margin: 7px auto;
     }
 
     .contact-info {
-        font-size: 14px;
+        font-size: 13px;
+    }
+
+    .container {
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    .about-title {
+        font-size: 25px; /* Decrease font size for smaller screens */
+    }
+
+    .social-icons li i {
+        font-size: 1.5em;
+    }
+
+    .follow-text{
+        font-size: 20px;
+    }
+
+    h2{
+        font-size: 20px;
+    }
+    
+    p{
+        font-size: 13px;
     }
 }
 

@@ -29,6 +29,36 @@ header{
   }
   .navigation a:hover{
       color: rgba(146, 77, 89, 0.964);
-  
-  
   }
+
+  @media (max-width: 600px) {
+    header {
+        padding: 10px; /* Further reduce padding for smaller screens */
+    }
+
+    .logo {
+        font-size: 1.2em; /* Decrease font size for smaller screens */
+    }
+
+    .navigation {
+        display: none; /* Hide navigation links by default on smaller screens */
+        flex-direction: column; /* Stack navigation links vertically */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: white;
+        border-bottom: 2px solid rgb(210, 167, 167);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow for dropdown effect */
+        padding: 10px 0;
+        z-index: 998; /* Ensure dropdown is below header */
+    }
+
+    .navigation.open {
+        display: flex; /* Show navigation links when menu is open */
+    }
+
+    .navigation a {
+        padding: 10px 20px; /* Adjust padding for better touch experience */
+    }
+}

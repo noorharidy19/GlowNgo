@@ -6,37 +6,10 @@
     <title>Your Account - Glow'N Go</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/myprofile.css">
-    <link rel="stylesheet" href="css/StyleProd.css">
+    <link rel="stylesheet" href="css/nav.css">
 </head>
 <body class="bodyy">
-    <header class="myElement">
-        <a href="#" class="logo" ><img src="images/logo.jpeg"></a>
-        <nav class="navigation">
-            <label class="switch">
-                <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode();">
-                <span class="slider round"></span>
-                <i class="fa-regular fa-moon"></i>
-              </label>
-            <a href="Home.html" class="nav1">Home</a>
-            <div class="dropdown-menu">
-                <a href="products.html" class="dropdownbtn">Products</a>
-                <div class="dropdown-contents">
-                    <a href="face.html" >
-                        <img src="images/face.jpg"> <br>Face
-                    </a>
-                    <a href="brow.html"> <img src="images/brows.jpg" > <br>Brows</a>
-                    <a href="lip.html"><img src="images/lips.jpg" ><br>Lips</a>
-                    <a href="tools.html"><img src="images/tools1.jpg"><br>Tools</a>
-                    <a href="eyes.html"><img src="images/eye.jpg" ><br>Eyes</a>
-                </div>
-            </div>
-            <a href="About.html" class="nav1">About</a>
-           
-        <a href="#" class="nav1"><i class="fa-solid fa-user"></i></a>
-        <a href="#" class="nav1" title="shopping cart" onclick="showPopup(['CART'])"><i class="fa-solid fa-cart-shopping"></i></a>
-        <a href="#" class="nav1" title="Wishlist" onclick="showPopup(['WISHLIST'])"><i class="fa-solid fa-heart"></i></i></a>
-        </nav>
-    </header> 
+    <%-include('partials/nav')%>
 <div class="account-container">
     <h1 class="profile-title">MY PROFILE</h1>
     <div class="tab">
@@ -54,7 +27,7 @@
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" value="<%= user.email %>" readonly><br>
             <label for="phone">Phone:</label><br>
-            <input type="tel" id="phone" name="phone" value="<%= user.phone %>" readonly><br>
+            <input type="tel" id="phone" name="phone" value="<%= user.phoneNumber %>" readonly><br>
             <label for="address">Address:</label><br>
             <textarea id="address" name="address" rows="4" readonly><%= user.address ? `${user.address.street}, ${user.address.city}, ${user.address.state}, ${user.address.buildingNo}` : '' %></textarea><br>
         </form>
@@ -82,9 +55,10 @@
         <!-- Change Username Button -->
         <button data-target="username-form">Change Username</button>
         <div id="username-form" class="form-container">
-            <form action="/profile/<%= user.id %>?_method=PUT" method="post">
+            <form action="/profile/<%= user.username %>" method="post">
+                <input type="hidden" name="_method" value="PUT">
                 <label for="newUsername">New Username:</label><br>
-                <input type="text" id="newUsername" name="username" required><br><br>
+                <input type="text" id="username" name="username" required><br><br>
                 <button type="submit">Confirm</button>
             </form>
         </div>

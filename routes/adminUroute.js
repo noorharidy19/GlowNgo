@@ -33,9 +33,18 @@ router.get('/users', async (req, res) => {
         res.status(500).send('Error retrieving users');
     }
 });
+function ensureAuthenticated(req, res, next) {
+    if (req.session.user) {
+      next();
+    } else {
+      // Redirect to login page with a query parameter indicating the need to log in
+      res.redirect('/404');
+    }
+  }
 
-
-router.get('/users', user.getUsers);
+router.get('/users', ensureAuthenticated, (req, res) => {
+    user.getUsers(req, res, { user: req.session.user });
+  });
 router.delete('/deletee/:id',user.deleteUsers);
 router.put('/editt/:id', user.updateUser);
 

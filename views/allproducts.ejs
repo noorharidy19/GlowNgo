@@ -38,8 +38,8 @@
                         <img src="../images/<%= product.Image %>" alt="Makeup img" width="318" height="300" class="imggel">
                         <h2 class="eye"><%= product.name %></h2>
                         <h3 class="eye"><%= product.price %> $</h3>
-                        <h4 class="<%= product.stockStatus === 'In Stock' ? 'in-stock' : 'out-of-stock' %>">
-                            <%= product.stockStatus %>
+                        <h4 class="<%= product.stockStatus === 'In Stock' ? 'in-stock' : 'out-of-stock' %>"><%= product.stockStatus %></h4>
+                           
                         </h4>
                         <div class="middle">
                             <div class="text" onclick=""><i class="fa-solid fa-cart-shopping" title="Add To Cart"></i></div>

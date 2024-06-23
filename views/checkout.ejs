@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Makeup Brand</title>
+    <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bodyy">
+    <header class="myElement">
+        <a href="#" class="logo"><img src="images/logo.jpeg" width="180" height="80"></a>
+        <nav class="navigation">
+            <a href="Home.html">Home</a>
+            <a href="Products.html">Products</a>
+            <a href="MyAccount.html"><i class="fa-solid fa-user"></i></a>
+            <label class="switch">
+                <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode();">
+                <span class="slider round"></span>
+                <i class="fa-regular fa-moon"></i>
+            </label>
+            <a href="Home.html" class="nav1">Home</a>
+            <a href="Products.html" class="nav1">Products</a>
+            <a href="MyAccount.html" class="nav1"><i class="fa-solid fa-user"></i></a>
+        </nav>
+    </header>
+</head>
+<body class="bodyy">
+    <script src="checkout.js"></script>
+    <script src="Prod.js"></script> 
+
+        <label class="switch">
+        <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode();">
+        <span class="slider round"></span>
+        <i class="fa-regular fa-moon"></i>
+      </label> 
+<div class="checkout-container">
+        <h1 class="checkout-title">Checkout</h1>
+
+        <div class="order-summary">
+            <h2 class="a1">ORDER SUMMARY</h2>
+            <div class="item-details">
+                <button class="your-items-button" onclick="toggleItemList()">Your items</button>
+                <div class="item-list">
+                    <p>Fenty Beauty Concealer - Quantity: 1 <br>Price: $30.00</p>
+                    <p>Kiko Bronzer - Quantity: 1 <br>Price: $20.00</p>
+                    <p>Benetint - Quantity: 1 <br>Price: $24.00</p>
+                </div>
+            </div>
+            
+            <div class="order-summary-details">
+                <p>Subtotal</p>
+                <p class="total1">$74.00</p>
+            </div>
+            <div class="order-summary-details">
+                <p>Shipping cost</p>
+                <p>$7.95</p>
+            </div>
+            <div class="order-summary-details">
+                <p>Sales Tax</p>
+                <p>$2.00</p>
+            </div>
+            <hr>
+            <div class="order-summary-details order-summary-total">
+                <p>Estimated Total</p>
+                <p class="total2">$76.00</p>
+            </div>
+        </div>
+
+        <div class="payment-method">
+            <h2 class="a1">Payment Method</h2>
+            <div class="payment-buttons">
+                <button class="payment-method-button" onclick="showCashDetails()">Cash</button>
+                <button class="payment-method-button" onclick="showVisaDetails()">Visa</button>
+            </div>
+            <div class="cash-details" id="cashDetails">
+                <button class="confirm-button" id="confirmButton" onclick="showrating()">Confirm</button>
+            </div>
+            <div class="visa-details" id="visaDetails" style="display: none;">
+                <form>
+                    <label id="cardNumberLabel">Please enter your Card Number:</label><br>
+                    <input type="text" id="cardNumber" name="cardNumber"><br>
+                    <div class="error" id="cardnumberError"></div>
+            
+                    <label id="expiryYearLabel">Please enter the Expiry Year:</label><br>
+                    <input type="text" id="expiryYear" name="expiryYear"><br>
+                    <div class="error" id="expieryYearError"></div>
+            
+                    <label id="expiryMonthLabel" >Please enter the Expiry Month:</label><br>
+                    <input type="text" id="expiryMonth" name="expiryMonth"><br>
+                    <div class="error" id="expiryMonthError"></div>
+            
+                    <label id="cvvLabel">Please enter the CVV:</label><br>
+                    <input type="text" id="cvv" name="cvv"><br>
+                    <div class="error" id="cvvError"></div>
+                    
+                    <button type="button" class="confirm-button" id="confirmVisaButton" onclick="validateVisaDetails()">Confirm</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="successMessages">
+            <h2 id="successHeader"></h2>
+            <p id="successText"></p>
+        </div>
+    </div>
+
+    <div class="rating-container" id="rating" style="display: none;">
+        <div class="popup-rate">
+            <span class="close-btn" onclick="hiderating()">×</span>
+            <div class="rate">
+                <h2> Thank you for your order and payment!</h2>
+                <h3>Rate Us</h3>
+                <div class="moods">
+                    <button class="mood" data-rating="5"><i class="fa-regular fa-face-grin-stars"></i></button>
+                    <button class="mood" data-rating="4"><i class="fa-regular fa-face-smile"></i></button>
+                    <button class="mood" data-rating="3"><i class="fa-regular fa-face-meh"></i></button>
+                    <button class="mood" data-rating="2"><i class="fa-regular fa-face-frown"></i></button>
+                    <button class="mood" data-rating="1"><i class="fa-regular fa-face-sad-tear"></i></button>
+                </div>
+                <br>
+                <br>
+                <button type="button" onclick = "hiderating()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/checkout.js"></script>
+</body>
+</html>

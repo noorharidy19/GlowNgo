@@ -1,71 +1,75 @@
+
+const checkoutRoutes = require('./routes/checkout');
     const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
-const mongoose = require('mongoose');
-const adminRouter = require('./routes/adminroute');
-const adminPRouter = require('./routes/adminProute');
-const navRouter = require('./routes/navRoute');
-const adminUroute = require('./routes/adminUroute');
-var methodOverride = require('method-override');
-const session = require('express-session');
-const loginroutes = require('./routes/login');
-const signupRoute = require('./routes/signuproute');
-const profileRoutes = require('./routes/profile');
-const shoproute = require('./routes/ShopRoute');
-// const validator = require('express-validator');
-// const {check,validationResult} = require('express-validator');
-require("dotenv").config();
-
-const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(methodOverride('_method'));
-app.use('/profile', profileRoutes);
-app.use(express.json());
-// app.get('/',(req,res)=>{
-//     res.render('contact',{errors: ''});
-// });
-
-// Serve static files from the "public" directory, and tell clients to cache the files for 7 days
-app.use(express.static("public", { maxAge: "7d" }));
-app.use(adminRouter);
-app.use(adminPRouter);
-app.use(navRouter);
-app.use(adminUroute);
-app.set('view engine', 'ejs');
-app.use(loginroutes);
-app.use(signupRoute);
-app.use(shoproute);
-
-// Define a router and a route handler
-const router = express.Router();
-router.get('/', (req, res) => {
-    res.send('Hello, world!');
-});
-
-// Use the router
-app.use(router);
-app.use(session({
-    secret: 'your-secret-key',
-    resave: false,
-    saveUninitialized: true,
-  }));
-// Correct MongoDB connection string
-// const dbURI='mongodb+srv://Noor:haridy20@cluster0.oetujgm.mongodb.net/projectDb?retryWrites=true&w=majority&appName=Cluster0'
-mongoose.connect(process.env.MONGODB_URI)
-    .then((result) => {
-        console.log('Connected to MongoDB');
-        app.listen(process.env.PORT, () => {
-            console.log('Server is running on port 3000');
+    const bodyParser = require('body-parser');
+    const path = require('path');
+    const mongoose = require('mongoose');
+    const methodOverride = require('method-override');
+    const session = require('express-session');
+    require('dotenv').config();
+    
+    const adminRouter = require('./routes/adminroute');
+    const adminPRouter = require('./routes/adminProute');
+    const loginroutes = require('./routes/login');
+    const profileRoutes = require('./routes/profile');
+    const shoproute = require('./routes/ShopRoute');
+    const auth = require('./routes/authRoutes');
+    
+    const app = express();
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.json());
+    app.use(methodOverride('_method'));
+    app.use(express.json());
+    app.use(express.static("public", { maxAge: "7d" }));
+    
+    // Session middleware
+    app.use(session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true,
+        cookie: {
+            secure: process.env.NODE_ENV === 'production' // Use secure cookies in production
+        }
+    }));
+    
+    // Set view engine
+    app.set('view engine', 'ejs');
+    
+    // Use routes
+    
+    
+    // app.use(loginroutes);
+    app.use(auth);
+    app.use(adminRouter);
+    app.use(adminPRouter);
+    app.use(shoproute);
+    app.use('/profile', profileRoutes);
+    app.use('/checkout', checkoutRoutes);
+    
+    // Debug route
+    app.get('/debug', (req, res) => {
+        res.send(`User: ${req.session.user ? req.session.user.username : 'Not logged in'}`);
+    });
+    
+    // Catch-all for 404
+    // Define all your routes here
+    
+    // ... other routes
+    
+    // Catch-all for 404 should be the last route
+    app.use((req, res) => {
+        res.status(404).render("404", {
+            currentPage: "404",
+            user: req.session.user || "",
         });
-    })
-    .catch((err) => console.log(err));
-// mongoose.connect(dbURI)
-//     .then((result) => {
-//         console.log('Connected to MongoDB');
-//         app.listen(3000, () => {
-//             console.log('Server is running on port 3000');
-//         });
-//     })
-//     .catch((err) => console.log(err));
+    });
+    // Connect to MongoDB and start server
+    mongoose.connect(process.env.MONGODB_URI)
+        .then(() => {
+            console.log('Connected to MongoDB');
+            app.listen(process.env.PORT, () => {
+                console.log(`Server is running on ${process.env.PORT}`);
+            });
+        })
+        .catch((err) => console.log(err));
+    

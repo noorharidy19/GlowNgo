@@ -7,7 +7,7 @@ router.get('/profile', userController.getProfilePage);
 
 router.put('/:username/password', userController.changePassword);
 
-router.put('/profile/:id', userController.changeUsername);
+router.put('/profile/:username', userController.changeUsername);
 
 router.put('/:username/phone', userController.changePhone);
 

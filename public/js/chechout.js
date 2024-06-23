@@ -61,51 +61,6 @@ function confirmPayment() {
     }, 3000); 
 }
 
-function validateVisaDetails() {
-    var cardNumber1 = document.getElementById('cardNumber').value;
-    var expiryYear1 = document.getElementById('expiryYear').value;
-    var expiryMonth1 = document.getElementById('expiryMonth').value;
-    var cvv1 = document.getElementById('cvv').value;
-    var Validation = true;
-    
-    var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
-    if(cardNumber1 == "" || !visaRegEx.test(cardNumber1)){
-        document.getElementById('cardnumberError').innerHTML = "Please enter a valid Card number";
-        Validation = false;
-    } else {
-        document.getElementById('cardnumberError').innerHTML = "";
-    }
-    
-    var currentYear = new Date().getFullYear();
-    if(expiryYear1 == "" || expiryYear1 < currentYear || expiryYear1 > currentYear + 20){
-        document.getElementById('expiryYearError').innerHTML = "Please enter a valid expiry year";
-        Validation = false;
-    } else {
-        document.getElementById('expiryYearError').innerHTML = "";
-    }
-    
-    if(expiryMonth1 == "" || expiryMonth1 < 1 || expiryMonth1 > 12){
-        document.getElementById('expiryMonthError').innerHTML = "Please enter a valid Order expiry month";
-        Validation = false;
-    } else {
-        document.getElementById('expiryMonthError').innerHTML = "";
-    }
-    
-    var cvvRegEx = /^[0-9]{3}$/;
-    if(cvv1 == "" || !cvvRegEx.test(cvv1)){
-        document.getElementById('cvvError').innerHTML = "Please enter a valid cvv";
-        Validation = false;
-    } else {
-        document.getElementById('cvvError').innerHTML = "";
-    }
-
-    if (Validation) {
-        confirmVisaPayment();
-    }
-
-    return Validation;
-
-}
 document.querySelectorAll('.feedback li').forEach(entry => entry.addEventListener('click', e => {
     if(!entry.classList.contains('active')) {
         document.querySelector('.feedback li.active').classList.remove('active');
@@ -124,7 +79,53 @@ function hiderating() {
     document.getElementById('rating').style.display = 'none';
 }
 
+function validateVisaDetails() {
+    const cardNumber = document.getElementById('cardNumber').value;
+    const expiryYear = document.getElementById('expiryYear').value;
+    const expiryMonth = document.getElementById('expiryMonth').value;
+    const cvv = document.getElementById('cvv').value;
 
+    if (cardNumber && expiryYear && expiryMonth && cvv) {
+        const orderDetails = {
+            items: [
+                { name: 'Fenty Beauty Concealer', quantity: 1, price: 30 },
+                { name: 'Kiko Bronzer', quantity: 1, price: 20 },
+                { name: 'Benetint', quantity: 1, price: 24 }
+            ],
+            subtotal: 74,
+            shippingCost: 7.95,
+            salesTax: 2,
+            total: 83.95,
+            paymentMethod: 'Visa',
+            cardDetails: {
+                cardNumber,
+                expiryYear,
+                expiryMonth,
+                cvv
+            }
+        };
+        fetch('/order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderDetails)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Order created successfully') {
+                document.getElementById('successHeader').innerText = 'Payment Successful!';
+                document.getElementById('successText').innerText = 'Your order has been placed successfully.';
+                document.getElementById('successMessages').style.display = 'block';
+            } else {
+                alert('Payment failed, please try again.');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+        alert('Please fill in all card details.');
+    }
+}
 
 // function changeQuantity(change, quantityId, priceId) {
 //     let quantityElement = document.getElementById(quantityId);

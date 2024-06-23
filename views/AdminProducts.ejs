@@ -197,6 +197,26 @@
 </form>
     </div>
     </div>
+    <div class="Remove-container" id="Remove-container">
+        <div class="remove">
+            <span class="close" onclick="closeModal(['Remove-container'])">&times;</span>
+            <h2 style="color:rgb(211, 170, 170)" class="adduser">Remove Product</h2>
+            <% products.forEach(product => { %>
+            <form onsubmit="return validationFormRemove();" action="/delete/<%= product._id %>?_method=DELETE" method="post">
+                <h2>Are you sure you want to delete the product?</h2>
+            
+                <div class="form-group">
+
+                        <div>
+                                <button type="submit" class="But">Remove Product <%= product._id %></button>
+                            
+                        </div>
+                    
+                </div>
+            </form>
+            <% }) %>
+        </div>
+    </div>
     <div class="Edit-container" id="Edit-container">
         <div class="edit-content">
             <span class="close" onclick="closeModal(['Edit-container'])">&times;</span>
@@ -235,36 +255,7 @@
             <!-- <% }) %> -->
         </div>
     </div>
-    <div class="Remove-container" id="Remove-container">
-        <div class="remove">
-            <span class="close" onclick="closeModal(['Remove-container'])">&times;</span>
-            <h2 style="color:rgb(211, 170, 170)" class="adduser">Remove Product</h2>
-            <% products.forEach(product => { %>
-            <form onsubmit="return validationFormRemove();" action="/delete/<%= product._id %>?_method=DELETE" method="post">
-                <h2>Are you sure you want to delete the product?</h2>
-                <!-- <div class="form-group1">
-                    <div>
-                        <input type="radio" id="Yes3" name="confirmation" value="yes" class="input-radio" for="yes">
-                        <label for="Yes3">Yes</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="No3" name="confirmation" value="no" class="input-radio" for="no">
-                        <label for="No3">No</label>
-                    </div>
-                </div>
-                <div class="error" id="RadioProductsError"></div> -->
-                <div class="form-group">
-
-                        <div>
-                                <button type="submit" class="But">Remove Product <%= product._id %></button>
-                            
-                        </div>
-                    
-                </div>
-            </form>
-            <% }) %>
-        </div>
-    </div>
+    
     
 
 </body>
