@@ -39,7 +39,6 @@
             </div>
             <a href="About.html" class="nav1">About</a>
            <div id="overlay" style="display: none;"></div> -->
-        <a href="#" class="nav1" id="signInIcon" onclick="showPopupSignin('popupContainerSignIn')"><i id="signInIconImage" class="fa-solid fa-user"></i></a>
         <!-- <a href="#" class="nav1" title="shopping cart" onclick="showPopup(['CART'])"><i class="fa-solid fa-cart-shopping"></i></a>
         <a href="#"  class="nav1"title="Wishlist" onclick="showPopup(['WISHLIST'])"><i class="fa-solid fa-heart"></i></i></a> -->
         </nav>
@@ -69,31 +68,7 @@
 
         <div>
             <br>
-            <h2 class="q1">Our Products</h2>
-            <p><a href="/allproducts" class="viewmore">view more</a></p>
-            <div id="Products" class="shop-wrapper">
-                <% if (products.length > 0) { %>
-                    <% products.forEach(product => { %>
-                        <div class="shop">
-                            <a href="<%= product.category %>.html"><img src="images/<%= product.Image %>" alt="<%= product.name %>"></a>
-                            <div class="des">
-                                <h5><%= product.name %></h5>
-                                <div class="stars">
-                                    <% for (let i = 0; i < product.rating; i++) { %>
-                                        <i class="fas fa-star"></i>
-                                    <% } %>
-                                </div>
-                                <h4><%= product.price %> $</h4>
-                            </div>
-                            <a href="/cart"><i class="fa-solid fa-cart-shopping  cart"></i></a>
-                        </div>
-                    <% }) %>
-                <% } else { %>
-                    <p>No products available</p>
-                <% } %>
-                <a class="prev" onclick="plusProd(-1)">&#10094;</a>
-                <a class="next" onclick="plusProd(1)">&#10095;</a>
-            </div>
+           
         
                     <!-- <div class="shop">
                         <a href="Eyes.html"><img src="images/kikolinear.jpeg" alt=""></a>
@@ -235,33 +210,7 @@
             </div>
             </div> 
         </div> -->
-        <div>
-            <br>
-            <h2 class="q1">New Collection</h2>
-            <p><a href="/allproducts" class="viewmore">view more</a></p>
-            <div id="Products" class="shop-wrapper">
-                <% if (products.length > 0) { %>
-                    <% products.forEach(product => { %>
-                        <div class="shop">
-                            <a href="<%= product.category %>.html"><img src="images/<%= product.Image %>" alt="<%= product.name %>"></a>
-                            <div class="des">
-                                <h5><%= product.name %></h5>
-                                <div class="stars">
-                                    <% for (let i = 0; i < product.rating; i++) { %>
-                                        <i class="fas fa-star"></i>
-                                    <% } %>
-                                </div>
-                                <h4><%= product.price %> $</h4>
-                            </div>
-                            <a href="/cart"><i class="fa-solid fa-cart-shopping  cart"></i></a>
-                        </div>
-                    <% }) %>
-                <% } else { %>
-                    <p>No products available</p>
-                <% } %>
-                <a class="prev1" onclick="plusProd(-1)">&#10094;</a>
-                <a class="next1" onclick="plusProd(1)">&#10095;</a>
-            </div>
+        
 
                     <!-- <div class="shop">
                         <img src="images/liqkiko.jpg" alt="">
