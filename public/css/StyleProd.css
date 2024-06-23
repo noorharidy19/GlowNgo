@@ -1,66 +1,3 @@
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: rgb(17, 16, 16);
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #5f6162;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
-  }
-  
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
-  .switch input:checked ~ i {
-    left: 75%;
-  }
-  
-  .switch i {
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-    color: rgb(191, 190, 190);
-    font-size: 1em; /* Adjust as needed */
-    transition: left 0.3s ease-in-out;
-  }
   .Products, .Tools, .lips, .Eyes, .brow, .face{
       padding:100px 50px; 
       margin: -15px;
@@ -397,85 +334,6 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   }
   
-  /* .search {
-  display: flex;
-  align-items: center;
-  background-color: rgb(248, 249, 250);
-  border-radius: 20px;
-  padding: 5px;
-  width: 200px;
-  }
-  
-  .search input[type="text"] {
-  border: none;
-  background-color: transparent;
-  flex-grow: 1;
-  padding: 5px;
-  border-radius: 15px;
-  }
-  
-  .search i {
-  margin-left: 5px;
-  } */
-  /* 
-  @media screen and (max-width: 768px) {
-    .header {
-        padding: 10px;
-        width: 100%;
-        padding: 10px 20px
-    }
-    .logo {
-        font-size: 10px;
-        font-weight: 200;
-        width: 10px;
-    }
-  
-    .logo img {
-      width: 100px;
-      height: 45px;
-    }
-  
-    .navigation a {
-        font-size: 0.8em;
-        padding-left: 20px; 
-        padding-right: 15px;
-    }
-    .search {
-      display: flex;
-      align-items: center;
-      background-color: rgb(248, 249, 250);
-      border-radius: 20px;
-      padding: 10px;
-      margin-left: 120px ;
-      width: 100px;
-      }
-      .search input[type="text"] {
-        width: 65px;
-      }
-      .switch {
-        width: 43px;
-        height: 25px;
-      }
-      .slider:before {
-        height: 17px;
-        width: 17px;
-      }
-      .switch i {
-        font-size: 0.75em;
-      }
-      input:checked + .slider:before {
-        transform: translateX(28px);
-      }
-      .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0px;
-        bottom: 0;
-      }
-  } */
-  /* ------------------------------------------------------------------------------------------------- */
   #brandOptions {
   padding: 8px;
   font-size: 16px;
@@ -485,12 +343,11 @@
   cursor: pointer;
   margin-top: 10px; 
   }
+
   select option:hover {
   background-color: #f0f0f0;
   }
-  /* #brandOptions:focus {
-  border: 1px solid #000;
-  } */
+
   .circle-image {
   margin-top: 10px;
   width: 40px;
@@ -499,17 +356,18 @@
   background-size: cover;
   background-position: center;
   transition: box-shadow 0.3s ease;
-  
   }
+
   .circle-image:hover {
   transform: scale(1.1);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   }
+
   .image-container {
   display: flex;
   flex-direction: column;
-  
   }
+  
   .circle-container {
   display: flex;
   flex-direction: row;
@@ -691,129 +549,4 @@
   }
   .re:hover, .ad:hover {
   background-color: rgb(108, 117, 125);
-  }
-  /* body {
-    background-color: white;
-  
-  }
-  
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: rgb(17, 16, 16);
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #5f6162;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
-  }
-  
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
-  .switch input:checked ~ i {
-    left: 75%;
-  }
-  
-  .switch i {
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-    color: rgb(191, 190, 190);
-    font-size: 1em; /* Adjust as needed */
-  
-  @media screen and (max-width: 768px) {
-    .header {
-        padding: 10px;
-        width: 100%;
-        padding: 10px 20px
-    }
-    .logo {
-        font-size: 10px;
-        font-weight: 200;
-        width: 10px;
-    }
-  
-    .logo img {
-      width: 100px;
-      height: 45px;
-    }
-  
-    .navigation a {
-        font-size: 0.8em;
-        padding-left: 20px; 
-        padding-right: 15px;
-    }
-    .search {
-      display: flex;
-      align-items: center;
-      background-color: rgb(248, 249, 250);
-      border-radius: 20px;
-      padding: 10px;
-      margin-left: 120px ;
-      width: 100px;
-      }
-      .search input[type="text"] {
-        width: 65px;
-      }
-      .switch {
-        width: 43px;
-        height: 25px;
-      }
-      .slider:before {
-        height: 17px;
-        width: 17px;
-      }
-      .switch i {
-        font-size: 0.75em;
-      }
-      input:checked + .slider:before {
-        transform: translateX(28px);
-      }
-      .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0px;
-        bottom: 0;
-      }
-  }
-   
+  } 

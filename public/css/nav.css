@@ -50,6 +50,10 @@ header{
     height: 0;
   }
   
+  .switch input:checked ~ i {
+    left: 75%;
+  }
+
   .slider {
     position: absolute;
     cursor: pointer;

@@ -376,7 +376,6 @@ margin-left: 150px;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
   }
-
                                                          /* Orders*/
   .view-button{
     padding: 5px 5px;
@@ -485,68 +484,4 @@ margin-left: 150px;
   }
   #c1,#b,#r2,#r4,#b1,#c12,#r22,#c3,#b3,#c5{
     display: none;
-  }
-/* ----------------------------------------------------------------------- */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: rgb(17, 16, 16);
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #5f6162;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
-  }
-  
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
-  .switch input:checked ~ i {
-    left: 75%;
-  }
-  
-  .switch i {
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-    color: rgb(191, 190, 190);
-    font-size: 1em; /* Adjust as needed */
-    transition: left 0.3s ease-in-out;
   }
