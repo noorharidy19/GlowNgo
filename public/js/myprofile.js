@@ -76,14 +76,6 @@ function changePassword() {
     }
 }
 
-function revealOffers() {
-    var offersList = document.getElementById("offers-list");
-    if (offersList.style.display === "none") {
-        offersList.style.display = "block";
-    } else {
-        offersList.style.display = "none";
-    }
-}
 
 document.getElementById('change-username-form').addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent the default form submission
