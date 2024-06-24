@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/Home.css">
     <link rel="stylesheet" href="css/nav.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Home</title>
 </head>
@@ -364,7 +363,7 @@
     <input type="password" id="password" placeholder="Password" class="textt" name="password">
     <span id="passwordErr" style="color: red;"></span>
     <!-- <i class="fa-solid fa-eye fa-fade fa-sm" onclick="Show()"></i> -->
-    <button type="submit" onclick="validateForm2()">Login</button>
+    <button type="submit" class="b" onclick="validateForm2()">Login</button>
     <br>    
     <div class="forget"> <a href="#" onclick="hidePopupsignin('popupContainerSignIn'); showPopupSignin('popupContainerForget')">Forgot Password</a></div>
     <br>
@@ -400,7 +399,9 @@
                 <input type="tel" id="phone" name="phoneNumber" placeholder="Phone Number" class="textt">
                 <span id="phoneErr" style="color: red;"></span>
                 <br>
-                <button type="submit" onclick = "SignupValidation()">Sign Up</button>
+                 <br>
+                <span id="termsErr" style="color: red;"></span>
+                <button type="submit" class="b">Sign Up</button>
                 <div id="successMessage" style="display: none; color: green;">Account created successfully!</div>
                 <br>
             </form>
@@ -419,8 +420,8 @@
             <span class="close-btn" onclick="hidePopupsignin('popupContainerForget')">&times;</span>
             <h2>Reset Password</h2>
             <form id="forgotPasswordForm" method="post" action="/forgot-password">
-                <input type="text" id="resetUsername" name="username" placeholder="Enter your username" >
-                <button type="submit" onclick="showConfirmationlogin()">Send Email</button>
+                <input type="text" id="resetUsername" name="username" class="textt" placeholder="Enter your username" required>
+                <button type="submit" class="b" onclick="showConfirmationlogin()">Send Email</button>
                 <div class="returnlogin">
                    <a href="#" onclick="hidePopupsignin('popupContainerForget'); showPopupSignin('popupContainerSignIn')">Return to Login</a>
                 </div>

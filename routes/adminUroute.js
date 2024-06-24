@@ -7,6 +7,15 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 const User = require('../models/users'); 
+function ensureAuthenticated(req, res, next) {
+  console.log("Session User:", req.session.user); // Debugging: Log the session user
+  if (req.session.user) {
+    next();
+  } else {
+    console.log("Redirecting to /404 due to lack of authentication."); // Debugging: Log redirection
+    res.redirect('/404');
+  }
+}
 
 router.get('/users', async (req, res) => {
     const currentPage = parseInt(req.query.page, 10) || 1;
@@ -33,18 +42,10 @@ router.get('/users', async (req, res) => {
         res.status(500).send('Error retrieving users');
     }
 });
-function ensureAuthenticated(req, res, next) {
-    if (req.session.user) {
-      next();
-    } else {
-      // Redirect to login page with a query parameter indicating the need to log in
-      res.redirect('/404');
-    }
-  }
 
-router.get('/users', ensureAuthenticated, (req, res) => {
-    user.getUsers(req, res, { user: req.session.user });
-  });
+app.get('/users',ensureAuthenticated, user.getUsers,  (req, res) => {
+  res.render('users', { user: req.session.user || "" });
+});
 router.delete('/deletee/:id',user.deleteUsers);
 router.put('/editt/:id', user.updateUser);
 

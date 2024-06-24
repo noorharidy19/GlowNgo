@@ -43,23 +43,20 @@ router.get('/AdminProducts', async (req, res) => {
     }
 });
 
-  
-
 function ensureAuthenticated(req, res, next) {
-    if (req.session.user) {
-      next();
-    } else {
-      // Redirect to login page with a query parameter indicating the need to log in
-      res.redirect('/404');
-    }
+  if (req.session.user) {
+    next();
+  } else {
+    // Redirect to login page with a query parameter indicating the need to log in
+    res.redirect('/404');
   }
+}
 
-router.get('/AdminProducts', ensureAuthenticated, (req, res) => {
-    prod.getProducts('AdminProducts', req, res, { user: req.session.user });
-  });
+router.get('/adminProducts', ensureAuthenticated ,prod.getProducts("AdminProducts") ,(req, res) => {
+  res.render('AdminProducts', { user: req.session.user });
+});
+
 router.put('/edit/:id', prod.updateProduct);
 router.delete('/delete/:id',prod.deleteProducts);
 router.post('/addProduct', prod.Addproducts);
-router.get('/Home', prod.getProducts('Home'));
-
 module.exports = router;

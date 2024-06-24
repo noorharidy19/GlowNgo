@@ -23,7 +23,6 @@ const checkoutRoutes = require('./routes/checkout');
     app.use(methodOverride('_method'));
     app.use(express.json());
     app.use(express.static("public", { maxAge: "7d" }));
-    const { getCurrencyData } = require('./controllers/CurrApi');
     
     // Session middleware
     app.use(session({
@@ -47,7 +46,7 @@ const checkoutRoutes = require('./routes/checkout');
     app.use(adminRouter);
     app.use(adminPRouter);
     app.use(shoproute);
-    app.use('/profile', profileRoutes);
+    app.use(profileRoutes);
     app.use('/checkout', checkoutRoutes);
     app.use('/api/cart', cartRoutes);
     app.use('/api/cart', wishlistRoute);

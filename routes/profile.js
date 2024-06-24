@@ -7,7 +7,7 @@ router.get('/profile', userController.getProfilePage);
 
 router.put('/:username/password', userController.changePassword);
 
-router.put('/profile/:username', userController.changeUsername);
+router.post('/profile/changeUsername', userController.changeUsername);
 
 router.put('/:username/phone', userController.changePhone);
 
@@ -15,3 +15,4 @@ router.put('/update', userController.changeAddress);
 
 
 module.exports = router;
+    
