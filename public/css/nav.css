@@ -209,8 +209,8 @@ header{
 
 .navigation a {
   font-size: 1em; /* Adjust font size for navigation links */
-  padding-left: 8px; /* Decrease padding */
-  padding-right: 8px; /* Decrease padding */
+  padding-left: 5px; /* Decrease padding */
+  padding-right: 5px; /* Decrease padding */
 }
 
 .switch {
@@ -240,12 +240,12 @@ input:checked + .slider:before {
 
 .search {
   width: 100%; /* Full width on smaller screens */
-  max-width: 160px; /* Limit maximum width for readability */
+  max-width: 120px; /* Limit maximum width for readability */
 }
 
 .search input {
   font-size: 10px; /* Decrease font size for search input */
-  width: 120px; /* Adjust input width */
+  width: 90px; /* Adjust input width */
 }
 
 .search i.fa-search {
@@ -296,12 +296,12 @@ input:checked + .slider:before {
   }
 
   .search {
-    max-width: 135px; /* Limit maximum width for readability */
+    max-width: 115px; /* Limit maximum width for readability */
   }
 
   .search input {
-    font-size: 10px; /* Maintain smaller font size for search input */
-    width: 100px; /* Adjust input width */
+    font-size: 8px; /* Maintain smaller font size for search input */
+    width: 90px; /* Adjust input width */
   }
 
   .search i.fa-search {
