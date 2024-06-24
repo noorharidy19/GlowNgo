@@ -11,7 +11,8 @@ const loginProcess = async (req, res) => {
             console.log("User does not exist.");
             return res.render("Home", {
                 currentPage: "Home",
-                user: req.session.user || "",
+                user: req.session.user || "",showConfirmationPopup: false,
+                email,
                 error: "User does not exist."
               
             });
@@ -22,7 +23,8 @@ const loginProcess = async (req, res) => {
         if (!isPasswordMatch) {
             return res.render("Home", {
                 currentPage: "Home",
-                user: req.session.user || "",
+                user: req.session.user || "",showConfirmationPopup: false,
+                email,
                 error: "Invalid username or password."
             });
         }
@@ -49,7 +51,7 @@ const loginProcess = async (req, res) => {
         }
     } catch (error) {
         console.error("Error during login process:", error);
-        res.status(500).send("Internal Server Error");
+       // res.status(500).send("Internal Server Error");
     }
 };
 
