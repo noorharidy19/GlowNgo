@@ -1,14 +1,16 @@
 header{
     position: fixed;
     top: 0;
-    width: 95%;
+    width: 97%;
+    height: 50px;
     display: flex;
     z-index: 999;
     align-items: center;
     justify-content:space-between;
     border-bottom: 2px solid rgb(210, 167, 167);
     background-color: white;
-    padding: 10px 30px;
+    padding: 15px 30px;
+    margin: 2px;
   }
   .logo{
       color: rgb(187, 157, 157);
@@ -32,7 +34,7 @@ header{
 
   body {
     background-color: white;
-    padding-top: 0px;
+    margin: 0px;
   }
   
   .switch {
@@ -308,5 +310,65 @@ input:checked + .slider:before {
 
   .search button {
     font-size: 0.8em; /* Decrease button font size */
+  }
+}
+
+@media (max-width: 400px) {
+  header{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .logo img {
+    width: 60px; /* Decrease logo width further for smaller screens */
+    height: 25px; /* Adjust logo height accordingly */
+  }
+
+  .navigation a {
+    font-size: 0.4em; /* Further decrease font size for navigation links */
+    padding-left: 3px; /* Further decrease padding */
+    padding-right: 3px; /* Further decrease padding */
+  }
+
+  .switch {
+    width: 35px; /* Decrease switch width */
+    height: 15px; /* Decrease switch height */
+  }
+
+  .slider {
+    width: 32px; /* Decrease slider width */
+    height: 15px; /* Decrease slider height */
+  }
+
+  .slider:before {
+    height: 10px; /* Decrease slider indicator height */
+    width: 10px; /* Decrease slider indicator width */
+    left: 2.3px; /* Adjust position */
+    bottom: 2.3px; /* Adjust position */
+  }
+
+  .switch i {
+    font-size: 0.55em; /* Further decrease font size for switch icon */
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(19px); /* Adjusted transform for checked state */
+  }
+
+  .search {
+    max-width: 70px; /* Limit maximum width for readability */
+  }
+
+  .search input {
+    font-size: 6px; /* Maintain smaller font size for search input */
+    width: 50px; /* Adjust input width */
+  }
+
+  .search i.fa-search {
+    font-size: 0.55em; /* Decrease icon size */
+  }
+
+  .search button {
+    font-size: 0.5em; /* Decrease button font size */
   }
 }

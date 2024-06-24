@@ -1,5 +1,5 @@
   .Products, .Tools, .lips, .Eyes, .brow, .face{
-      padding:100px 50px; 
+      padding:50px 50px; 
       margin: -15px;
   }
   .prod{
@@ -10,7 +10,8 @@
      margin-top: 70px;
      
      
-  }.shopp{
+  }
+  .shopp{
       box-shadow: 0 5px 25px rgba(1 1 1/15%);
       border-radius: 20px;
       background-color: rgb(255, 202, 202);
@@ -52,6 +53,113 @@
     text-align: center;
     color: rgb(245, 242, 237); 
   }
+
+  @media (max-width: 1100px) {
+    .Products, .Tools, .lips, .Eyes, .brow, .face {
+        padding: 90px 40px; /* Adjust padding for 1100px screens */
+        margin: -12px; /* Adjust margin for 1100px screens */
+    }
+
+    .shopp {
+        margin: 20px; /* Adjust margin for 1100px screens */
+        height: 22em; /* Adjust height for 1100px screens */
+    }
+
+    .shopp img {
+      width: 275px;
+      height: 275px;
+    }
+
+    .prd, .fac, .ey ,.lipss,.brows, .tools, .foundation{
+        font-size: 18px; /* Adjust font size for product text */
+    }
+
+    .prod {
+      margin: 60px, 50px; /* Adjust margin for 1100px screens */
+      
+  }
+}
+
+@media (max-width: 750px) {
+  .Products, .Tools, .lips, .Eyes, .brow, .face {
+      padding: 70px 30px; /* Adjust padding for 750px screens */
+      margin: -10px; /* Adjust margin for 750px screens */
+  }
+
+  .shopp {
+      margin: 15px; /* Adjust margin for 750px screens */
+      height: 20em; /* Adjust height for 750px screens */
+  }
+
+  .shopp img {
+      width: 225px; /* Adjust image size for 750px screens */
+      height: 225px; /* Adjust image size for 750px screens */
+  }
+
+  .prd, .fac, .ey, .lipss, .brows, .tools, .foundation {
+      font-size: 16px; /* Adjust font size for product text */
+  }
+
+  .prod {
+      margin: 50px 40px; /* Adjust margin for 750px screens */
+  }
+}
+
+
+@media (max-width: 600px) {
+  .Products, .Tools, .lips, .Eyes, .brow, .face {
+      padding: 50px 20px; /* Adjust padding for 600px screens */
+      margin: -8px; /* Adjust margin for 600px screens */
+  }
+
+  .shopp {
+      margin: 10px; /* Adjust margin for 600px screens */
+      height: 18em; /* Adjust height for 600px screens */
+  }
+
+  .shopp img {
+      width: 200px; /* Adjust image size for 600px screens */
+      height: 200px; /* Adjust image size for 600px screens */
+  }
+
+  .prd, .fac, .ey, .lipss, .brows, .tools, .foundation {
+      font-size: 14px; /* Adjust font size for product text */
+  }
+
+  .prod {
+      margin: 40px 30px; /* Adjust margin for 600px screens */
+  }
+}
+
+
+@media (max-width: 400px) {
+  .Products, .Tools, .lips, .Eyes, .brow, .face {
+      padding: 30px 10px; /* Adjust padding for 400px screens */
+      margin: -5px; /* Adjust margin for 400px screens */
+  }
+
+  .shopp {
+      margin: 3.5px; /* Adjust margin for 400px screens */
+      height: 11em; /* Adjust height for 400px screens */
+    
+  }
+
+  .shopp img {
+      width: 125px; /* Adjust image size for 400px screens */
+      height: 130px; /* Adjust image size for 400px screens */
+      
+  }
+
+  .prd, .fac, .ey, .lipss, .brows, .tools, .foundation {
+      font-size: 12px; /* Adjust font size for product text */
+      margin-bottom: 2px;
+  }
+
+  .prod {
+      margin-top: 60px;
+  }
+}
+
 
   .image{
     display: block;
