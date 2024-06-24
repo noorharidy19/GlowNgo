@@ -263,7 +263,7 @@ input[type="email"],
 input[type="tel"],
 input[type="Address"],
 select,
-b,
+.b,
 
 content.button{
   width: 100%;
