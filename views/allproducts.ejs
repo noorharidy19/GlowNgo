@@ -15,7 +15,6 @@
         <option>Select</option>
         <option>A-Z</option>
         <option>Z-A</option>
-        <option>BY BRAND</option>
         <option>By price(LOWER->HIGHER)</option>
         <option>By price(HIGHER->LOWER)</option>
     </select>
@@ -31,6 +30,12 @@
         <option value="Dior">Dior</option>
       </select>
       <div class="products">
+        <div class="products">
+            <select id="currencySelector" onchange="convertCurrency()">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="EGP">EGP</option>
+            </select>
         <% if (products.length > 0) { %>
             <% products.forEach(product => { %>
                 <div class="AllProducts">
@@ -163,6 +168,34 @@ function addToCart(productId, quantity = 1) {
     // Handle network errors
   });
 }
+const exchangeRates = {
+    USD: 1,
+    EUR: 0.94,
+    EGP:47.72
+    
+};
+
+function convertCurrency() {
+    const selectedCurrency = document.getElementById('currencySelector').value;
+    const rate = exchangeRates[selectedCurrency];
+    document.querySelectorAll('.eye').forEach((element, index) => {
+        if (index % 2 !== 0) { // Assuming every second '.eye' class is a price
+            const originalPrice = element.getAttribute('data-original-price');
+            const convertedPrice = originalPrice * rate;
+            element.textContent = `${convertedPrice.toFixed(2)} ${selectedCurrency}`;
+        }
+    });
+}
+
+// Initialize each product's price with a 'data-original-price' attribute for conversion
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.eye').forEach((element, index) => {
+        if (index % 2 !== 0) { // Assuming every second '.eye' class is a price
+            const price = parseFloat(element.textContent);
+            element.setAttribute('data-original-price', price);
+        }
+    });
+});
     </script>
     <script src="/js/wishlist.js"> </script>
     

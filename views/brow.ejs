@@ -22,6 +22,12 @@
                 <option>By price(HIGHER->LOWER)</option>
             </select>
             <div class="browprod">
+                <div class="products">
+                    <select id="currencySelector" onchange="convertCurrency()">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="EGP">EGP</option>
+                    </select>
                 <% products.forEach(product => { %>
                 <div class="AllProducts">
                     <div class="container">
@@ -77,6 +83,34 @@
 }
 </style>
 <script>
+    const exchangeRates = {
+    USD: 1,
+    EUR: 0.94,
+    EGP:47.72
+    
+};
+
+function convertCurrency() {
+    const selectedCurrency = document.getElementById('currencySelector').value;
+    const rate = exchangeRates[selectedCurrency];
+    document.querySelectorAll('.eye').forEach((element, index) => {
+        if (index % 2 !== 0) { // Assuming every second '.eye' class is a price
+            const originalPrice = element.getAttribute('data-original-price');
+            const convertedPrice = originalPrice * rate;
+            element.textContent = `${convertedPrice.toFixed(2)} ${selectedCurrency}`;
+        }
+    });
+}
+
+// Initialize each product's price with a 'data-original-price' attribute for conversion
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.eye').forEach((element, index) => {
+        if (index % 2 !== 0) { // Assuming every second '.eye' class is a price
+            const price = parseFloat(element.textContent);
+            element.setAttribute('data-original-price', price);
+        }
+    });
+});
      function showPopup(id) {
             document.getElementById('popup-' + id).style.display = 'block';
         }

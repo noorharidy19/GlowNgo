@@ -1,18 +1,17 @@
-const axios = require('axios');
 
-const getCurrencyData = async (fromCountryCode, toCountryCode) => {
-  try {
-    const response = await axios.get(`https://api.fastforex.io/fetch-one?from=${fromCountryCode}&to=${toCountryCode}&api_key=ede12ea352-07d4e323ca-sfjmvn`);
-    console.log(response.data);
-    // Process the data as needed
-  } catch (error) {
-    console.error('Error fetching data from FastForex:', error);
-  }
-};
+// const axios = require('axios');
 
-// Example usage: converting from USD to EUR
-getCurrencyData('USD', 'EUR');
+// const getCurrencyData = async (toCountryCode) => {
+//   try {
+//     const response = await axios.get(`https://api.fastforex.io/fetch-one?from=USD&to=${toCountryCode}&api_key=ede12ea352-07d4e323ca-sfjmvn`);
+//     console.log(response.data);
+//     // Assuming the API response structure: { data: { rate: { EUR: 0.85 } } }
+//     const conversionRate = response.data.rate[toCountryCode];
+//     return conversionRate; // Return the conversion rate directly
+//   } catch (error) {
+//     console.error('Error fetching data from FastForex:', error);
+//     return null; // Return null in case of error
+//   }
+// };
 
-
-
-module.exports = { getCurrencyData };
+// module.exports = { getCurrencyData };

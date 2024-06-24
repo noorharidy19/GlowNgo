@@ -1,27 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const { getCurrencyData } = require('./CurrApi');
+const { fetchProducts } = require('./ProductService'); // Assuming you have this function
 
-router.get('/currency-data', async (req, res) => {
-    const countryCode = req.query.country;
+// CurrApi.js Modifications
+const axios = require('axios');
 
-    // Validate country code is provided
-    if (!countryCode) {
-        return res.status(400).send('Country code is required');
-    }
+const getCurrencyData = async (toCountryCode) => {
+  try {
+    const response = await axios.get(`https://api.fastforex.io/fetch-one?from=USD&to=${toCountryCode}&api_key=ede12ea352-07d4e323ca-sfjmvn`);
+//     console.log(response.data);`);
+    console.log(response.data);
+    // Assuming the API response structure: { data: { rate: { EUR: 0.85 } } }
+     return response.data.rates; // Return the conversion rate directly
+  } catch (error) {
+    console.error('Error fetching data from FastForex:', error);
+    return null; // Return null in case of error
+  }
+};
 
-    try {
-        // Use getCurrencyData to dynamically fetch currency data
-        const data = await getCurrencyData(countryCode);
-        if (data) {
-            res.json(data);
-        } else {
-            res.status(404).send('Country not found');
-        }
-    } catch (error) {
-        console.error(`Error fetching currency data for ${countryCode}: ${error}`);
-        res.status(500).send('Error processing request');
-    }
-});
-
-module.exports = router;
+module.exports = { getCurrencyData };
