@@ -3,63 +3,26 @@
 const Cart = require('../models/cart');
 const Products = require('../models/products');
 
-exports.addToCart = async (req, res) => {
-  const { productId, quantity } = req.body;
-  const userId = req.session.user._id;
 
-  try {
-    let cart = await Cart.findOne({ user: userId });
-
-    if (cart) {
-      const itemIndex = cart.items.findIndex(item => item.product.toString() === productId);
-
-      if (itemIndex > -1) {
-        cart.items[itemIndex].quantity += quantity;
-      } else {
-        cart.items.push({ product: productId, quantity });
-      }
-
-      cart = await cart.save();
-      res.status(200).json({ success: true, cart });
-    } else {
-      const newCart = new Cart({
-        user: userId,
-        items: [{ product: productId, quantity }]
-      });
-
-      const savedCart = await newCart.save();
-      res.status(201).json({ success: true, cart: savedCart });
+exports.addProductToCart = async (req, res) => {
+    const{quantity, productId} = req.body;
+    const{_id:userId}=req.session.user;
+    if(userId===""){
+      res.render("404");
     }
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-exports.addAllToCart = async (req, res) => {
-  const { productIds } = req.body;
-  const userId = req.session.user._id;
-
-  try {
-    let cart = await Cart.findOne({ user: userId });
-
-    if (!cart) {
-      cart = new Cart({ user: userId, items: [] });
+    try{
+      await Cart.findOneAndUpdate({userId},{
+        $push:{
+          products:{productId,quantity}
+        }
+      },
+      {upsert:true}
+    );
+    console.log("Product added to cart")
+    return res.render("Home");
+    
+  }catch(err){
+      console.log(err);
+      res.render("404");
     }
-
-    productIds.forEach(productId => {
-      const itemIndex = cart.items.findIndex(item => item.product.toString() === productId);
-
-      if (itemIndex > -1) {
-        cart.items[itemIndex].quantity += 1;
-      } else {
-        cart.items.push({ product: productId, quantity: 1 });
-      }
-    });
-
-    await cart.save();
-    res.status(200).json({ success: true, cart });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
   }
-};
-

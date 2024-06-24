@@ -40,7 +40,7 @@
                             <%= product.stockStatus %>
                         </h4>
                         <div class="middle">
-                            <div class="text" onclick=""><i class="fa-solid fa-cart-shopping" title="Add To Cart"></i></div>
+                            <i class="fa-solid fa-cart-shopping" title="cart" data-product-id="<%= product._id %>" style="color:rgb(222, 128, 128)" onclick="addToCart(this)"></i>
                             <div id="overlay" style="display: none;"></div>
                             <div class="text" onclick="showPopup('<%= product.name %>')">
                                 <i class="fa-sharp fa-solid fa-eye" title="View more"></i>
@@ -101,4 +101,8 @@
         color: red;
         text-align: center;
     }
+    
     </style>
+ 
+    </body>
+    </html>

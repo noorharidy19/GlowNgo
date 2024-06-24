@@ -63,8 +63,8 @@ exports.getWishlist = async (req, res) => {
       res.status(404).json({ message: 'Wishlist not found' });
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+    res.status(500).json({ error: error.message});
+}
 };
 exports.addAllToCart = async (req, res) => {
   const { productIds } = req.body;
@@ -90,6 +90,6 @@ exports.addAllToCart = async (req, res) => {
     await cart.save();
     res.status(200).json({ success: true, cart });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
+    res.status(500).json({ success: false, message: error.message});
+}
 };

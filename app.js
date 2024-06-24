@@ -10,6 +10,7 @@ const checkoutRoutes = require('./routes/checkout');
     
     const adminRouter = require('./routes/adminroute');
     const adminPRouter = require('./routes/adminProute');
+    const adminURouter = require('./routes/adminUroute');
     const loginroutes = require('./routes/login');
     const profileRoutes = require('./routes/profile');
     const shoproute = require('./routes/ShopRoute');
@@ -38,19 +39,31 @@ const checkoutRoutes = require('./routes/checkout');
     app.set('view engine', 'ejs');
     
     // Use routes
-    
+   
+
     
     // app.use(loginroutes);
    
     app.use(auth);
     app.use(adminRouter);
     app.use(adminPRouter);
+    app.use(adminURouter);
     app.use(shoproute);
     app.use(profileRoutes);
     app.use('/checkout', checkoutRoutes);
-    app.use('/api/cart', cartRoutes);
+    app.use('/addToCart', cartRoutes);
     app.use('/api/cart', wishlistRoute);
-    
+    app.use((req, res) => {
+        const showConfirmationPopup = req.query.showConfirmationPopup === 'true' || ' ';
+  const email = req.query.email;
+  res.render("Home", { // Changed from 'Home' to 'login' to match the provided structure
+    user: req.session.user || "",
+    message: req.query.loginRequired ? "You must log in to view this page." : "" // Display a message if login is require
+   ,showConfirmationPopup, 
+    email});
+
+        
+    });
     // Debug route
     app.get('/debug', (req, res) => {
         res.send(`User: ${req.session.user ? req.session.user.username : 'Not logged in'}`);
@@ -62,12 +75,7 @@ const checkoutRoutes = require('./routes/checkout');
     // ... other routes
     
     // Catch-all for 404 should be the last route
-    app.use((req, res) => {
-        res.status(404).render("404", {
-            currentPage: "404",
-            user: req.session.user || "",
-        });
-    });
+    
     // Connect to MongoDB and start server
     mongoose.connect(process.env.MONGODB_URI)
         .then(() => {
