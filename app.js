@@ -53,30 +53,31 @@ const checkoutRoutes = require('./routes/checkout');
     app.use('/checkout', checkoutRoutes);
     app.use('/addToCart', cartRoutes);
     app.use('/api/cart', wishlistRoute);
-    app.use((req, res) => {
-        const showConfirmationPopup = req.query.showConfirmationPopup === 'true' || ' ';
-  const email = req.query.email;
-  res.render("Home", { // Changed from 'Home' to 'login' to match the provided structure
-    user: req.session.user || "",
-    message: req.query.loginRequired ? "You must log in to view this page." : "" // Display a message if login is require
-   ,showConfirmationPopup, 
-    email});
-
-        
-    });
+    app.get('/currentApi', async (req, res) => {
+        const rates = await fetchExchangeRates();
+        res.render('Eyes', { exchangeRates: rates });
+      });
+    app.get('/', (req, res) => {
+        const showConfirmationPopup = req.query.showConfirmationPopup === 'true';
+        const email = req.query.email || '';
+        res.render("Home", {
+          user: req.session.user || "",
+          message: req.query.loginRequired ? "You must log in to view this page." : "",
+          showConfirmationPopup,
+          email
+        });
+      });
+      
+    
+      app.use((req, res, next) => {
+        res.status(404).render("404");
+      });
     // Debug route
     app.get('/debug', (req, res) => {
         res.send(`User: ${req.session.user ? req.session.user.username : 'Not logged in'}`);
     });
     
-    // Catch-all for 404
-    // Define all your routes here
-    
-    // ... other routes
-    
-    // Catch-all for 404 should be the last route
-    
-    // Connect to MongoDB and start server
+   
     mongoose.connect(process.env.MONGODB_URI)
         .then(() => {
             console.log('Connected to MongoDB');
