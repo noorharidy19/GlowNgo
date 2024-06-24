@@ -11,24 +11,6 @@
 </head>
 <%- include('partials/nav') %>
 <section class="face">
-    <select class="sortt" id="sortSelect" onchange="x(this.value, 'p')">
-        <option>Select</option>
-        <option>A-Z</option>
-        <option>Z-A</option>
-        <option>By price(LOWER->HIGHER)</option>
-        <option>By price(HIGHER->LOWER)</option>
-    </select>
-    <select id="brandOptions" style="display: none;">
-        <option>Select</option>
-        <option value="kiko">Kiko</option>
-        <option value="rarebeauty">Rare Beauty</option>
-        <option value="Fenty">Fenty Beauty</option>
-        <option value="Charlotte">Charlotte Tilbury</option>
-        <option value="maybeline">Maybeline</option>
-        <option value="SummerFridays">Summer Fridays</option>
-        <option value="Benetint">Benetint</option>
-        <option value="Dior">Dior</option>
-      </select>
       <div class="products">
         <div class="products">
             <select id="currencySelector" onchange="convertCurrency()">
