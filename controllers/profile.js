@@ -31,19 +31,23 @@ exports.changePassword = async (req, res) => {
 
 // Change Username
 exports.changeUsername = (req, res) => {
-    console.log('Received update request for username:', req.params.username);
     console.log('Request body:', req.body);
+
+    // Validate the request body
+    if (!req.body.username) {
+        return res.status(400).send('New username is required');
+    }
 
     let updateObject = { username: req.body.username };
 
     console.log('Update object:', updateObject);
 
-    User.findOneAndUpdate({ username: req.params.username }, updateObject, { new: true, runValidators: true })
+    User.findOneAndUpdate({ _id: req.body.currentId }, updateObject, { new: true, runValidators: true })
       .then((updatedUser) => {
         if (!updatedUser) {
           return res.status(404).send('User not found');
         } else {
-          console.log("Username updated successfully:", updatedUser);
+          console.log('Username updated successfully:', updatedUser);
           res.status(200).json({ message: 'Username updated successfully', user: updatedUser });
         }
       })
@@ -51,7 +55,7 @@ exports.changeUsername = (req, res) => {
         console.error('Error updating username:', err);
         res.status(500).json({ error: 'Error updating username' });
       });
-  };
+};
 
 // Change Phone Number
 exports.changePhone = async (req, res) => {

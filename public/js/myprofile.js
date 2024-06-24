@@ -76,14 +76,36 @@ function changePassword() {
     }
 }
 
-function revealOffers() {
-    var offersList = document.getElementById("offers-list");
-    if (offersList.style.display === "none") {
-        offersList.style.display = "block";
-    } else {
-        offersList.style.display = "none";
+
+document.getElementById('change-username-form').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    
+    const username = document.getElementById('username').value;
+    const currentId = '<%= user.id %>'; // Replace with server-side rendering or JS logic to get the current username
+
+    try {
+        const response = await fetch(`/profile/changeUsername`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, currentId })
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            alert('Username updated successfully');
+            console.log('Success:', data);
+        } else {
+            const errorData = await response.json();
+            alert('Failed to update username');
+            console.log('Error:', errorData);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while updating the username');
     }
-}
+});
 // let initialPrices = {};
 
 // function changeQuantity(change, quantityId, priceId) {

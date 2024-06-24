@@ -100,81 +100,100 @@ window.onload = function() {
 };
 
 
-function SignupValidation() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("pass").value;
-    var confirm_password = document.getElementById("confirm_pass").value;
-    var country = document.getElementById("country").value;
-    var phone = document.getElementById("phone").value;
-    var terms = document.getElementById("terms").checked;
+// function SignupValidation() {
+//     var name = document.getElementById("name").value;
+//     var email = document.getElementById("email").value;
+//     var password = document.getElementById("pass").value;
+//     var confirm_password = document.getElementById("confirm_pass").value;
+//     var country = document.getElementById("country").value;
+//     var phone = document.getElementById("phone").value;
 
-    var error = false;
+//     var error = false;
 
-    document.getElementById('nameErr').innerHTML = "";
-    document.getElementById('emailErr').innerHTML = "";
-    document.getElementById('passwordErr').innerHTML = "";
-    document.getElementById('confirm_passwordErr').innerHTML = "";
-    document.getElementById('countryErr').innerHTML = "";
-    document.getElementById('phoneErr').innerHTML = "";
-    document.getElementById('termsErr').innerHTML = "";
+//     // Clear all previous error messages
+//     document.getElementById('nameErr').innerHTML = "";
+//     document.getElementById('emailErr').innerHTML = "";
+//     document.getElementById('passwordErr').innerHTML = "";
+//     document.getElementById('confirm_passwordErr').innerHTML = "";
+//     document.getElementById('countryErr').innerHTML = "";
+//     document.getElementById('phoneErr').innerHTML = "";
 
-    if (password !== confirm_password) {
-        document.getElementById('confirm_passwordErr').innerHTML = "Passwords do not match.";
-        error = true;
-    }
+//     // Validate password match
+//     if (password !== confirm_password) {
+//         document.getElementById('confirm_passwordErr').innerHTML = "Passwords do not match.";
+//         document.getElementById('confirm_passwordErr').style.color = 'red';
+//         error = true;
+//     }
 
-    if (name === "") {
-        document.getElementById('nameErr').innerHTML = "Please enter your name.";
-        error = true;
-    }
+//     // Validate name
+//     if (name === "") {
+//         document.getElementById('nameErr').innerHTML = "Please enter your name.";
+//         document.getElementById('nameErr').style.color = 'red';
+//         error = true;
+//     } else if (!/^[a-zA-Z0-9]+$/.test(name)) {
+//         document.getElementById('nameErr').innerHTML = "Please enter a valid username (alphanumeric characters only).";
+//         document.getElementById('nameErr').style.color = 'red';
+//         error = true;
+//     }
 
-    if (email === "") {
-        document.getElementById('emailErr').innerHTML = "Please enter your email.";
-        error = true;
-    }
+//     // Validate email
+//     if (email === "") {
+//         document.getElementById('emailErr').innerHTML = "Please enter your email.";
+//         document.getElementById('emailErr').style.color = 'red';
+//         error = true;
+//     } else if (!isValidEmail(email)) {
+//         document.getElementById('emailErr').innerHTML = "Please enter a valid email address.";
+//         document.getElementById('emailErr').style.color = 'red';
+//         error = true;
+//     }
 
-    if (password === "") {
-        document.getElementById('passwordErr').innerHTML = "Please enter your password.";
-        error = true;
-    }
+//     // Validate password
+//     if (password === "") {
+//         document.getElementById('passwordErr').innerHTML = "Please enter your password.";
+//         document.getElementById('passwordErr').style.color = 'red';
+//         error = true;
+//     }
 
-    if (confirm_password === "") {
-        document.getElementById('confirm_passwordErr').innerHTML = "Please confirm your password.";
-        error = true;
-    }
+//     // Validate confirm password
+//     if (confirm_password === "") {
+//         document.getElementById('confirm_passwordErr').innerHTML = "Please confirm your password.";
+//         document.getElementById('confirm_passwordErr').style.color = 'red';
+//         error = true;
+//     }
 
-    if (country === "") {
-        document.getElementById('countryErr').innerHTML = "Please enter your address.";
-        error = true;
-    }
+//     // Validate country
+//     if (country === "") {
+//         document.getElementById('countryErr').innerHTML = "Please enter your address.";
+//         document.getElementById('countryErr').style.color = 'red';
+//         error = true;
+//     }
 
-    if (phone === "") {
-        document.getElementById('phoneErr').innerHTML = "Please enter your phone number.";
-        error = true;
-    } else if (phone.length !== 11 || isNaN(phone)) {
-        document.getElementById('phoneErr').innerHTML = "Please enter a valid phone number";
-        error = true;
-    }
+//     // Validate phone number
+//     if (phone === "") {
+//         document.getElementById('phoneErr').innerHTML = "Please enter your phone number.";
+//         document.getElementById('phoneErr').style.color = 'red';
+//         error = true;
+//     } else if (phone.length !== 11 || isNaN(phone)) {
+//         document.getElementById('phoneErr').innerHTML = "Please enter a valid phone number.";
+//         document.getElementById('phoneErr').style.color = 'red';
+//         error = true;
+//     }
 
-    if (name === "" || !/^[a-zA-Z0-9]+$/.test(name)) {
-        document.getElementById('nameErr').innerHTML = "Please enter a valid username";
-        error = true;
-    }
+//     // Display success message and return true if no errors
+//     if (!error) {
+//         document.getElementById('successMessage').style.display = 'block';
+//         return true;
+//     }
 
-    if (!terms) {
-        document.getElementById('termsErr').innerHTML = "Please accept the terms and conditions.";
-        error = true;
-    }
+//     return false; // Prevent form submission
+// }function isValidEmail(email) {
+//     // Check if email contains '@' and '.'
+//     return email.includes('@') && email.includes('.') && email.indexOf('@') < email.lastIndexOf('.');
+// }
+// function isValidEmail(email) {
+//     return /\S+@\S+\.\S+/.test(email);
+// }
 
-    if (!error) {
-        showPopupSignin('popupContainerSignIn');
-        document.getElementById('successMessage').style.display = 'block';
-        return true;
-    }
-
-    return !error;
-}
 
 
 
@@ -310,10 +329,7 @@ window.onload = function() {
         showConfirmationPopup(email);
     }
 };
-function isValidEmail(email) {
-    
-    return /\S+@\S+\.\S+/.test(email);
-}
+
 function showPopupSignin(id) {
     document.getElementById(id).style.display = 'block';
 }

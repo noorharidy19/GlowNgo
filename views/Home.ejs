@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/Home.css">
     <link rel="stylesheet" href="css/nav.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Home</title>
 </head>
@@ -364,7 +363,7 @@
     <input type="password" id="password" placeholder="Password" class="textt" name="password">
     <span id="passwordErr" style="color: red;"></span>
     <!-- <i class="fa-solid fa-eye fa-fade fa-sm" onclick="Show()"></i> -->
-    <button type="submit" onclick="validateForm2()">Login</button>
+    <button type="submit" class="b" onclick="validateForm2()">Login</button>
     <br>    
     <div class="forget"> <a href="#" onclick="hidePopupsignin('popupContainerSignIn'); showPopupSignin('popupContainerForget')">Forgot Password</a></div>
     <br>
@@ -383,7 +382,10 @@
         <div class="popup">
             <span class="close-btn" onclick="hidePopupsignin('popupContainerSignUp')">&times;</span>
             <h2>Sign Up</h2>
-            <form onsubmit="return SignupValidation()" method="post" action="/signup">
+            <!-- <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
+                <div class="error-message <%= errorMessageClass %>"><%= errorMessage %></div>
+            <% } %> -->
+            <form method="post" action="/signup">
                 <input type="text" id="name" name="username" placeholder="Name" class="textt">
                 <span id="nameErr" style="color: red;"></span>
                 <input type="email" id="email" name="email" placeholder="Email" class="textt">
@@ -399,19 +401,18 @@
                 <br>
                  <br>
                 <span id="termsErr" style="color: red;"></span>
-                <button type="submit">Sign Up</button>
+                <button type="submit" class="b">Sign Up</button>
                 <div id="successMessage" style="display: none; color: green;">Account created successfully!</div>
                 <br>
-               </form>
+            </form>
             <br>
-            <div>or sign up with a social media account</div>
             
             <div class="signin">
                 Already Have an account <a href="#" onclick="hidePopupsignin('popupContainerSignUp'); showPopupSignin('popupContainerSignIn')">Log in</a>
             </div>
-            
         </div>
     </div>
+    
     
     
     <div class="popup-container" id="popupContainerForget">
@@ -419,8 +420,8 @@
             <span class="close-btn" onclick="hidePopupsignin('popupContainerForget')">&times;</span>
             <h2>Reset Password</h2>
             <form id="forgotPasswordForm" method="post" action="/forgot-password">
-                <input type="text" id="resetUsername" name="username" placeholder="Enter your username" required>
-                <button type="submit" onclick="showConfirmationlogin()">Send Email</button>
+                <input type="text" id="resetUsername" name="username" class="textt" placeholder="Enter your username" required>
+                <button type="submit" class="b" onclick="showConfirmationlogin()">Send Email</button>
                 <div class="returnlogin">
                    <a href="#" onclick="hidePopupsignin('popupContainerForget'); showPopupSignin('popupContainerSignIn')">Return to Login</a>
                 </div>
@@ -429,10 +430,10 @@
             </form>
         </div>
     </div>
-    <% if (showConfirmationPopup!==' '){ %>
+    <% if (showConfirmationPopup!==' '&&showConfirmationPopup!==false){ %>
     <div class="popup-container" id="popupContainerForget" style="display: block;">
         <div class="popup">
-            <span class="close-btn" onclick="hidePopupsignin('popupContainerForget')">&times;</span>
+            <span class="close-btn" onclick="hidePopupsignin('showConfirmationPopup')">&times;</span>
             <h2>Email Confirmation</h2>
             <div id="popupMessage"> an email is sent to <%=email %> for the reset password link </div>
         </div>
@@ -512,16 +513,103 @@
     </div>
 </div>
 
-<!-- Include the external JavaScript file -->
 <script src="/js/wishlist.js"></script>
 
   
-  
-  
+  <script>function SignupValidation() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("pass").value;
+    var confirm_password = document.getElementById("confirm_pass").value;
+    var country = document.getElementById("country").value;
+    var phone = document.getElementById("phone").value;
+
+    var error = false;
+
+    // Clear all previous error messages
+    document.getElementById('nameErr').innerHTML = "";
+    document.getElementById('emailErr').innerHTML = "";
+    document.getElementById('passwordErr').innerHTML = "";
+    document.getElementById('confirm_passwordErr').innerHTML = "";
+    document.getElementById('countryErr').innerHTML = "";
+    document.getElementById('phoneErr').innerHTML = "";
+
+    // Validate password match
+    if (password !== confirm_password) {
+        document.getElementById('confirm_passwordErr').innerHTML = "Passwords do not match.";
+        document.getElementById('confirm_passwordErr').style.color = 'red';
+        error = true;
+    }
+
+    // Validate name
+    if (name === "") {
+        document.getElementById('nameErr').innerHTML = "Please enter your name.";
+        document.getElementById('nameErr').style.color = 'red';
+        error = true;
+    } else if (!/^[a-zA-Z0-9]+$/.test(name)) {
+        document.getElementById('nameErr').innerHTML = "Please enter a valid username (alphanumeric characters only).";
+        document.getElementById('nameErr').style.color = 'red';
+        error = true;
+    }
+
+    // Validate email
+    if (email === "") {
+        document.getElementById('emailErr').innerHTML = "Please enter your email.";
+        document.getElementById('emailErr').style.color = 'red';
+        error = true;
+    } else if (!isValidEmail(email)) {
+        document.getElementById('emailErr').innerHTML = "Please enter a valid email address.";
+        document.getElementById('emailErr').style.color = 'red';
+        error = true;
+    }
+
+    // Validate password
+    if (password === "") {
+        document.getElementById('passwordErr').innerHTML = "Please enter your password.";
+        document.getElementById('passwordErr').style.color = 'red';
+        error = true;
+    }
+
+    // Validate confirm password
+    if (confirm_password === "") {
+        document.getElementById('confirm_passwordErr').innerHTML = "Please confirm your password.";
+        document.getElementById('confirm_passwordErr').style.color = 'red';
+        error = true;
+    }
+
+    // Validate country
+    if (country === "") {
+        document.getElementById('countryErr').innerHTML = "Please enter your address.";
+        document.getElementById('countryErr').style.color = 'red';
+        error = true;
+    }
+
+    // Validate phone number
+    if (phone === "") {
+        document.getElementById('phoneErr').innerHTML = "Please enter your phone number.";
+        document.getElementById('phoneErr').style.color = 'red';
+        error = true;
+    } else if (phone.length !== 11 || isNaN(phone)) {
+        document.getElementById('phoneErr').innerHTML = "Please enter a valid phone number.";
+        document.getElementById('phoneErr').style.color = 'red';
+        error = true;
+    }
+
+    // Display success message and return true if no errors
+    if (!error) {
+        document.getElementById('successMessage').style.display = 'block';
+        return true;
+    }
+
+    return false; // Prevent form submission
+}function isValidEmail(email) {
+    // Check if email contains '@' and '.'
+    return email.includes('@') && email.includes('.') && email.indexOf('@') < email.lastIndexOf('.');
+}</script>
 
 
     <script src="js/Home.js"></script>
     <script src="js/Prod.js"></script>
-    
+
 </body>
 </html>
