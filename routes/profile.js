@@ -5,13 +5,13 @@ const userController = require('../controllers/profile');
 // Route to render profile page
 router.get('/profile', userController.getProfilePage);
 
-router.put('/:username/password', userController.changePassword);
+router.put('/profile/:id', userController.changePassword);
 
-router.post('/profile/changeUsername', userController.changeUsername);
+router.put('/profile/changeUsername', userController.changeUsername);
 
-router.put('/:username/phone', userController.changePhone);
+router.put('/profile/:id', profileController.updatePhoneNumber);
 
-router.put('/update', userController.changeAddress);
+router.put('/profile/:id', profileController.updateAddress);
 
 
 module.exports = router;

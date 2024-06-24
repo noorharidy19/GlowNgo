@@ -3,29 +3,34 @@ const bcrypt = require('bcryptjs');
 
 // Change Password
 exports.changePassword = async (req, res) => {
-    const { oldPassword, newPassword, confirmPassword } = req.body;
+    console.log('Received password update request for user ID:', req.params.id);
+    console.log('Request body:', req.body);
+
+    const { oldPassword, newPassword } = req.body;
+
+    if (!oldPassword || !newPassword) {
+        return res.status(400).json({ error: 'Old and new passwords are required' });
+    }
 
     try {
-        const user = await User.findOne({ username: req.params.username });
-
-        // Validate old password using comparePassword method
-        if (!user || !(await user.comparePassword(oldPassword))) {
-            return res.status(401).json({ error: 'Incorrect old password' });
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
         }
 
-        // Validate new passwords match
-        if (newPassword !== confirmPassword) {
-            return res.status(400).json({ error: 'Passwords do not match' });
+        const isMatch = await user.comparePassword(oldPassword);
+        if (!isMatch) {
+            return res.status(400).json({ error: 'Old password is incorrect' });
         }
 
-        // Update password
         user.password = newPassword;
         await user.save();
-
+        
+        console.log('Password updated successfully for user ID:', req.params.id);
         res.status(200).json({ message: 'Password updated successfully' });
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Server error' });
+        console.error('Error updating password:', err);
+        res.status(500).json({ error: 'Error updating password' });
     }
 };
 
@@ -58,42 +63,62 @@ exports.changeUsername = (req, res) => {
 };
 
 // Change Phone Number
-exports.changePhone = async (req, res) => {
-    const { newPhone } = req.body;
-
+exports.updatePhoneNumber = async (req, res) => {
+    const userId = req.params.id; // Assuming the user ID is passed as a route parameter
+    
     try {
-        // Retrieve user from database
-        const user = await User.findOne({ username: req.params.username });
-
-        // Update phone number
-        user.phone = newPhone;
+        // Find the user by their ID
+        const user = await User.findById(userId);
+        
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        
+        // Update the user's phone number
+        user.phone = req.body.newPhone;
+        
+        // Save the updated user object
         await user.save();
-
+        
+        // Respond with a success message
         res.status(200).json({ message: 'Phone number updated successfully' });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Server error' });
+        
+    } catch (error) {
+        console.error('Error updating phone number:', error);
+        res.status(500).json({ error: 'Failed to update phone number' });
     }
 };
 
 // Change Address
-exports.changeAddress = async (req, res) => {
-    const { street, city, state, buildingNo } = req.body;
+xports.updateAddress = async (req, res) => {
+    const userId = req.params.id; // Assuming user ID is passed as a route parameter
 
     try {
-        // Retrieve user from database
-        const user = await User.findOne({ username: req.user.username });
+        // Find the user by their ID
+        const user = await User.findById(userId);
+        
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        
+        // Update user's address fields
+        user.address.street = req.body.street;
+        user.address.city = req.body.city;
+        user.address.state = req.body.state;
+        user.address.buildingNo = req.body.buildingNo;
 
-        // Update address
-        user.address = { street, city, state, buildingNo };
+        // Save the updated user object
         await user.save();
-
-        res.status(200).json({ message: 'Address updated successfully' });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Server error' });
+        
+        // Respond with a success message
+        res.status(200).json({ message: 'Address updated successfully', user: user });
+        
+    } catch (error) {
+        console.error('Error updating address:', error);
+        res.status(500).json({ error: 'Failed to update address' });
     }
 };
+
 
 // GET profile page
 exports.getProfilePage = async (req, res) => {

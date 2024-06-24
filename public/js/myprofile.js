@@ -42,9 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function hideAllForms() {
         forms.forEach(function(form) {
-            form.classList.remove('active');
+            form.style.display = 'none';
         });
     }
+
+    hideAllForms(); // Ensure all forms are initially hidden
 
     buttons.forEach(function(button) {
         button.addEventListener('click', function() {
@@ -53,16 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (!targetForm) return;
 
-            var isCurrentlyVisible = targetForm.classList.contains('active');
-
             hideAllForms();
-
-            if (!isCurrentlyVisible) {
-                targetForm.classList.add('active');
-            }
+            targetForm.style.display = 'block';
         });
     });
 });
+
 
 function changePassword() {
     var oldPassword = document.getElementById("oldPassword").value;
@@ -77,6 +75,44 @@ function changePassword() {
 }
 
 
+
+document.getElementById('change-password-form').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const oldPassword = document.getElementById('oldPassword').value;
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const userId = '<%= user.id %>'; // Pass the user ID from your server-side rendering
+
+    if (newPassword !== confirmPassword) {
+        alert('New passwords do not match.');
+        return;
+    }
+
+    try {
+        const response = await fetch(`/profile/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ oldPassword, newPassword })
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            alert('Password updated successfully');
+            console.log('Success:', data);
+        } else {
+            const errorData = await response.json();
+            alert('Failed to update password');
+            console.log('Error:', errorData);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while updating the password');
+    }
+});
+
 document.getElementById('change-username-form').addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent the default form submission
     
@@ -85,7 +121,7 @@ document.getElementById('change-username-form').addEventListener('submit', async
 
     try {
         const response = await fetch(`/profile/changeUsername`, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -105,6 +141,60 @@ document.getElementById('change-username-form').addEventListener('submit', async
         console.error('Error:', error);
         alert('An error occurred while updating the username');
     }
+});
+
+document.getElementById('phone-form').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default button behavior
+    
+    const form = document.getElementById('phoneForm');
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+        method: 'PUT', // or 'PUT' if your server supports PUT method
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert('Phone number updated successfully');
+        console.log('Success:', data);
+        // Optionally, update UI or perform additional actions upon success
+    })
+    .catch(error => {
+        console.error('Error updating phone number:', error);
+        alert('Failed to update phone number');
+    });
+});
+
+document.getElementById('address-form').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default button behavior
+    
+    const form = document.getElementById('addressForm');
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+        method: 'POST', // or 'PUT' if your server supports PUT method
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert('Address updated successfully');
+        console.log('Success:', data);
+        // Optionally, update UI or perform additional actions upon success
+    })
+    .catch(error => {
+        console.error('Error updating address:', error);
+        alert('Failed to update address');
+    });
 });
 // let initialPrices = {};
 
