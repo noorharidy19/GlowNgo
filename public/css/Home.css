@@ -1,487 +1,486 @@
-section{
-  padding:100px 50px; 
-  margin: -15px;
-}
+ section{
+      padding:100px 50px; 
+      margin: -15px;
+  }
 
 .sidenav {
-position: absolute; /* or 'fixed' to keep it centered on scroll */
-left: 50%;
-top: 50%;
-transform: translate(-50%, -50%);
-display: flex; /* Align items horizontally */
-padding-top: 20px;
-z-index: 1;
+  position: absolute; /* or 'fixed' to keep it centered on scroll */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex; /* Align items horizontally */
+  padding-top: 20px;
+  z-index: 1;
 }
 
 .sidenav a {
-padding: 20px; /* Increased padding */
-text-decoration: none;
-color: white;
-display: block;
-background-color: transparent; /* Ensure no black background */
+  padding: 20px; /* Increased padding */
+  text-decoration: none;
+  color: white;
+  display: block;
+  background-color: transparent; /* Ensure no black background */
 }
 
 .sidenav a:hover {
-background-color: #444; /* Adjust hover color as needed */
+  background-color: #444; /* Adjust hover color as needed */
 }
 
 #mySidenav a {
-position: relative;
-left: 0;
-transition: 0.3s;
-padding: 30px; /* Increased padding */
-width: 250px; /* Increased width */
-height: 150px;
-text-decoration: none;
-font-size: 60px; /* Increased font size */
-color: white;
-border-radius: 0 5px 5px 0;
-margin: 0 20px; /* Increased spacing between items */
-display: block;
-background-color: rgb(208, 177, 177); /* Or any other color */
+  position: relative;
+  left: 0;
+  transition: 0.3s;
+  padding: 30px; /* Increased padding */
+  width: 250px; /* Increased width */
+  height: 150px;
+  text-decoration: none;
+  font-size: 60px; /* Increased font size */
+  color: white;
+  border-radius: 0 5px 5px 0;
+  margin: 0 20px; /* Increased spacing between items */
+  display: block;
+  background-color: rgb(208, 177, 177); /* Or any other color */
 }
 
 #mySidenav a:hover {
-background-color: #555; /* Optional: change hover color */
+  background-color: #555; /* Optional: change hover color */
 }
 
 /* Adjust background color as needed */
 #Products, #Users, #Orders {
-background-color: rgb(208, 177, 177);
+  background-color: rgb(208, 177, 177);
 }
 
 .sidenav .icon {
-margin-left: 5px;
+  margin-left: 5px;
 }
 .haridy{
-display: flex;
-flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 .admin{
-text-align: center;
-margin: 40px;
-font-size: 50px;
-display: flex;
-flex-direction: column;
+    text-align: center;
+    margin: 40px;
+    font-size: 50px;
+    display: flex;
+    flex-direction: column;
 }
-                 /* USER */
+                     /* USER */
 .user{
-text-align: center;
-margin-top: 30px;
-margin-bottom:-20px;
-font-size: 50px;
-color: rgb(208, 177, 177);
-text-decoration: underline;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom:-20px;
+    font-size: 50px;
+    color: rgb(208, 177, 177);
+    text-decoration: underline;
 }
 table, th, td {
-border: 2px solid rgb(208, 177, 177);
-}
-th, td{
-padding: 10px;
-text-align: center;
-color:black ;
-}
-table{
-margin-left:80px;
+    border: 2px solid rgb(208, 177, 177);
+  }
+  th, td{
+    padding: 10px;
+    text-align: center;
+    color:black ;
+  }
+  table{
+    margin-left:80px;
 
-}
+  }
 .modal {
-display: none;
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-background-color:white;
-border-radius: 10px;
-padding: 20px;
-text-align: center; /*ne5aly form f nos */
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-z-index: 1000;
-width: 300px; 
-height: 600px;
-overflow: auto;
-
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center; /*ne5aly form f nos */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 300px; 
+    height: 600px;
+    overflow: auto;
+    
 }
 .modal1 {
-display: none;
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-background-color:white;
-border-radius: 10px;
-padding: 20px;
-text-align: center; /*ne5aly form f nos */
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-z-index: 1000;
-width: 300px; 
-height: 400px;
-overflow: auto;
-
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center; /*ne5aly form f nos */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 300px; 
+    height: 400px;
+    overflow: auto;
+    
 }
 .form-group1 {
-display: flex;
-align-items: center;
-margin-bottom: 30px;
-justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    justify-content: center;
 }
 .form-group {
-margin-bottom: 20px;
-align-self: center; 
+    margin-bottom: 20px;
+    align-self: center; 
 }
 .input-radio {
-appearance: none;
-width: 20px; /* Adjust the width as needed */
-height: 20px; /* Adjust the height as needed */
-border-radius: 50%;
-border: 2px solid #ccc; /* Border color */
-cursor: pointer;
-margin-right: 10px; /* Adjust spacing between radio button and label */
+    appearance: none;
+    width: 20px; /* Adjust the width as needed */
+    height: 20px; /* Adjust the height as needed */
+    border-radius: 50%;
+    border: 2px solid #ccc; /* Border color */
+    cursor: pointer;
+    margin-right: 10px; /* Adjust spacing between radio button and label */
 }
 .input-radio:checked {
-background-color: black; /* Background color when checked */
+    background-color: black; /* Background color when checked */
 }
 
 .checkbox-group {
-margin-right: 20px;
+    margin-right: 20px;
 }
 
 .modal2 {
-display: none;
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-background-color:white;
-border-radius: 10px;
-padding: 20px;
-text-align: center; /*ne5aly form f nos */
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-z-index: 1000;
-width: 300px; 
-height: 290px;
-overflow: auto;
-
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center; /*ne5aly form f nos */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 300px; 
+    height: 290px;
+    overflow: auto;
+    
 }
 .modal-content {
-padding: 20px;
-
+    padding: 20px;
+    
 }
 .buttons-container {
-text-align: right;
+    text-align: right;
 }
 
 .add-button {
-display: inline-block;
-padding: 10px 10px;
-background-color: rgb(208, 177, 177);
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-margin-top: 20px;
-margin-right: 10px;
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: rgb(208, 177, 177);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 10px;
 }
 .edit-button{
-display: inline;
-padding: 10px 10px;
-background-color: rgb(208, 177, 177);
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-/* margin-top: 20px;
-margin-right: 10px; */
+    display: inline;
+    padding: 10px 10px;
+    background-color: rgb(208, 177, 177);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* margin-top: 20px;
+    margin-right: 10px; */
 }
 .Remove-button{
-display: inline;
-padding: 10px 10px;
-background-color: rgb(208, 177, 177);
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-/* margin-top: 30px;
-margin-right: 55px; */
+    display: inline;
+    padding: 10px 10px;
+    background-color: rgb(208, 177, 177);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* margin-top: 30px;
+    margin-right: 55px; */
 }
 .input-field {
-width: 100%;
-padding: 10px;
-border: 1px solid #ccc;
-border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 .input-field1 {
-width: 108%;
-padding: 10px;
-border: 1px solid #ccc;
-border-radius: 5px;
+    width: 108%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 .label-field {
 
-font-size: larger;
+    font-size: larger;
 }
 
 .submit-btn {
-background-color: rgb(208, 177, 177);
-color: white;
-padding: 10px 20px;
-margin:10px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
+    background-color: rgb(208, 177, 177);
+    color: white;
+    padding: 10px 20px;
+    margin:10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .close {
-position: absolute;
-top: 20px;
-right: 20px;
-font-size: 20px;
-cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
 }
-                               /* PRODUCTS */
+                                   /* PRODUCTS */
 .Products{
-text-align: center;
-margin-top: 30px;
-margin-bottom:-20px;
-font-size: 50px;
-color: rgb(208, 177, 177);
-text-decoration: underline;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom:-20px;
+    font-size: 50px;
+    color: rgb(208, 177, 177);
+    text-decoration: underline;
 }
 .prod{
 margin-left: 150px;
 
 }
 .circle-image {
-margin-top: 10px;
-width: 40px;
-height: 40px;
-border-radius: 50%;
-background-size: cover;
-background-position: center;
-transition: box-shadow 0.3s ease;
-
-}
-.circle-image:hover {
-transform: scale(1.1);
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-}
-.circle-container {
-display: flex;
-flex-direction: row;
-margin-right: 10px;
-
-}
-.product-image {
-border: 1px solid rgb(240, 248, 255);
-border-radius: 20px; 
-padding: 5px;
-width: 150px;
-height: 150px;
-transition: all 0.3s ease;
-}
-
-.product-image:hover {
-border-color: rgb(240, 248, 255);
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-.But {
-display: inline-block;
-padding: 10px 10px;
-background-color: rgb(208, 177, 177);
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-margin-top: 10px;
-margin-right: 10px;
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    transition: box-shadow 0.3s ease;
+    
+  }
+  .circle-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  }
+  .circle-container {
+    display: flex;
+    flex-direction: row;
+    margin-right: 10px;
+    
+  }
+  .product-image {
+    border: 1px solid rgb(240, 248, 255);
+    border-radius: 20px; 
+    padding: 5px;
+    width: 150px;
+    height: 150px;
+    transition: all 0.3s ease;
+  }
+  
+  .product-image:hover {
+    border-color: rgb(240, 248, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  .But {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: rgb(208, 177, 177);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 .Add-container{
-display: none;
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-background-color:white;
-border-radius: 10px;
-padding: 20px;
-text-align: center; /*ne5aly form f nos */
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-z-index: 1000;
-width: 300px; 
-height: 600px;
-overflow: auto;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center; /*ne5aly form f nos */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 300px; 
+    height: 600px;
+    overflow: auto;
 }
 .formprod {
-margin-bottom: 20px;
-align-self: center; 
+    margin-bottom: 20px;
+    align-self: center; 
 }
 .formprodimg {
-display: none;
-margin-bottom: 20px;
-align-self: center; 
+    display: none;
+    margin-bottom: 20px;
+    align-self: center; 
 }
 .input-field2 {
-width: 80%;
-padding: 10px;
-border: 1px solid #ccc;
-border-radius: 5px;
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 .label-field2 {
 
-font-size: larger;
+    font-size: larger;
 }
 .Edit-container{
-display: none;
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-background-color:white;
-border-radius: 10px;
-padding: 20px;
-text-align: center; /*ne5aly form f nos */
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-z-index: 1000;
-width: 300px; 
-height: 400px;
-overflow: auto;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center; /*ne5aly form f nos */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 300px; 
+    height: 400px;
+    overflow: auto;
 }
 
 .Remove-container{
-display: none;
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-background-color:white;
-border-radius: 10px;
-padding: 20px;
-text-align: center; /*ne5aly form f nos */
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-z-index: 1001;
-width: 300px; 
-height: 300px;
-overflow: auto;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center; /*ne5aly form f nos */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    width: 300px; 
+    height: 300px;
+    overflow: auto;
 }
 .error{
-color: red;
-font-size: 15px;
+    color: red;
+    font-size: 15px;
 }
 #overlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.5);
-z-index: 999;
-}
-                                                     /* Orders*/
-.view-button{
-padding: 5px 5px;
-background-color: rgb(208, 177, 177);
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+                                                         /* Orders*/
+  .view-button{
+    padding: 5px 5px;
+    background-color: rgb(208, 177, 177);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .show-button{
-padding: 5px 5px;
-background-color: rgb(208, 177, 177);
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
+    padding: 5px 5px;
+    background-color: rgb(208, 177, 177);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .product-display {
-display: flex;
-gap: 20px;
-}
-.product-display h3{
-color: rgb(108, 117, 125);
-}
-.CART {
-font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-display: none;
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-background-color:white;
-border-radius: 10px;
-padding: 20px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-z-index: 1000;
-width: 600px; 
-height: 650px;
-overflow: auto;
-}
-/* .imgg{
-margin: 10px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.imgg1 {
-margin: 10px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.imggg{
-margin: 10px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.imggg22 {
-margin: 10px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.imgggg{
-margin: 10px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.imgggg3{
-margin: 10px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-} */
-.imgdetails{
-margin: 10px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.imgggdeatils{
-margin: 10px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.circle-image {
-margin-top: 10px;
-width: 40px;
-height: 40px;
-border-radius: 50%;
-background-size: cover;
-background-position: center;
-transition: box-shadow 0.3s ease;
-
-}
-.circle-image:hover {
-transform: scale(1.1);
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-}
-.image-container {
-display: flex;
-flex-direction: column;
-
-}
-.pcart {
-text-align: center;
-font-size: 24px;
-color: #333;
-}
-.circle-container {
-display: flex;
-flex-direction: row;
-margin-right: 10px;
-
-}
-.product1 {
-margin-top: 30px;
-text-align: left;
-}
-#c1,#b,#r2,#r4,#b1,#c12,#r22,#c3,#b3,#c5{
-display: none;
-}
+    display: flex;
+    gap: 20px;
+  }
+  .product-display h3{
+    color: rgb(108, 117, 125);
+  }
+  .CART {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 600px; 
+    height: 650px;
+    overflow: auto;
+  }
+  /* .imgg{
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .imgg1 {
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .imggg{
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .imggg22 {
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .imgggg{
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .imgggg3{
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  } */
+  .imgdetails{
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .imgggdeatils{
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .circle-image {
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    transition: box-shadow 0.3s ease;
+    
+  }
+  .circle-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  }
+  .image-container {
+    display: flex;
+    flex-direction: column;
+  
+  }
+  .pcart {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+  }
+  .circle-container {
+    display: flex;
+    flex-direction: row;
+    margin-right: 10px;
+    
+  }
+  .product1 {
+    margin-top: 30px;
+    text-align: left;
+  }
+  #c1,#b,#r2,#r4,#b1,#c12,#r22,#c3,#b3,#c5{
+    display: none;
