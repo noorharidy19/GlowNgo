@@ -218,7 +218,7 @@ body {
 }
 
 /* Responsive styles */
-@media (max-width: 600px) {
+@media (max-width: 300px) {
   .checkout-container {
     width: 95%;
     padding: 15px;
