@@ -63,65 +63,7 @@
             </div>
             <% }); %>
     </section>
-    
-    <div class="popup-container" id="popupContainerSignIn">
- 
-        <div class="popup">
-            <span class="close-btn" onclick="hidePopupsignin('popupContainerSignIn')">&times;</span>
-            <h2>Log in</h2>
-            <form action="/login" method="post" id="loginForm">
-    <input type="text" id="username" placeholder="Username" class="textt" name="username">
-    <span id="usernameErr" style="color: red;"></span>
-    <input type="password" id="password" placeholder="Password" class="textt" name="password">
-    <span id="passwordErr" style="color: red;"></span>
-    <!-- <i class="fa-solid fa-eye fa-fade fa-sm" onclick="Show()"></i> -->
-    <button type="submit" class="b" onclick="validateForm2()">Login</button>
-    <br>    
-    <div class="forget"> <a href="#" onclick="hidePopupsignin('popupContainerSignIn'); showPopupSignin('popupContainerForget')">Forgot Password</a></div>
-    <br>
-            </form>
 
-            <br>
-            
-            <div class="create-account">
-                Don't have an account? <a href="#" onclick="hidePopupsignin('popupContainerSignIn'); showPopupSignin('popupContainerSignUp')">Create an account</a>
-            </div>
-            
-        </div>
-    </div>
-
-   <div class="popup-container" id="popupContainerSignUp">
-    <div class="popup">
-        <span class="close-btn" onclick="hidePopupsignin('popupContainerSignUp')">&times;</span>
-        <h2>Sign Up</h2>
-        <!-- <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
-            <div class="error-message <%= errorMessageClass %>"><%= errorMessage %></div>
-        <% } %> -->
-        <form method="post" action="/signup">
-            <input type="text" id="name" name="username" placeholder="Name" class="textt">
-            <span id="nameErr" style="color: red;"></span>
-            <input type="email" id="email" name="email" placeholder="Email" class="textt">
-            <span id="emailErr" style="color: red;"></span>
-            <input type="password" id="pass" name="password" placeholder="Password" class="textt">
-            <span id="passwordErr" style="color: red;"></span>
-            <input type="password" id="confirm_pass" name="confirmPassword" placeholder="Confirm Password" class="textt">
-            <span id="confirm_passwordErr" style="color: red;"></span>
-            <input type="text" id="country" name="address" placeholder="Address" class="textt">
-            <span id="countryErr" style="color: red;"></span>
-            <input type="tel" id="phone" name="phoneNumber" placeholder="Phone Number" class="textt">
-            <span id="phoneErr" style="color: red;"></span>
-            <br>
-            <button type="submit" onclick = "SignupValidation()">Sign Up</button>
-            <div id="successMessage" style="display: none; color: green;">Account created successfully!</div>
-            <br>
-        </form>
-        <br>
-        
-        <div class="signin">
-            Already Have an account <a href="#" onclick="hidePopupsignin('popupContainerSignUp'); showPopupSignin('popupContainerSignIn')">Log in</a>
-        </div>
-    </div>
-</div>
     
     <style>
         .in-stock {
@@ -213,6 +155,227 @@ document.addEventListener('DOMContentLoaded', () => {
        btn1Element.style.backgroundColor = darkMode ? "whitesmoke" : "whitesmoke";
    }
    
+   function x(selectedOption,  container) {
    
+   var containerElement = document.getElementById(container);
+   if (selectedOption) {
+       switch (selectedOption) {
+           case "A-Z":
+               sortDivsAlphabetically(container);
+               console.log("Sorting A-Z");
+               break;
+           case "Z-A":
+               sortDivsAlphabeticallyZA(container);
+               console.log("Sorting Z-A");
+               break;
+           case "By price(LOWER->HIGHER)":
+               sortProductsByPrice(container);
+               console.log("Sorting by price (lower to higher)");
+               break;
+          
+               console.log("Showing brand dropdown");
+               break;
+           case "By price(HIGHER->LOWER)":
+               sortProductsByPriceDescending(container);
+               console.log("Sorting by price (higher to lower)");
+               break;
+          
+               if (containerElement) {
+                   containerElement.style.display = "flex";
+               }
+               console.log("Hiding brand dropdown");
+               console.log("Please select an option");
+               break;
+              
+       }
+   } else {
+       console.log("Please select an option");
+   }
+}
+function sortDivsAlphabetically(containerClass) {
+   console.log("Sorting divs alphabetically...");
+   var parentContainer = document.querySelector('.' + containerClass);
+   if (!parentContainer) {
+       console.log("Parent container not found");
+       return;
+   }
+   var originalOrder = Array.from(parentContainer.children); 
+   var divs = Array.from(parentContainer.children);
+   if (!divs.length) {
+       console.log("No child divs found");
+       return;
+   }
+   divs.sort(function(a, b) {
+       var h2A = a.querySelector('h2');
+       var h2B = b.querySelector('h2');
+       var textA = h2A ? h2A.textContent.toUpperCase() : '';
+       var textB = h2B ? h2B.textContent.toUpperCase() : '';
+       if (textA < textB) {
+           return -1;
+       }
+       if (textA > textB) {
+           return 1;
+       }
+       return 0;
+   });
+   function resetToOriginalOrder() {
+       while (parentContainer.firstChild) {
+           parentContainer.removeChild(parentContainer.firstChild);
+       }
+       originalOrder.forEach(function(div) {
+           parentContainer.appendChild(div);
+       });
+   }
+   document.getElementById('sortSelect').addEventListener('change', function() {
+       var selectedOption = this.value;
+       if (selectedOption === 'Select') {
+           resetToOriginalOrder();
+       }
+   });
+   while (parentContainer.firstChild) {
+       parentContainer.removeChild(parentContainer.firstChild);
+   }
+   divs.forEach(function(div) {
+       parentContainer.appendChild(div);
+   });
+}
+function sortDivsAlphabeticallyZA(containerClass) {
+   console.log("Sorting divs alphabetically Z to A...");
+   var parentContainer = document.querySelector('.' + containerClass);
+   if (!parentContainer) {
+       console.log("Parent container not found");
+       return;
+   }
+   var originalOrder = Array.from(parentContainer.children); 
+   var divs = Array.from(parentContainer.children);
+   if (!divs.length) {
+       console.log("No child divs found");
+       return;
+   }
+   divs.sort(function(a, b) {
+       var h2A = a.querySelector('h2');
+       var h2B = b.querySelector('h2');
+       var textA = h2A ? h2A.textContent.toUpperCase() : '';
+       var textB = h2B ? h2B.textContent.toUpperCase() : '';
+       if (textA < textB) {
+           return 1; 
+       }
+       if (textA > textB) {
+           return -1; 
+       }
+       return 0;
+   });
+
+   function resetToOriginalOrder() {
+       while (parentContainer.firstChild) {
+           parentContainer.removeChild(parentContainer.firstChild);
+       }
+       originalOrder.forEach(function(div) {
+           parentContainer.appendChild(div);
+       });
+   }
+
+   document.getElementById('sortSelect').addEventListener('change', function() {
+       var selectedOption = this.value;
+       if (selectedOption === 'Select') {
+           resetToOriginalOrder();
+       }
+   });
+
+   while (parentContainer.firstChild) {
+       parentContainer.removeChild(parentContainer.firstChild);
+   }
+   divs.forEach(function(div) {
+       parentContainer.appendChild(div);
+   });
+}
+
+
+function sortProductsByPrice(containerClass) {
+   console.log("Sorting products by price...");
+   var parentContainer = document.querySelector('.' + containerClass);
+   if (!parentContainer) {
+       console.log("Parent container not found");
+       return;
+   }
+   var originalOrder = Array.from(parentContainer.children); 
+   var productElements = Array.from(parentContainer.children);
+   if (!productElements.length) {
+       console.log("No child divs found");
+       return;
+   }
+   productElements.sort(function(a, b) {
+       var h3A = a.querySelector('h3');
+       var h3B = b.querySelector('h3');
+       var priceA = h3A ? parseFloat(h3A.textContent.replace('$', '')) : 0;
+       var priceB = h3B ? parseFloat(h3B.textContent.replace('$', '')) : 0;
+       return priceA - priceB;
+   });
+
+   function resetToOriginalOrder() {
+       while (parentContainer.firstChild) {
+           parentContainer.removeChild(parentContainer.firstChild);
+       }
+       originalOrder.forEach(function(product) {
+           parentContainer.appendChild(product);
+       });
+   }
+
+   document.getElementById('sortSelect').addEventListener('change', function() {
+       var selectedOption = this.value;
+       if (selectedOption === 'Select') {
+           resetToOriginalOrder();
+       }
+   });
+
+   productElements.forEach(function(product) {
+       parentContainer.appendChild(product);
+   });
+}
+
+
+function sortProductsByPriceDescending(containerClass) {
+   console.log("Sorting products by price (descending)...");
+   var parentContainer = document.querySelector('.' + containerClass);
+   if (!parentContainer) {
+       console.log("Parent container not found");
+       return;
+   }
+   var originalOrder = Array.from(parentContainer.children);
+   var productElements = Array.from(parentContainer.children);
+   if (!productElements.length) {
+       console.log("No child divs found");
+       return;
+   }
+   productElements.sort(function(a, b) {
+       var h3A = a.querySelector('h3');
+       var h3B = b.querySelector('h3');
+       var priceA = h3A ? parseFloat(h3A.textContent.replace('$', '')) : 0;
+       var priceB = h3B ? parseFloat(h3B.textContent.replace('$', '')) : 0;
+       return priceB - priceA;
+   });
+
+   function resetToOriginalOrder() {
+       while (parentContainer.firstChild) {
+           parentContainer.removeChild(parentContainer.firstChild);
+       }
+       originalOrder.forEach(function(product) {
+           parentContainer.appendChild(product);
+       });
+   }
+
+   document.getElementById('sortSelect').addEventListener('change', function() {
+       var selectedOption = this.value;
+       if (selectedOption === 'Select') {
+           resetToOriginalOrder();
+       }
+   });
+
+   productElements.forEach(function(product) {
+       parentContainer.appendChild(product);
+   });
+}
+
+// -
    </script>
 </html>   
