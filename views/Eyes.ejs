@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/nav.css">
+
     <link rel="stylesheet" href="css/StyleProd.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Eyes</title>
     <script src="js/Prod.js"></script>
+    <st
 </head>
 <%- include('partials/nav') %>
 <section class="Tools">
     <section class="Eyes">
-        <select class="sortt" id="sortSelect" onchange="x(this.value,'brandOptions', 'products')">
+        <select class="sortt" id="sortSelect" onchange="x(this.value, 'products')">
             <option>Select</option>
             <option>A-Z</option>
             <option>Z-A</option>
@@ -62,7 +64,64 @@
             <% }); %>
     </section>
     
-    
+    <div class="popup-container" id="popupContainerSignIn">
+ 
+        <div class="popup">
+            <span class="close-btn" onclick="hidePopupsignin('popupContainerSignIn')">&times;</span>
+            <h2>Log in</h2>
+            <form action="/login" method="post" id="loginForm">
+    <input type="text" id="username" placeholder="Username" class="textt" name="username">
+    <span id="usernameErr" style="color: red;"></span>
+    <input type="password" id="password" placeholder="Password" class="textt" name="password">
+    <span id="passwordErr" style="color: red;"></span>
+    <!-- <i class="fa-solid fa-eye fa-fade fa-sm" onclick="Show()"></i> -->
+    <button type="submit" class="b" onclick="validateForm2()">Login</button>
+    <br>    
+    <div class="forget"> <a href="#" onclick="hidePopupsignin('popupContainerSignIn'); showPopupSignin('popupContainerForget')">Forgot Password</a></div>
+    <br>
+            </form>
+
+            <br>
+            
+            <div class="create-account">
+                Don't have an account? <a href="#" onclick="hidePopupsignin('popupContainerSignIn'); showPopupSignin('popupContainerSignUp')">Create an account</a>
+            </div>
+            
+        </div>
+    </div>
+
+   <div class="popup-container" id="popupContainerSignUp">
+    <div class="popup">
+        <span class="close-btn" onclick="hidePopupsignin('popupContainerSignUp')">&times;</span>
+        <h2>Sign Up</h2>
+        <!-- <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
+            <div class="error-message <%= errorMessageClass %>"><%= errorMessage %></div>
+        <% } %> -->
+        <form method="post" action="/signup">
+            <input type="text" id="name" name="username" placeholder="Name" class="textt">
+            <span id="nameErr" style="color: red;"></span>
+            <input type="email" id="email" name="email" placeholder="Email" class="textt">
+            <span id="emailErr" style="color: red;"></span>
+            <input type="password" id="pass" name="password" placeholder="Password" class="textt">
+            <span id="passwordErr" style="color: red;"></span>
+            <input type="password" id="confirm_pass" name="confirmPassword" placeholder="Confirm Password" class="textt">
+            <span id="confirm_passwordErr" style="color: red;"></span>
+            <input type="text" id="country" name="address" placeholder="Address" class="textt">
+            <span id="countryErr" style="color: red;"></span>
+            <input type="tel" id="phone" name="phoneNumber" placeholder="Phone Number" class="textt">
+            <span id="phoneErr" style="color: red;"></span>
+            <br>
+            <button type="submit" onclick = "SignupValidation()">Sign Up</button>
+            <div id="successMessage" style="display: none; color: green;">Account created successfully!</div>
+            <br>
+        </form>
+        <br>
+        
+        <div class="signin">
+            Already Have an account <a href="#" onclick="hidePopupsignin('popupContainerSignUp'); showPopupSignin('popupContainerSignIn')">Log in</a>
+        </div>
+    </div>
+</div>
     
     <style>
         .in-stock {

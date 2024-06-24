@@ -11,7 +11,7 @@
 </head>
 <%- include('partials/nav') %>
 <section class="face">
-    <select class="sortt" id="sortSelect" onchange="x(this.value,'brandOptions', 'p')">
+    <select class="sortt" id="sortSelect" onchange="x(this.value, 'p')">
         <option>Select</option>
         <option>A-Z</option>
         <option>Z-A</option>
@@ -95,6 +95,7 @@
             </div>
         <% }); %>
     <% } %>
+    
     <script>
         function changeQuantity(itemId, amount) {
     // Example logic to change quantity
