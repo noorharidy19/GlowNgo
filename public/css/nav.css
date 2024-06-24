@@ -68,7 +68,7 @@ header{
     content: "";
     height: 26px;
     width: 26px;
-    left: 5.5px;
+    left: 5px;
     bottom: 4px;
     background-color: rgb(17, 16, 16);
     transition: .4s;
