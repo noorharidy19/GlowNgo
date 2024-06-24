@@ -15,7 +15,7 @@ const signupProcess = async (req, res) => {
                 user: req.session.user || "",
                 showConfirmationPopup: false,
                 email,
-                // showPopupSignin: 'popupContainerSignUp'
+                 showPopupSignin: 'popupContainerSignUp'
             });
         }
 
@@ -37,12 +37,12 @@ const signupProcess = async (req, res) => {
         if (existingUser) {
             console.log("Error: User or email already exists");
             return res.render("Home", {
-                // errorMessage: "User or email already exists.",
-                errorMessageClass: 'error', // Ensure errorMessageClass is defined
+               errorMessage: "Username or email already exists.",
+               errorMessageClass: 'error', // Ensure errorMessageClass is defined
                 user: req.session.user || "",
                 showConfirmationPopup: false,
                 email,
-                // showPopupSignin: 'popupContainerSignUp'
+                showPopupSignin: 'popupContainerSignUp'
             });
         }
 

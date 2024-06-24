@@ -378,40 +378,39 @@
         </div>
     </div>
 
-    <div class="popup-container" id="popupContainerSignUp">
-        <div class="popup">
-            <span class="close-btn" onclick="hidePopupsignin('popupContainerSignUp')">&times;</span>
-            <h2>Sign Up</h2>
-            <!-- <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
-                <div class="error-message <%= errorMessageClass %>"><%= errorMessage %></div>
-            <% } %> -->
-            <form method="post" action="/signup">
-                <input type="text" id="name" name="username" placeholder="Name" class="textt">
-                <span id="nameErr" style="color: red;"></span>
-                <input type="email" id="email" name="email" placeholder="Email" class="textt">
-                <span id="emailErr" style="color: red;"></span>
-                <input type="password" id="pass" name="password" placeholder="Password" class="textt">
-                <span id="passwordErr" style="color: red;"></span>
-                <input type="password" id="confirm_pass" name="confirmPassword" placeholder="Confirm Password" class="textt">
-                <span id="confirm_passwordErr" style="color: red;"></span>
-                <input type="text" id="country" name="address" placeholder="Address" class="textt">
-                <span id="countryErr" style="color: red;"></span>
-                <input type="tel" id="phone" name="phoneNumber" placeholder="Phone Number" class="textt">
-                <span id="phoneErr" style="color: red;"></span>
-                <br>
-                 <br>
-                <span id="termsErr" style="color: red;"></span>
-                <button type="submit" class="b">Sign Up</button>
-                <div id="successMessage" style="display: none; color: green;">Account created successfully!</div>
-                <br>
-            </form>
+   <div class="popup-container" id="popupContainerSignUp">
+    <div class="popup">
+        <span class="close-btn" onclick="hidePopupsignin('popupContainerSignUp')">&times;</span>
+        <h2>Sign Up</h2>
+        <!-- <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
+            <div class="error-message <%= errorMessageClass %>"><%= errorMessage %></div>
+        <% } %> -->
+        <form method="post" action="/signup">
+            <input type="text" id="name" name="username" placeholder="Name" class="textt">
+            <span id="nameErr" style="color: red;"></span>
+            <input type="email" id="email" name="email" placeholder="Email" class="textt">
+            <span id="emailErr" style="color: red;"></span>
+            <input type="password" id="pass" name="password" placeholder="Password" class="textt">
+            <span id="passwordErr" style="color: red;"></span>
+            <input type="password" id="confirm_pass" name="confirmPassword" placeholder="Confirm Password" class="textt">
+            <span id="confirm_passwordErr" style="color: red;"></span>
+            <input type="text" id="country" name="address" placeholder="Address" class="textt">
+            <span id="countryErr" style="color: red;"></span>
+            <input type="tel" id="phone" name="phoneNumber" placeholder="Phone Number" class="textt">
+            <span id="phoneErr" style="color: red;"></span>
             <br>
-            
-            <div class="signin">
-                Already Have an account <a href="#" onclick="hidePopupsignin('popupContainerSignUp'); showPopupSignin('popupContainerSignIn')">Log in</a>
-            </div>
+            <button type="submit" onclick = "SignupValidation()">Sign Up</button>
+            <div id="successMessage" style="display: none; color: green;">Account created successfully!</div>
+            <br>
+        </form>
+        <br>
+        
+        <div class="signin">
+            Already Have an account <a href="#" onclick="hidePopupsignin('popupContainerSignUp'); showPopupSignin('popupContainerSignIn')">Log in</a>
         </div>
     </div>
+</div>
+
     
     
     
